@@ -1,0 +1,30 @@
+{
+  "name": "react-social",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-social": "^5.1.1",
+    "classnames": "^2.2.6",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dom": "^16.8.6",
+    "react-images-upload": "^1.2.6",
+    "react-ladda": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-s-alert": "^1.4.1",
+    "react-scripts": "1.1.5",
+    "reactstrap": "^8.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-social-icons": "^4.1.0"
+  }
+}

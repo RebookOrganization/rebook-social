@@ -1,0 +1,140 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    position: relative;
+    z-index: 10;
+    /*background-color: white;*/
+    /*margin-bottom: 10px;*/
+}
+
+/*.vl {*/
+/*    border: 0.5px solid;*/
+/*    height: 30px;*/
+/*    max-width: 0;*/
+/*}*/
+
+.app-title {
+    line-height: 60px;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 500;
+    /*color: #152944;*/
+    color: white;
+}
+/*.app-title:hover {*/
+/*    color: #4b4f56;*/
+/*}*/
+
+.app-branding {
+    /*float: left;*/
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.app-options {
+    /*float: right;*/
+}
+
+.app-nav {
+    float: right;
+}
+
+.app-nav ul {
+    list-style-position: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.app-nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    font-weight: 500;
+    /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
+    /*margin-left: 5px;*/
+    /*margin-right: 5px;*/
+}
+
+/*.app-nav ul li:hover {*/
+/*    !*color: #4b4f56;*!*/
+/*    background-color: #205081; !*#3B70C5*!*/
+/*    height: 40px;*/
+/*    line-height: 40px;*/
+/*    border-radius: 5px;*/
+
+/*}*/
+
+.li-profile:hover {
+    background-color: #222836; /*#3B70C5*/
+    padding-left: 15px;
+}
+
+.app-nav ul li a {
+    display: inline-block;
+    line-height: 60px;
+    vertical-align: middle;
+    padding: 0 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.app-nav ul li a:hover {
+    background-color: #222836; /*#3B70C5*/
+}
+
+.app-nav ul li a.active {
+    border-top: 3px solid white;
+    line-height: 57px;
+}
+
+.app-nav ul li a.active:hover {
+    background-color: #222836; /*#3B70C5*/
+}
+
+.search {
+    position: relative;
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.search input {
+    width: 250px;
+    height: 32px;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 5px;
+    color: rgba(255,255,255,0.6);
+    text-indent: 32px;
+    box-shadow: none;
+    outline: none;
+}
+.search input:focus {
+    width: 250px;
+    height: 32px;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-indent: 32px;
+    box-shadow: none;
+    outline: none;
+}
+.search .fa-search {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.btn-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 25px;
+}
+.icon-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 25px;
+}
