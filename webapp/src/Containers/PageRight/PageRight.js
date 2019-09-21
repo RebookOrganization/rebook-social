@@ -98,7 +98,7 @@ class PageRight extends Component{
           <Card>
             <CardHeader onClick={this.toggleCollapse}>
               <strong style={{color: '#4b4f56'}}>
-                <img src="/icon/zoom.svg"/> Tìm kiếm chọn lọc
+                <img src="/icon/icons8-search.png"/> Tìm kiếm chọn lọc
               </strong>
             </CardHeader>
 
