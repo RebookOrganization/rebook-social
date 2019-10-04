@@ -16,7 +16,7 @@ import LaddaButton, {EXPAND_LEFT} from "react-ladda";
 import 'ladda/dist/ladda-themeless.min.css';
 import {SocialIcon} from "react-social-icons";
 
-class PageRight extends Component{
+class PageRight extends Component {
   constructor(props) {
     super(props);
 
@@ -44,7 +44,7 @@ class PageRight extends Component{
     const {inputSearch, inputSearchType} = this.state;
     this.setState({loading: true});
 
-    console.log("input search type: "+inputSearchType);
+    console.log("input search type: " + inputSearchType);
     if (parseInt(inputSearchType) === 0) {
       Alert.error("Vui lòng chọn loại tìm kiếm.");
       this.setState({loading: false})
@@ -61,8 +61,9 @@ class PageRight extends Component{
             resultSearchAddress: res.result,
             allNewsItem: res.result,
             loading: false
-          }, ()=>{
-            this.props.callBackFromPageRight(this.state.allNewsItem, this.state.loading);
+          }, () => {
+            this.props.callBackFromPageRight(this.state.allNewsItem,
+                this.state.loading);
           })
         }).catch((e) => {
           console.log(e);
@@ -85,7 +86,7 @@ class PageRight extends Component{
       }).catch(err => {
         console.log(err);
         Alert.warning("Không có kết quả trả về.")
-      }).finally(()=> {
+      }).finally(() => {
         this.setState({loading: false})
       });
     }
@@ -93,43 +94,53 @@ class PageRight extends Component{
 
   render() {
     const {loading} = this.state;
+    // className="sticky-top" style={{top: '60px', zIndex:'1'}}
     return (
-        <div className="sticky-top sticky-offset" style={{top:'60px'}}>
+        <div className="sticky-top" style={{top: '60px', zIndex:'1'}}>
           <Card>
-            <CardHeader onClick={this.toggleCollapse}>
-              <strong style={{color: '#4b4f56'}}>
-                <img src="/icon/icons8-search.png"/> Tìm kiếm chọn lọc
-              </strong>
-            </CardHeader>
-
-              <div style={{padding:'15px'}}>
-                <div className="search-box" style={{marginBottom:"5px"}}>
-                  <span className="fa fa-search"></span>
-                  <input id="inputSearch"
-                         placeholder="Nội dung tìm kiếm"
-                         onClick={this.toggleCollapse}
-                         style={{textIdent:'32px',backgroundColor: '#f2f3f5',outline:'none'}}
-                         value={this.state.inputSearch}
-                         onChange={(e) => this.setState(
-                             {inputSearch: e.target.value})}
-                  />
-                </div>
-                <hr/>
-                <Collapse isOpen={this.state.collapseSearch}>
+            <div style={{padding: '15px'}}>
+              <div className="search-box">
+                <span className="fa fa-search"/>
+                <input id="inputSearch"
+                       placeholder="Nội dung tìm kiếm"
+                       onClick={this.toggleCollapse}
+                       style={{
+                         textIdent: '32px',
+                         backgroundColor: '#f2f3f5',
+                         outline: 'none'
+                       }}
+                       value={this.state.inputSearch}
+                       onChange={(e) => this.setState(
+                           {inputSearch: e.target.value})}
+                />
+              </div>
+              <Collapse isOpen={this.state.collapseSearch}>
+                <hr style={{marginTop: "5px"}}/>
                 <Row>
-                  <Col md={6} style={{paddingRight:'5px'}}>
+                  <Col md={6} style={{paddingRight: '5px'}}>
                     <select className="form-control"
-                            style={{height: '40px',fontSize:'16px',backgroundColor: '#f2f3f5',marginBottom:"5px"}}
-                            onChange={(e) => this.setState({province: e.target.value})}
+                            style={{
+                              height: '40px',
+                              fontSize: '16px',
+                              backgroundColor: '#f2f3f5',
+                              marginBottom: "5px"
+                            }}
+                            onChange={(e) => this.setState(
+                                {province: e.target.value})}
                     >
                       <option value={0}>Tỉnh/Thành phố</option>
                       <option value={1}>Tp. Hố chí Minh</option>
                       <option value={2}>Hà Nội</option>
                     </select>
                   </Col>
-                  <Col md={6} style={{paddingLeft:'5px'}}>
+                  <Col md={6} style={{paddingLeft: '5px'}}>
                     <select className="form-control"
-                            style={{height: '40px',fontSize:'16px',backgroundColor: '#f2f3f5',marginBottom:"5px"}}
+                            style={{
+                              height: '40px',
+                              fontSize: '16px',
+                              backgroundColor: '#f2f3f5',
+                              marginBottom: "5px"
+                            }}
                             onChange={(e) => this.setState(
                                 {inputSearchType: e.target.value})}
                     >
@@ -141,22 +152,29 @@ class PageRight extends Component{
                   </Col>
                 </Row>
                 <hr/>
-                <Row style={{padding:'0 15px',justifyContent:'flex-end'}}>
+                <Row style={{padding: '0 15px', justifyContent: 'flex-end'}}>
                   <LaddaButton
                       className="btn btn-info btn-ladda"
                       loading={this.state.loading}
                       onClick={() => this.handleSearchByFiler()}
                       data-style={EXPAND_LEFT}
-                      style={{backgroundColor: '#008FE5', color: 'white',border:'none',height:'40px',lineHeight:'0'}}>
-                    <i className="fas fa-search"></i> Search
+                      style={{
+                        backgroundColor: '#008FE5',
+                        color: 'white',
+                        border: 'none',
+                        height: '40px',
+                        lineHeight: '0'
+                      }}>
+                    <i className="fas fa-search"/> Search
                   </LaddaButton>
                 </Row>
-                </Collapse>
-              </div>
+              </Collapse>
+            </div>
           </Card>
           <Card>
             <CardBody>
-              <strong style={{color:'#4b4f56'}}>Bất động sản được gợi ý</strong>
+              <strong style={{color: '#4b4f56'}}>Bất động sản được gợi
+                ý</strong>
             </CardBody>
             <CardImg top width="100%"
                      src="https://www.ngoisaoso.vn/uploads/news/2014/02/19/thiet-ke-web-bat-dong-san-2.jpg"
@@ -167,20 +185,26 @@ class PageRight extends Component{
               <Button className="btn-detail">Chi tiết</Button>
             </CardBody>
           </Card>
-          <Card style={{display:'flex',flexDirection:'row',padding:'10px'}}>
-            <CardText style={{marginRight:'20px'}}>Tiếng Việt.</CardText>
-            <CardText style={{marginRight:'20px'}}>English.</CardText>
+          <Card
+              style={{display: 'flex', flexDirection: 'row', padding: '10px'}}>
+            <CardText style={{marginRight: '20px'}}>Tiếng Việt.</CardText>
+            <CardText style={{marginRight: '20px'}}>English.</CardText>
           </Card>
           <div style={{display: 'flex'}}>
-            <a href="https://mdbootstrap.com/education/bootstrap/" style={{color: '#616770', marginRight: '10px'}}>Điều khoản.</a>
-            <a href="https://mdbootstrap.com/education/bootstrap/" style={{color: '#616770'}}>Quảng cáo.</a>
+            <a href="https://mdbootstrap.com/education/bootstrap/"
+               style={{color: '#616770', marginRight: '10px'}}>Điều khoản.</a>
+            <a href="https://mdbootstrap.com/education/bootstrap/"
+               style={{color: '#616770'}}>Quảng cáo.</a>
           </div>
-          <span style={{color: '#616770'}}>© 2019 Copyright: Rebook.com.vn</span>
-          <div style={{margin:'20px 0'}}>
-            <SocialIcon url="http://linkedin.com/in/jaketrent" style={{marginRight:'5px'}}/>
-            <SocialIcon network="twitter" bgColor="#ff5a01" style={{marginRight:'5px'}}/>
-            <SocialIcon network="facebook" style={{marginRight:'5px'}}/>
-            <SocialIcon network="google" style={{marginRight:'5px'}}/>
+          <span
+              style={{color: '#616770'}}>© 2019 Copyright: Rebook.com.vn</span>
+          <div style={{margin: '20px 0'}}>
+            <SocialIcon url="http://linkedin.com/in/jaketrent"
+                        style={{marginRight: '5px'}}/>
+            <SocialIcon network="twitter" bgColor="#ff5a01"
+                        style={{marginRight: '5px'}}/>
+            <SocialIcon network="facebook" style={{marginRight: '5px'}}/>
+            <SocialIcon network="google" style={{marginRight: '5px'}}/>
           </div>
         </div>
     )

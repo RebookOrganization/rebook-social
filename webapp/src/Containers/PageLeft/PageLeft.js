@@ -22,10 +22,16 @@ class PageLeft extends Component{
     const styleItem = {
       backgroundColor: '#e9ebee',
       color: '#111c26',
-      // border: 'none',
-      // outline: 'none',
       fontSize: '15px',
-      fontWeight: '500'
+      fontWeight: '500',
+      border: 'none',
+      outline: 'none',
+      '&:hover' : {
+        backgroundColor: 'white',
+        color: '#111c26',
+        fontSize: '15px',
+        fontWeight: '500',
+      }
     };
 
     return (
@@ -35,6 +41,7 @@ class PageLeft extends Component{
               <img
                   src={'/icon/default.jpg'}
                   className="rounded-circle icon-profile"
+                  style={{marginRight:'10px'}}
                   alt="Username"/> Username
             </ListGroupItem>
             <ListGroupItem style={styleItem} tag="a" href="#">

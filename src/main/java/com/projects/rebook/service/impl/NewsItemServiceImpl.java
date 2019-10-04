@@ -8,8 +8,10 @@ import com.projects.rebook.model.*;
 import com.projects.rebook.repository.*;
 import com.projects.rebook.service.NewsItemService;
 
+import com.projects.rebook.tfidf.TfIdfMain;
 import com.projects.rebook.utils.DateTimeUtils;
 import java.util.Map;
+import java.util.Optional;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,7 +32,7 @@ import static com.projects.rebook.constant.Constant.*;
 @Service
 public class NewsItemServiceImpl implements NewsItemService {
 
-  private Logger logger = LoggerFactory.getLogger(NewsItemServiceImpl.class);
+  private static Logger logger = LoggerFactory.getLogger(NewsItemServiceImpl.class);
 
   @Autowired
   NewsItemRepository newsRepository;
@@ -89,125 +91,129 @@ public class NewsItemServiceImpl implements NewsItemService {
         newsItem.setSummary(descriptMain);
         newsItem.setPostedDate(pubDate);
         newsItem.setPostedMilisec(DateTimeUtils.convertTimeStampMilisecond(pubDate, DateTimeUtils.GMT_FORMAT));
-        newsItem.setUser(userRepository.findByName("admin").get());
+
+        Optional<User> user = userRepository.findByEmail("admin@gmail.com");
+        user.ifPresent(newsItem::setUser);
 
         Document document = Jsoup.connect(url).get();
         Element productDetail = document.getElementById(NEW_DETAILS_TAG);
 
-        if (productDetail.getElementsByClass(LOCATION_PROP) != null) {
-          String khuvuc = productDetail.getElementsByClass(LOCATION_PROP).select("a").text();
-          newsItem.setCity(khuvuc);
-        }
-
-        String price = productDetail.getElementsByClass(PRICE_PROP).first().select("strong").text();
-        String area = productDetail.getElementsByClass(PRICE_PROP).get(1).select("strong").text();
-        newsItem.setPrice(price);
-        newsItem.setArea(area);
-
-        String desc = productDetail.getElementsByClass(DESCRIPTION_PROP).text()
-            .replaceAll("<br>", "\t");
-        newsItem.setDescription(desc);
-
-        if (productDetail.getElementById(ROOM_NUMBER) != null) {
-          String room = productDetail.getElementById(ROOM_NUMBER).getElementsByClass("right")
-              .text();
-          newsItem.setRoom_number(room);
-        }
-
-        if (productDetail.getElementById(TOILET_NUMBER) != null) {
-          String toilet = productDetail.getElementById(TOILET_NUMBER).getElementsByClass("right")
-              .text();
-          newsItem.setToilet_number(toilet);
-        }
-
-        if (productDetail.getElementById(DIRECTOFHOUSE) != null) {
-          String huongNha = productDetail.getElementById(DIRECTOFHOUSE).getElementsByClass("right")
-              .text();
-          newsItem.setDirect_of_house(huongNha);
-        }
-
-        if (productDetail.getElementById(BALCONY) != null) {
-          String balcony = productDetail.getElementById(BALCONY).getElementsByClass("right").text();
-          newsItem.setBalcony(balcony);
-        }
-
-        if (productDetail.getElementById(FLOOR_NUMBER) != null) {
-          String floorNumber = productDetail.getElementById(FLOOR_NUMBER)
-              .getElementsByClass("right").text();
-          newsItem.setFloor_number(floorNumber);
-        }
-
-        if (productDetail.getElementById(WARDIN) != null) {
-          String wardin = productDetail.getElementById(WARDIN).getElementsByClass("right").text();
-          newsItem.setWardin(wardin);
-        }
-
-        if (productDetail.getElementById(FRONT_END) != null) {
-          String frontEnd = productDetail.getElementById(FRONT_END).getElementsByClass("right")
-              .text();
-          newsItem.setFrontEnd(frontEnd);
-        }
-
-        if (productDetail.getElementById(INTERIOR) != null) {
-          String interior = productDetail.getElementById(INTERIOR).getElementsByClass("right")
-              .text();
-          newsItem.setInterior(interior);
-        }
-
-        String startDate = productDetail.getElementsByClass("prd-more-info").first()
-            .getElementsByTag("div").get(4).text().substring(10);
-        newsItem.setPubDate(startDate);
-
-        ContactOwner contactOwner = new ContactOwner();
-        if(productDetail.getElementById(OWNER_NAME) != null) {
-          String owner = productDetail.getElementById(OWNER_NAME).getElementsByClass("right").text();
-          contactOwner.setContactName(owner);
-        }
-        if (productDetail.getElementById(OWNER_PHONE) != null) {
-          String phone = productDetail.getElementById(OWNER_PHONE).getElementsByClass("right").text();
-          contactOwner.setPhoneNumber(phone);
-        }
-        if (productDetail.getElementById(OWNER_EMAIL) != null) {
-          String email = productDetail.getElementById(OWNER_EMAIL).getElementsByClass("right")
-              .select("a").text();
-          contactOwner.setEmail(email);
-        }
-        if (productDetail.getElementById(OWNER_ADDRESS) != null) {
-          String address = productDetail.getElementById(OWNER_ADDRESS).getElementsByClass("right")
-              .text();
-          contactOwner.setAddress(address);
-        }
-        contactOwnerRepository.save(contactOwner);
-        newsItem.setContactOwner(contactOwner);
-
-        PropertyProject propertyProject = new PropertyProject();
-        Element project = productDetail.getElementById(PROJECT);
-        if (project != null) {
-          String projectName = project.getElementsByClass("table-detail").first()
-              .getElementsByClass("row").first().getElementsByClass("right").text();
-          propertyProject.setProjectName(projectName);
-
-          if (project.getElementById(PROJECT_OWNER) != null) {
-            String projectOwner = project.getElementById(PROJECT_OWNER).getElementsByClass("right")
-                .text();
-            propertyProject.setProjectOwner(projectOwner);
+        if (productDetail != null) {
+          if (productDetail.getElementsByClass(LOCATION_PROP) != null) {
+            String khuvuc = productDetail.getElementsByClass(LOCATION_PROP).select("a").text();
+            newsItem.setCity(khuvuc);
           }
-          if (project.getElementById(PROJECT_SIZE) != null) {
-            String projectSize = project.getElementById(PROJECT_SIZE).getElementsByClass("right")
-                .text();
-            propertyProject.setProjectSize(projectSize);
-          }
-          propertyProjectRepository.save(propertyProject);
-          newsItem.setPropertyProject(propertyProject);
-        }
 
-        PropertyAddress propertyAddress = new PropertyAddress();
-        Elements row = productDetail.getElementsByClass("div-hold").first()
-            .getElementsByClass("row");
-        String prop_address = row.get(1).getElementsByClass("right").text();
-        propertyAddress.setSummary(prop_address);
-        propertyAdressRepository.save(propertyAddress);
-        newsItem.setPropertyAddress(propertyAddress);
+          String price = productDetail.getElementsByClass(PRICE_PROP).first().select("strong").text();
+          String area = productDetail.getElementsByClass(PRICE_PROP).get(1).select("strong").text();
+          newsItem.setPrice(price);
+          newsItem.setArea(area);
+
+          String desc = productDetail.getElementsByClass(DESCRIPTION_PROP).text()
+              .replaceAll("<br>", "\t");
+          newsItem.setDescription(desc);
+
+          if (productDetail.getElementById(ROOM_NUMBER) != null) {
+            String room = productDetail.getElementById(ROOM_NUMBER).getElementsByClass("right")
+                .text();
+            newsItem.setRoom_number(room);
+          }
+
+          if (productDetail.getElementById(TOILET_NUMBER) != null) {
+            String toilet = productDetail.getElementById(TOILET_NUMBER).getElementsByClass("right")
+                .text();
+            newsItem.setToilet_number(toilet);
+          }
+
+          if (productDetail.getElementById(DIRECTOFHOUSE) != null) {
+            String huongNha = productDetail.getElementById(DIRECTOFHOUSE).getElementsByClass("right")
+                .text();
+            newsItem.setDirect_of_house(huongNha);
+          }
+
+          if (productDetail.getElementById(BALCONY) != null) {
+            String balcony = productDetail.getElementById(BALCONY).getElementsByClass("right").text();
+            newsItem.setBalcony(balcony);
+          }
+
+          if (productDetail.getElementById(FLOOR_NUMBER) != null) {
+            String floorNumber = productDetail.getElementById(FLOOR_NUMBER)
+                .getElementsByClass("right").text();
+            newsItem.setFloor_number(floorNumber);
+          }
+
+          if (productDetail.getElementById(WARDIN) != null) {
+            String wardin = productDetail.getElementById(WARDIN).getElementsByClass("right").text();
+            newsItem.setWardin(wardin);
+          }
+
+          if (productDetail.getElementById(FRONT_END) != null) {
+            String frontEnd = productDetail.getElementById(FRONT_END).getElementsByClass("right")
+                .text();
+            newsItem.setFrontEnd(frontEnd);
+          }
+
+          if (productDetail.getElementById(INTERIOR) != null) {
+            String interior = productDetail.getElementById(INTERIOR).getElementsByClass("right")
+                .text();
+            newsItem.setInterior(interior);
+          }
+
+          String startDate = productDetail.getElementsByClass("prd-more-info").first()
+              .getElementsByTag("div").get(4).text().substring(10);
+          newsItem.setPubDate(startDate);
+
+          ContactOwner contactOwner = new ContactOwner();
+          if(productDetail.getElementById(OWNER_NAME) != null) {
+            String owner = productDetail.getElementById(OWNER_NAME).getElementsByClass("right").text();
+            contactOwner.setContactName(owner);
+          }
+          if (productDetail.getElementById(OWNER_PHONE) != null) {
+            String phone = productDetail.getElementById(OWNER_PHONE).getElementsByClass("right").text();
+            contactOwner.setPhoneNumber(phone);
+          }
+          if (productDetail.getElementById(OWNER_EMAIL) != null) {
+            String email = productDetail.getElementById(OWNER_EMAIL).getElementsByClass("right")
+                .select("a").text();
+            contactOwner.setEmail(email);
+          }
+          if (productDetail.getElementById(OWNER_ADDRESS) != null) {
+            String address = productDetail.getElementById(OWNER_ADDRESS).getElementsByClass("right")
+                .text();
+            contactOwner.setAddress(address);
+          }
+          contactOwnerRepository.save(contactOwner);
+          newsItem.setContactOwner(contactOwner);
+
+          PropertyProject propertyProject = new PropertyProject();
+          Element project = productDetail.getElementById(PROJECT);
+          if (project != null) {
+            String projectName = project.getElementsByClass("table-detail").first()
+                .getElementsByClass("row").first().getElementsByClass("right").text();
+            propertyProject.setProjectName(projectName);
+
+            if (project.getElementById(PROJECT_OWNER) != null) {
+              String projectOwner = project.getElementById(PROJECT_OWNER).getElementsByClass("right")
+                  .text();
+              propertyProject.setProjectOwner(projectOwner);
+            }
+            if (project.getElementById(PROJECT_SIZE) != null) {
+              String projectSize = project.getElementById(PROJECT_SIZE).getElementsByClass("right")
+                  .text();
+              propertyProject.setProjectSize(projectSize);
+            }
+            propertyProjectRepository.save(propertyProject);
+            newsItem.setPropertyProject(propertyProject);
+          }
+
+          PropertyAddress propertyAddress = new PropertyAddress();
+          Elements row = productDetail.getElementsByClass("div-hold").first()
+              .getElementsByClass("row");
+          String prop_address = row.get(1).getElementsByClass("right").text();
+          propertyAddress.setSummary(prop_address);
+          propertyAdressRepository.save(propertyAddress);
+          newsItem.setPropertyAddress(propertyAddress);
+        }
 
         newsItemList.add(newsItem);
       }
@@ -245,8 +251,8 @@ public class NewsItemServiceImpl implements NewsItemService {
       }
 
     } catch (IOException e) {
-      logger.error("crawlerBatDongSan error - {}", e);
-      return new CommonResponse.Fail("crawlerBatDongSan error.");
+      logger.error("crawlerBatDongSan exception: " + e);
+      return new CommonResponse.Fail("crawlerBatDongSan exception.");
     }
   }
 
@@ -259,12 +265,16 @@ public class NewsItemServiceImpl implements NewsItemService {
 
         for (int i = 0; i < newsItemList.size(); i++) {
           NewsItem newsItemImport = newsItemList.get(i);
-
           NewsItem newsItemIndex = NewsItemIndex.newsItemMap.get(newsItemImport.getUrl());
-          if (newsItemIndex == null) {
+
+          StringBuilder stringBuilder = new StringBuilder();
+          NewsItemIndex.newsItemMap.forEach((k, v) -> stringBuilder.append(v.getDescription()));
+          double compareResult = new TfIdfMain().compareText(newsItemImport.getDescription(), stringBuilder.toString());
+
+          logger.info("handleUpdateDatabase compareText: {}", compareResult);
+          if (newsItemIndex == null && compareResult >= 0.45) {
             listNewsItemInsert.add(newsItemImport);
           }
-
         }
 
         if (listNewsItemInsert.size() != 0) {
@@ -297,7 +307,7 @@ public class NewsItemServiceImpl implements NewsItemService {
                   Document imgDoc = Jsoup.connect(URL).get();
                   Element flexslider = imgDoc.getElementById("slider");
                   Elements slideLarges = flexslider.getElementsByClass("slideLarge");
-                  if (slideLarges != null || slideLarges.size() != 0) {
+                  if (slideLarges != null) {
                     for (Element slideLarge : slideLarges) {
                       NewsImageUrl newsImageUrl = new NewsImageUrl();
                       newsImageUrl.setImageUrl(slideLarge.getElementsByTag("img").attr("src"));
@@ -340,13 +350,13 @@ public class NewsItemServiceImpl implements NewsItemService {
         return new CommonResponse<>(this.returnCode, this.returnMessage, null);
       }
     } catch (Exception ex) {
-      logger.error("handleUpdateDatabase error - {}", ex);
+      logger.error("handleUpdateDatabase error: " + ex);
       return new CommonResponse.Fail("handleUpdateDatabase error.");
     }
   }
 
   private void mapToIndexNewsItemAndNewsDetail() {
-    List<NewsItem> newsItemList = cacheDataService.findNewsThreeDateBefore();
+    List<NewsItem> newsItemList = cacheDataService.findLastNRowsInPartition();
     if (newsItemList != null && !newsItemList.isEmpty()) {
       logger.info("newsItemMap - {}", NewsItemIndex.newsItemMap);
       NewsItemIndex.newsItemMap.clear();
@@ -377,7 +387,9 @@ public class NewsItemServiceImpl implements NewsItemService {
         newsItem.setUrl(url);
         newsItem.setPostedDate(pubDate);
         newsItem.setPostedMilisec(DateTimeUtils.convertTimeStampMilisecond(pubDate, DateTimeUtils.DATE_FORMAT));
-        newsItem.setUser(userRepository.findByEmail("admin@gmail.com").get());
+
+        Optional<User> user = userRepository.findByEmail("admin@gmail.com");
+        user.ifPresent(newsItem::setUser);
 
         Document document = Jsoup.connect(url).get();
 
@@ -440,21 +452,12 @@ public class NewsItemServiceImpl implements NewsItemService {
           Document imgDoc = Jsoup.connect(URL).get();
           Element slider = imgDoc.getElementById("slider");
           Elements slideLarges = slider.getElementsByClass("slideLarge");
-          if (slideLarges != null || slideLarges.size() != 0) {
-            for (Element slideLarge : slideLarges) {
-              NewsImageUrl newsImageUrl = new NewsImageUrl();
-              newsImageUrl.setImageUrl(slideLarge.getElementsByTag("img").attr("src"));
-              newsImageUrl.setNewsItem(newsItemList.get(i));
-              newsImageUrlList.add(newsImageUrl);
-            }
-          }
-          else {
-            if (slider.getElementsByTag("img") != null) {
-              NewsImageUrl newsImageUrl = new NewsImageUrl();
-              newsImageUrl.setImageUrl(slider.getElementsByTag("img").attr("src"));
-              newsImageUrl.setNewsItem(newsItemList.get(i));
-              newsImageUrlList.add(newsImageUrl);
-            }
+          assert slideLarges != null;
+          for (Element slideLarge : slideLarges) {
+            NewsImageUrl newsImageUrl = new NewsImageUrl();
+            newsImageUrl.setImageUrl(slideLarge.getElementsByTag("img").attr("src"));
+            newsImageUrl.setNewsItem(newsItemList.get(i));
+            newsImageUrlList.add(newsImageUrl);
           }
         }
 
@@ -471,7 +474,7 @@ public class NewsItemServiceImpl implements NewsItemService {
       }
 
     } catch (Exception ex) {
-      logger.error("crawlerDiaOcOnline error - {}", ex);
+      logger.error("crawlerDiaOcOnline error: "+ ex);
       return new CommonResponse.Fail("crawlerDiaOcOnline error.");
     }
   }
@@ -491,18 +494,18 @@ public class NewsItemServiceImpl implements NewsItemService {
         }
       }
       else {
-        long dateFrom = DateTimeUtils.getThreeDateBefore();
-        long dateTo = DateTimeUtils.getCurrentDateMilisec();
-        List<NewsItem> newsItemList = newsRepository.findAllByPostedDate(dateFrom, dateTo);
+//        long dateFrom = DateTimeUtils.getThreeDateBefore();
+//        long dateTo = DateTimeUtils.getCurrentDateMilisec();
+        List<NewsItem> newsItemList = newsRepository.findLastNRowsInPartition("");
         for (NewsItem newsItem : newsItemList) {
           newsResponseDTOList.add(mapNewsToNewsResponseDTO(newsItem));
         }
       }
 
       logger.info("getAllNewsItem response - {}, size - {}", newsResponseDTOList, newsResponseDTOList.size());
-      return new CommonResponse(this.returnCode, this.returnMessage, newsResponseDTOList);
+      return new CommonResponse<>(this.returnCode, this.returnMessage, newsResponseDTOList);
     } catch (Exception ex) {
-      logger.error("getAllNewsItem error - {}", ex);
+      logger.error("getAllNewsItem error: "+ ex);
       return new CommonResponse.Fail("getAllNewsItem fail.");
     }
   }

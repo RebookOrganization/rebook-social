@@ -23,7 +23,7 @@ class AppHeader extends Component {
   };
 
   render() {
-    const {currentUser, isSearch} = this.state;
+    const {currentUser} = this.state;
 
     return (
         <header className="app-header">
@@ -37,7 +37,7 @@ class AppHeader extends Component {
                 }}/>
                 <Link to="/profile" className="app-title">Rebook</Link>
                 <div className="search">
-                  <span className="fa fa-search"></span>
+                  <span className="fa fa-search" style={{color:'gray'}}/>
                   <input onClick={this.toggleModalSearch}/>
                 </div>
               </div>
@@ -93,7 +93,7 @@ class AppHeader extends Component {
             </ModalHeader>
             <ModalBody style={{padding:'15px'}}>
               <div className="search-box" style={{marginBottom:"5px"}}>
-                <span className="fa fa-search"></span>
+                <span className="fa fa-search"/>
                 <input id="inputSearch"
                        placeholder="Nội dung tìm kiếm"
                        onClick={this.toggleCollapse}
@@ -160,7 +160,7 @@ class AppHeader extends Component {
                       onClick={() => this.handleSearchByFiler()}
                       data-style={EXPAND_LEFT}
                       style={{backgroundColor: '#008FE5', color: 'white',border:'none',height:'40px',lineHeight:'0'}}>
-                    <i className="fas fa-search"></i> Tìm kiếm
+                    <i className="fas fa-search"/> Tìm kiếm
                   </LaddaButton>
                 </Row>
             </ModalBody>

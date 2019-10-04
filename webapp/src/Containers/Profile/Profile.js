@@ -13,11 +13,19 @@ import ButtonGroup from "reactstrap/es/ButtonGroup";
 import '../Home/_home.css';
 import {SocialIcon} from "react-social-icons";
 import Aside from "../Aside/Aside";
+import {getAllNewsByUser} from "../../api/UserApi";
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      newsByUser: null,
+      loading: false
+    }
   }
 
   createListCardItemUser = () => {
@@ -147,6 +155,31 @@ class Profile extends Component {
     }
   };
 
+  componentDidMount() {
+    this.handleGetAllNewByUser();
+  }
+
+  handleGetAllNewByUser = () => {
+    this.setState({loading: true});
+    const currentUser = this.props.currentUser;
+    if (currentUser) {
+      getAllNewsByUser(currentUser.id).then(res => {
+        if (res && parseInt(res.data.returnCode) !== 0) {
+          this.setState({
+            newsByUser: res.data.result
+          })
+        }
+        else {
+          Alert.warn("   ");
+        }
+      }).catch((e)=>{
+        console.log(e);
+      }).finally(()=>{
+        this.setState({loading: false})
+      })
+    }
+  };
+
   render() {
     const background = {
       height: '350px',
@@ -159,8 +192,8 @@ class Profile extends Component {
     const styleItem = {
       backgroundColor: '#e9ebee',
       color: '#111c26',
-      // border: 'none',
-      // outline: 'none',
+      border: 'none',
+      outline: 'none',
       fontSize: '15px',
       fontWeight: '500'
     };
@@ -188,40 +221,29 @@ class Profile extends Component {
                   <h2>{this.props.currentUser.name}</h2>
                   <p className="profile-email">{this.props.currentUser.email}</p>
                 </div>
+                <ListGroup flush style={styleListGroup}>
+                  <ListGroupItem style={styleItem} tag="a" href="#">
+                    <img src="/icon/icons8-news.png"/> Bảng tin
+                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
+                  </ListGroupItem>
+                  <ListGroupItem style={styleItem} tag="a" href="#">
+                    <img src="/icon/icons8-message_group.png"/> Messenger
+                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
+                  </ListGroupItem>
+                  <ListGroupItem style={styleItem} tag="a" href="#">
+                    <img src="/icon/icons8-retro_tv.png"/> Watch
+                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
+                  </ListGroupItem>
+                  <ListGroupItem style={styleItem} tag="a" href="#">
+                    <img src="/icon/icons8-group.png"/> Nhóm
+                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
+                  </ListGroupItem>
+                  <ListGroupItem style={styleItem} tag="a" href="#">
+                    <img src="/icon/icons8-add_user_male.png"/> Tạo
+                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
+                  </ListGroupItem>
+                </ListGroup>
               </div>
-              <ListGroup flush style={styleListGroup}>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img
-                      src={'/icon/default.jpg'}
-                      className="rounded-circle icon-profile"
-                      alt="Username"/> Username
-                </ListGroupItem>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img src="/icon/icons8-news.png"/> Bảng tin
-                  <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                </ListGroupItem>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img src="/icon/icons8-message_group.png"/> Messenger
-                  <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                </ListGroupItem>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img src="/icon/icons8-retro_tv.png"/> Watch
-                  <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                </ListGroupItem>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img src="/icon/icons8-group.png"/> Nhóm
-                  <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                </ListGroupItem>
-                <ListGroupItem style={styleItem} tag="a" href="#">
-                  <img src="/icon/icons8-add_user_male.png"/> Tạo
-                  <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                </ListGroupItem>
-              </ListGroup>
-              <Card>
-                <CardImg top width="100%"
-                         src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-                         alt="Card image cap"/>
-              </Card>
             </div>
             <div className="col col-md-8" style={{paddingRight:'30px'}}>
               <div className="row">

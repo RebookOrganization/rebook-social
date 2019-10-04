@@ -17,7 +17,8 @@ public class CachingConfig {
     SimpleCacheManager cacheManager = new SimpleCacheManager();
     cacheManager.setCaches(Arrays.asList(
         new ConcurrentMapCache("findAllNewsItem"),
-        new ConcurrentMapCache("findNewsThreeDateBefore")
+        new ConcurrentMapCache("findNewsThreeDateBefore"),
+        new ConcurrentMapCache("findLastNRowsInPartition")
     ));
 
     return cacheManager;

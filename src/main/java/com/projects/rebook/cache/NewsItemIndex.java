@@ -50,15 +50,12 @@ public class NewsItemIndex {
     Long currentDateTimeMilisec = DateTimeUtils
         .convertTimeStampMilisecond(DateTimeUtils.getCurrentDate(), DateTimeUtils.DATE_TIME_FORMAT);
     logger.info("current dateTime milisec - {}", currentDateTimeMilisec);
-    List<NewsItem> newsItemList = cacheDataService.findNewsThreeDateBefore();
+    List<NewsItem> newsItemList = cacheDataService.findLastNRowsInPartition();
     if (newsItemList != null && !newsItemList.isEmpty()) {
       logger.info("newsItemMap - {}", NewsItemIndex.newsItemMap);
       NewsItemIndex.newsItemMap.clear();
       for (int i = 0; i < newsItemList.size(); i++) {
         NewsItemIndex.newsItemMap.put(newsItemList.get(i).getUrl(), newsItemList.get(i));
-
-//        User user = userRepository.findById(newsItemList.get(i).getUser().getId()).get();
-//        NewsItemIndex.userMap.put(user.getId(), user);
       }
     }
   }

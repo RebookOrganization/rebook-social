@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -48,7 +49,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @Service
 public class UserServiceImpl implements UserService {
 
-  private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+  private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
   @Autowired
   UserRepository userRepository;
@@ -327,4 +328,18 @@ public class UserServiceImpl implements UserService {
         .collect(Collectors.toList());
   }
 
+  @Override
+  public CommonResponse getAllNewsByUser(Long userID) throws Exception {
+    try {
+      List<NewsItem> newsItemList = new ArrayList<>();
+      Optional<User> user = userRepository.findById(userID);
+      if (user.isPresent()) {
+        newsItemList = newsItemRepository.findAllByUser(user.get());
+      }
+      return new CommonResponse<>(this.returnCode, this.returnMessage, newsItemList);
+    }
+    catch (Exception ex) {
+      return new Fail("Lấy thông tin bài viết của user thất bại.");
+    }
+  }
 }

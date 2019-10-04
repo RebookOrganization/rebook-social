@@ -23,7 +23,12 @@ public class CacheDataService {
   public List<NewsItem> findNewsThreeDateBefore() {
     long dateFrom = DateTimeUtils.getThreeDateBefore();
     long dateTo = DateTimeUtils.getCurrentDateMilisec();
-    List<NewsItem> newsItemList = newsItemRepository.findAllByPostedDate(dateFrom, dateTo);
-    return newsItemList;
+    return newsItemRepository.findAllByPostedDate(dateFrom, dateTo);
   }
+
+  @CacheEvict(value = "findLastNRowsInPartition", allEntries = true)
+  public List<NewsItem> findLastNRowsInPartition() {
+    return newsItemRepository.findLastNRowsInPartition("");
+  }
+
 }

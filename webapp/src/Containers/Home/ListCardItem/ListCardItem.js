@@ -2,40 +2,47 @@ import React, {Component} from 'react';
 import {Button, Card, CardImg, CardTitle, Input} from "reactstrap";
 import ButtonGroup from "reactstrap/es/ButtonGroup";
 import shallowCompare from 'react-addons-shallow-compare';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/scss/image-gallery.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 class ListCardItem extends Component{
   constructor(props) {
     super(props);
-
     this.state = {
       comment: "",
       newsDetail: false,
       textOfReadMore: "Chi tiết",
-      currentUser: null
+      currentUser: null,
+      indexNews: 0,
+      allNewsItem: null
     }
   }
 
   componentWillMount() {
-    const {currentUser} = this.props;
+    const {currentUser, allNewsItem} = this.props;
     this.setState({
-      currentUser: currentUser
+      currentUser: currentUser,
+      allNewsItem: allNewsItem
     })
   }
 
   componentWillReceiveProps(nextProps) {
     if (shallowCompare(this, this.props, nextProps)) {
       this.setState({
-        currentUser: nextProps.currentUser
+        currentUser: nextProps.currentUser,
+        allNewsItem: nextProps.allNewsItem
       })
     }
   }
 
-  handleRenderNewsDetail = () => {
+  handleRenderNewsDetail = (index) => {
     this.setState({
+      indexNews: index,
       newsDetail: !this.state.newsDetail
     },() => {
       let {newsDetail} = this.state;
-      if (newsDetail === true) {
+      if (newsDetail === true && this.state.indexNews === index) {
         this.setState({
           textOfReadMore : "Thu gọn"
         })
@@ -48,12 +55,27 @@ class ListCardItem extends Component{
     })
   };
 
-  render() {
-    let allNewsItem = null;
-    if (this.props.allNewsItem !== null || this.props.allNewsItem !== undefined) {
-      allNewsItem = this.props.allNewsItem
+  handleRenderImageSlide = (imageList) => {
+    if (imageList) {
+      let images = [];
+      imageList.map(i => {
+        images.push({
+          original: i.imageUrl,
+          thumbnail: i.imageUrl,
+        })
+      });
+      return (
+          <ImageGallery items={images}/>
+      )
     }
-    const {newsDetail, textOfReadMore, currentUser} = this.state;
+  };
+
+  render() {
+    // let allNewsItem = null;
+    // if (this.props.allNewsItem !== null || true) {
+    //   allNewsItem = this.props.allNewsItem
+    // }
+    const {allNewsItem, newsDetail, textOfReadMore, currentUser, indexNews} = this.state;
 
     const styleText = {
       fontSize: '16px',
@@ -61,7 +83,8 @@ class ListCardItem extends Component{
       lineHeight: '1.58',
       fontFamily: 'inherit',
       marginBottom: '10px',
-      paddingRight: '5px'
+      paddingRight: '5px',
+      color: '#20a8d8'
     };
 
     const styleTitle = {
@@ -87,11 +110,7 @@ class ListCardItem extends Component{
                 <Card className="card" key={index}>
                   <CardTitle>
                     <div className="row"
-                         style={{
-                           display: 'flex',
-                           alignItems: 'center',
-                           marginTop: '15px'
-                         }}>
+                         style={{display: 'flex', alignItems: 'center', marginTop: '15px'}}>
                       <div className="col-md-9">
                         <a className="btn-circle btn-lg">
                           <img
@@ -112,7 +131,6 @@ class ListCardItem extends Component{
                         <div style={{color: '#606770', margin: '0 80px'}}>
                           {item.pubDate ? item.pubDate : ''}
                         </div>
-
                       </div>
                       <div className="col-md-3">
                         <div className="dropdown float-right">
@@ -157,16 +175,18 @@ class ListCardItem extends Component{
                     <p style={styleTitle}>
                       {item.summaryNews ? item.summaryNews : null}
                     </p>
-                    <a href="#" style={styleText}
-                       onClick={()=>this.handleRenderNewsDetail()}>
+
+                    <a style={styleText}
+                       onClick={()=>this.handleRenderNewsDetail(index)}>
                       {textOfReadMore}
                     </a>
                     {
-                      newsDetail ?
+                      newsDetail && indexNews === index ?
                           <p style={styleTitle}>
                             {item.descriptionNews ? item.descriptionNews : null}
                           </p> : null
                     }
+
                     <p style={styleTitle}>
                       <strong>Liên hệ: </strong>{' '}
                       {item.contactName ? item.contactName : null}
@@ -180,15 +200,9 @@ class ListCardItem extends Component{
                     </p>
                   </div>
 
-                  <div className="row-images" style={{marginBottom: '10px'}}>
-                    {item.imageUrlList ? item.imageUrlList.map(i => (
-                            <CardImg key={i.id}
-                                     className="col-image"
-                                     src={i.imageUrl}
-                                     onClick={()=>this.props.toggleModalImage(i.imageUrl)}
-                                     alt="images"/>
-                        )
-                    ) : null
+                  <div style={{marginBottom: '10px'}}>
+                    {
+                      item.imageUrlList && item.imageUrlList.length ? this.handleRenderImageSlide(item.imageUrlList) : null
                     }
                   </div>
 

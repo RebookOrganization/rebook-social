@@ -27,4 +27,9 @@ public interface NewsItemRepository extends JpaRepository<NewsItem, Long> {
 
     @Query(value = "SELECT * FROM news_item as t where t.posted_milisec = ?1", nativeQuery = true)
     List<NewsItem> findAllByPostedMilisec(long milisec);
+
+    @Query(value = "SELECT * FROM (SELECT * FROM news_item ORDER BY id DESC LIMIT 20) sub ORDER BY id ASC", nativeQuery = true)
+    List<NewsItem> findLastNRowsInPartition(String partition);
+
+
 }

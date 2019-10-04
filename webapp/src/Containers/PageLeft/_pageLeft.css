@@ -1,17 +1,16 @@
 .list-content ul {
   margin-bottom: 20px
 }
-.list-content {
-  background-color: #e9ebee !important;
-  color: #111c26 !important;
-  border: none !important;
-  outline: none !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
+
+.list-item {
+  background-color: #e9ebee;
+  color: #111c26;
+  font-size: 15px;
+  font-weight: 500;
 }
-.list-content:hover {
-  background-color: white !important;
-  color: #111c26 !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
+.list-item:hover {
+  background-color: white;
+  color: #111c26 ;
+  font-size: 15px;
+  font-weight: 500;
 }

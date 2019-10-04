@@ -1,6 +1,6 @@
 import {request} from "./APIUtils";
 import { API_BASE_URL } from '../Constants/constant';
-import {httpPost, httpUploadFile} from "./index";
+import {httpGet, httpPost, httpUploadFile} from "./index";
 
 const API_NEWS = "/api/news";
 
@@ -98,4 +98,8 @@ export function searchNewsByUser(username) {
   catch (e) {
     console.log(e);
   }
+}
+
+export function getAllNewsByUser(userID) {
+  return httpGet("api/user/news-item?userID=" + userID);
 }

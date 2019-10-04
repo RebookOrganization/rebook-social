@@ -5,6 +5,7 @@ import com.projects.rebook.bean.Request.LikeRequest;
 import com.projects.rebook.bean.Request.PostNewsRequest;
 import com.projects.rebook.bean.Request.ShareRequest;
 import com.projects.rebook.bean.Response.CommonResponse;
+import com.projects.rebook.model.User;
 import java.io.IOException;
 
 public interface UserService {
@@ -20,5 +21,7 @@ public interface UserService {
   CommonResponse searchNewsByUser(String username) throws IOException;
 
   CommonResponse searchNewsByAddress(String address) throws IOException;
+
+  CommonResponse getAllNewsByUser(Long userID) throws Exception;
 
 }

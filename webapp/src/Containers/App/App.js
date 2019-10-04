@@ -100,18 +100,20 @@ class App extends Component {
 
           <div className="app-body" id="app-body">
 
-            {
-              this.state.authenticated &&
-              <Route exact path="/home"
-                     name="Home"
-                     render={() => <Home
-                         authenticated={this.state.authenticated}
-                         currentUser={this.state.currentUser}
-                         // renderSearchBox={this.state.renderSearchBox}
-                     />
-                     }
-              />
-            }
+            {/*<div style={{height: '740px', overflow:'auto'}}>*/}
+              {
+                this.state.authenticated &&
+                <Route exact path="/home"
+                       name="Home"
+                       render={() => <Home
+                           authenticated={this.state.authenticated}
+                           currentUser={this.state.currentUser}
+                           // renderSearchBox={this.state.renderSearchBox}
+                       />
+                       }
+                />
+              }
+            {/*</div>*/}
 
             {
               this.state.authenticated &&

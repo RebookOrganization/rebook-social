@@ -435,7 +435,7 @@ p {
 .news-post {
     color: #4b4f56;
 }
-.news-post:hover {
-    background-color: #2098f3;
-    color: white;
-}
+/*.news-post:hover {*/
+/*     background-color: #2098f3;*/
+/*     color: white;*/
+/* }*/

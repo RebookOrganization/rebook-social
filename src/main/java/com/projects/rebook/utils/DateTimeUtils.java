@@ -76,7 +76,7 @@ public class DateTimeUtils {
 
   public static Long getThreeDateBefore() {
     long DAY_IN_MS = 1000 * 60 * 60 * 24;
-    Date date = new Date(System.currentTimeMillis() - (3 * DAY_IN_MS));
+    Date date = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
     return date.getTime();
   }
 
