@@ -105,7 +105,6 @@ public class DocumentParser {
             doubles);
       }
     }
-    logger.info("DocumentParser getCosineSimilarity: {}", result);
     return result;
   }
 

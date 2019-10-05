@@ -84,7 +84,6 @@ class ListCardItem extends Component{
       fontFamily: 'inherit',
       marginBottom: '10px',
       paddingRight: '5px',
-      color: '#20a8d8'
     };
 
     const styleTitle = {
@@ -176,7 +175,15 @@ class ListCardItem extends Component{
                       {item.summaryNews ? item.summaryNews : null}
                     </p>
 
-                    <a style={styleText}
+                    <a style={{
+                      fontSize: '16px',
+                      fontWeight: 'normal',
+                      lineHeight: '1.58',
+                      fontFamily: 'inherit',
+                      marginBottom: '10px',
+                      paddingRight: '5px',
+                      color: '#20a8d8'
+                    }}
                        onClick={()=>this.handleRenderNewsDetail(index)}>
                       {textOfReadMore}
                     </a>
@@ -248,6 +255,33 @@ class ListCardItem extends Component{
 
                   <hr/>
 
+                  <div className="input-comment" style={{paddingBottom:'10px'}}>
+                    <a className="btn-user">
+                      <img
+                          src={'/icon/icons8-checked_user_male.png'}
+                          className="rounded-circle icon-user"
+                          alt="Username"/>
+                    </a>{' '}
+                    <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                      backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                      {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"
+                      + "Bai viet rat hay!!!Bai viet rat hay!!!"
+                      + "Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                    </p>
+                  </div>
+                  <div className="input-comment" style={{paddingBottom:'10px'}}>
+                    <a className="btn-user">
+                      <img
+                          src={'/icon/icons8-checked_user_male.png'}
+                          className="rounded-circle icon-user"
+                          alt="Username"/>
+                    </a>{' '}
+                    <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                      backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                      {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                    </p>
+                  </div>
+
                   <div className="input-comment">
                     <a className="btn-user">
                       <img
@@ -258,7 +292,7 @@ class ListCardItem extends Component{
                           alt="Username"/>
                     </a>{' '}
                     <Input style={{borderRadius: '36px', height: '40px',
-                                    border:'1px #606770',
+                                    border:'1px solid #bbc0c4',
                                     backgroundColor: '#f2f3f5',textIdent:'32px',
                                     color:'#aaa',fontSize:'16px'}}
                            placeholder="Viết bình luận..."

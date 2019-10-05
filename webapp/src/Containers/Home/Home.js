@@ -139,55 +139,64 @@ class Home extends Component {
 
   handleRenderMoreButton = () => {
     this.setState({
-      renderMoreButton: !this.state.renderMoreButton
+      renderMoreButton: !this.state.renderMoreButton,
+      collapsePost: true
     })
   };
 
   handleRenderInputAddress = () => {
     this.setState({
-      renderInputAddress: !this.state.renderInputAddress
+      renderInputAddress: !this.state.renderInputAddress,
+      collapsePost: true
     })
   };
 
   handleRenderFloorInput = () => {
     this.setState({
-      renderFloorInput: !this.state.renderFloorInput
+      renderFloorInput: !this.state.renderFloorInput,
+      collapsePost: true
     })
   };
 
   handleRenderToiletInput = () => {
     this.setState({
-      renderToiletInput: !this.state.renderToiletInput
+      renderToiletInput: !this.state.renderToiletInput,
+      collapsePost: true
     })
   };
 
   handleRenderRoomInput = () => {
     this.setState({
-      renderRoomInput: !this.state.renderRoomInput
+      renderRoomInput: !this.state.renderRoomInput,
+      collapsePost: true
     })
   };
 
   handleRenderDirectInput = () => {
     this.setState({
-      renderDirectInput: !this.state.renderDirectInput
+      renderDirectInput: !this.state.renderDirectInput,
+      collapsePost: true
     })
   };
 
   handleRenderFurnitureInput = () => {
     this.setState({
-      renderFurnitureInput: !this.state.renderFurnitureInput
+      renderFurnitureInput: !this.state.renderFurnitureInput,
+      collapsePost: true
     })
   };
 
   handleRenderInputContact = () => {
     this.setState({
-      renderInputContact: !this.state.renderInputContact
+      renderInputContact: !this.state.renderInputContact,
+      collapsePost: true
     })
   };
 
   handleRenderInputProject = () => {
     this.setState({
-      renderInputProject: !this.state.renderInputProject
+      renderInputProject: !this.state.renderInputProject,
+      collapsePost: true
     })
   };
 
@@ -635,8 +644,34 @@ class Home extends Component {
                                          : 'Thông tin bất động sản của bạn là gì?'}
                               />
                             </div>
-
                             <hr/>
+                            <button className="button-pill"
+                                    onClick={() => this.handleRenderInputAddress()}>
+                              <img src="/icon/icons8-order_delivered.png" alt={""}/> Địa
+                              chỉ
+                            </button>
+                            {' '}
+                            <button className="button-pill"
+                                    onClick={() => this.handleRenderInputContact()}>
+                              <img src="/icon/contact.png" alt={""}/> Người liên hệ
+                            </button>
+                            {' '}
+                            <button className="button-pill"
+                                    onClick={() => this.handleRenderInputProject()}>
+                              <img src="/icon/icons8-project.png" alt={""}/> Dự án
+                            </button>
+                            {' '}
+                            <button className="button-pill"
+                                    onClick={() => this.handleRenderDirectInput()}>
+                              <img src="/icon/icons8-north_direction.png" alt={""}/> Hướng
+                              nhà
+                            </button>
+                            {' '}
+                            <button className="button-pill"
+                                    onClick={() => this.handleRenderMoreButton()}>
+                              <img src={"/icon/menu-5.svg"} alt={""}/>
+                            </button>
+                            {moreButton}
                             <Collapse isOpen={this.state.collapsePost}
                                       id="collapseExample">
                               <ImageUploader
@@ -648,37 +683,8 @@ class Home extends Component {
                                   maxFileSize={5242880}
                                   withPreview={true}
                               />
-                              {' '}
-                              <button className="button-pill"
-                                      onClick={() => this.handleRenderInputAddress()}>
-                                <img src="/icon/icons8-order_delivered.png"/> Địa
-                                chỉ
-                              </button>
-                              {' '}
-                              <button className="button-pill"
-                                      onClick={() => this.handleRenderInputContact()}>
-                                <img src="/icon/contact.png"/> Người liên hệ
-                              </button>
-                              {' '}
-                              <button className="button-pill"
-                                      onClick={() => this.handleRenderInputProject()}>
-                                <img src="/icon/icons8-project.png"/> Dự án
-                              </button>
-                              {' '}
-                              <button className="button-pill"
-                                      onClick={() => this.handleRenderDirectInput()}>
-                                <img src="/icon/icons8-north_direction.png"/> Hướng
-                                nhà
-                              </button>
-                              {' '}
-                              <button className="button-pill"
-                                      onClick={() => this.handleRenderMoreButton()}>
-                                <img src={"/icon/menu-5.svg"}/>
-                              </button>
-                              {moreButton}
 
                               <hr/>
-
                               {inputAddress}
                               {inputContact}
                               {inputProject}

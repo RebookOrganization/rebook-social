@@ -18,7 +18,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 public class Main {
 
 	public static final String APP_ENV = System.getProperty("appenv", "dev");
-  public static boolean IS_DEV_ENV = (APP_ENV.equals("dev")) ? true : false;
+  public static boolean IS_DEV_ENV = APP_ENV.equals("dev");
 
 	private static ApplicationContext ctx;
 

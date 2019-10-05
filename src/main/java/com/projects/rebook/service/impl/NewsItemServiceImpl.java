@@ -272,7 +272,7 @@ public class NewsItemServiceImpl implements NewsItemService {
           double compareResult = new TfIdfMain().compareText(newsItemImport.getDescription(), stringBuilder.toString());
 
           logger.info("handleUpdateDatabase compareText: {}", compareResult);
-          if (newsItemIndex == null && compareResult >= 0.45) {
+          if (newsItemIndex == null && compareResult >= 1.0) {
             listNewsItemInsert.add(newsItemImport);
           }
         }

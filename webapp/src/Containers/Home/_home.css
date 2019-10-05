@@ -147,7 +147,8 @@ p {
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    border-radius: 25px;
+    border-radius: 50%;
+    border: 1px solid #bbc0c4;
 }
 .icon-user {
     width: 40px;

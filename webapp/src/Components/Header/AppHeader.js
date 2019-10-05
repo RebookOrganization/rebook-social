@@ -2,7 +2,15 @@ import React, {Component} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './_appHeader.css';
 import '../../Containers/Home/_home.css';
-import {Collapse, Modal, ModalBody, ModalHeader} from "reactstrap";
+import {
+  Button,
+  Collapse,
+  Input,
+  InputGroup, InputGroupAddon,
+  Modal,
+  ModalBody,
+  ModalHeader
+} from "reactstrap";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
@@ -36,10 +44,27 @@ class AppHeader extends Component {
                   marginRight: '20px'
                 }}/>
                 <Link to="/profile" className="app-title">Rebook</Link>
-                <div className="search">
-                  <span className="fa fa-search" style={{color:'gray'}}/>
-                  <input onClick={this.toggleModalSearch}/>
+                <div className="input-group input-group-sm"
+                     style={{marginLeft:'20px', width:'350px'}}
+                >
+                  <input type="text" className="form-control"
+                         placeholder="Tìm kiếm"
+                         style={{fontSize:'14px'}}
+                         onClick={this.toggleModalSearch}
+                         aria-label="Tìm kiếm"
+                         aria-describedby="basic-addon2"/>
+                    <div className="input-group-append">
+                      <span className="input-group-text"
+                            style={{width:'50px'}}
+                            id="basic-addon2">
+                        <span className="fa fa-search" style={{color:'gray',marginLeft:'10px'}}/>
+                      </span>
+                    </div>
                 </div>
+                {/*<div className="search">*/}
+                {/*  <span className="fa fa-search" style={{color:'gray'}}/>*/}
+                {/*  <input onClick={this.toggleModalSearch}/>*/}
+                {/*</div>*/}
               </div>
               <div className="col-md-5 app-options">
                 <nav className="app-nav">

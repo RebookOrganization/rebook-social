@@ -19,9 +19,6 @@ public interface NewsItemRepository extends JpaRepository<NewsItem, Long> {
 
     NewsItem findByPropertyAddress(PropertyAddress propertyAddress);
 
-    @Query(value = "INSERT INTO `news_item`+?2 () values () ", nativeQuery = true)
-    void saveAllByPartition(List<NewsItem> newsItemList, String partition);
-
     @Query(value = "SELECT * FROM news_item as t where t.posted_milisec > ?1 and t.posted_milisec <= ?2", nativeQuery = true)
     List<NewsItem> findAllByPostedDate(long dateFrom, long dateTo);
 
@@ -31,5 +28,7 @@ public interface NewsItemRepository extends JpaRepository<NewsItem, Long> {
     @Query(value = "SELECT * FROM (SELECT * FROM news_item ORDER BY id DESC LIMIT 20) sub ORDER BY id ASC", nativeQuery = true)
     List<NewsItem> findLastNRowsInPartition(String partition);
 
+    @Query(value = "INSERT INTO `news_item`+?2 () values () ", nativeQuery = true)
+    void saveToPartition(String partition);
 
 }

@@ -35,94 +35,7 @@ class Aside extends Component {
             width: '257px'
           }}
           >
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'assets/img/avatars/7.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'assets/img/avatars/7.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                fontWeight: '500',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}></span>
-            </div>
-
-            <hr/>
-            <h6>System Utilization</h6>
-            <div className="text-uppercase mb-1 mt-4">
+            <div className="text-uppercase mb-1 mt-2">
               <small><b>CPU Usage</b></small>
             </div>
             <Progress className="progress-xs" color="info" value="25"/>
@@ -134,17 +47,92 @@ class Aside extends Component {
             <Progress className="progress-xs" color="warning" value="70"/>
             <small className="text-muted">11444GB/16384MB</small>
 
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>SSD 1 Usage</b></small>
+            <hr/>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'icon/default.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
             </div>
-            <Progress className="progress-xs" color="danger" value="95"/>
-            <small className="text-muted">243GB/256GB</small>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'assets/img/avatars/7.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
+            </div>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'icon/default.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
+            </div>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'assets/img/avatars/7.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
+            </div>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'icon/default.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
+            </div>
+            <div style={styleChat}>
+              <a className="btn-user">
+                <img
+                    src={'icon/default.jpg'}
+                    className="rounded-circle icon-user"
+                    alt="Username"/>
+              </a>{' '}
+              <p style={{
+                fontSize: '15px',
+                fontWeight: '500',
+                marginTop: '15px'
+              }}>Lukasz Holeczek</p>
+              <span className={"pull-right"} style={dot}/>
+            </div>
 
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>SSD 2 Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="success" value="10"/>
-            <small className="text-muted">25GB/256GB</small>
           </div>
           <div className="search" style={{
             position: 'fixed',

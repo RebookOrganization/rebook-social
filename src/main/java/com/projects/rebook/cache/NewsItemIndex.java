@@ -26,8 +26,6 @@ public class NewsItemIndex {
   private Logger logger = LoggerFactory.getLogger(NewsItemServiceImpl.class);
 
   public static Map<String, NewsItem> newsItemMap = new HashMap<>();
-  public static Map<Long, User> userMap = new HashMap<>();
-  public static Map<Long, NewsImageUrl> imageUrlMap = new HashMap<>();
 
   @Autowired
   NewsItemRepository newsItemRepository;
@@ -47,9 +45,9 @@ public class NewsItemIndex {
   }
 
   public void mapToIndexNews() {
-    Long currentDateTimeMilisec = DateTimeUtils
-        .convertTimeStampMilisecond(DateTimeUtils.getCurrentDate(), DateTimeUtils.DATE_TIME_FORMAT);
-    logger.info("current dateTime milisec - {}", currentDateTimeMilisec);
+//    Long currentDateTimeMilisec = DateTimeUtils
+//        .convertTimeStampMilisecond(DateTimeUtils.getCurrentDate(), DateTimeUtils.DATE_TIME_FORMAT);
+//    logger.info("current dateTime milisec - {}", currentDateTimeMilisec);
     List<NewsItem> newsItemList = cacheDataService.findLastNRowsInPartition();
     if (newsItemList != null && !newsItemList.isEmpty()) {
       logger.info("newsItemMap - {}", NewsItemIndex.newsItemMap);

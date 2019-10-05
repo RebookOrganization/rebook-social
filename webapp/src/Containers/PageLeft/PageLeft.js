@@ -65,8 +65,8 @@ class PageLeft extends Component{
               <img src="/icon/menu-5.svg" style={{float:'right'}}/>
             </ListGroupItem>
           </ListGroup>
-          <Card>
-            <CardImg top width="100%"
+          <Card style={{width:'50%', height:'50%'}}>
+            <CardImg top
                      src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
                      alt="Card image cap"/>
           </Card>
