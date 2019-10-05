@@ -1,7 +1,7 @@
 .app-header {
     display: flex;
     align-items: center;
-    height: 58px;
+    height: 54px;
     position: relative;
     z-index: 10;
     border-bottom: 1px solid;
@@ -16,7 +16,7 @@
 /*}*/
 
 .app-title {
-    line-height: 58px;
+    line-height: 54px;
     vertical-align: middle;
     font-size: 18px;
     font-weight: 500;
@@ -68,13 +68,13 @@
 /*}*/
 
 .li-profile:hover {
-    background-color: #222836; /*#3B70C5*/
+    background-color: #0F5484; /*#3B70C5*/
     padding-left: 15px;
 }
 
 .app-nav ul li a {
     display: inline-block;
-    line-height: 58px;
+    line-height: 54px;
     vertical-align: middle;
     padding: 0 15px;
     color: white;
@@ -82,16 +82,16 @@
 }
 
 .app-nav ul li a:hover {
-    background-color: #222836; /*#3B70C5*/
+    background-color: #0F5484; /*#3B70C5*/
 }
 
 .app-nav ul li a.active {
-    border-top: 3px solid white;
-    line-height: 57px;
+    border-bottom: 2px solid white;
+    /*line-height: 57px;*/
 }
 
 .app-nav ul li a.active:hover {
-    background-color: #222836; /*#3B70C5*/
+    background-color: #0F5484; /*#3B70C5*/
 }
 
 .search {

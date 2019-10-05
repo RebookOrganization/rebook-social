@@ -61,10 +61,6 @@ class AppHeader extends Component {
                       </span>
                     </div>
                 </div>
-                {/*<div className="search">*/}
-                {/*  <span className="fa fa-search" style={{color:'gray'}}/>*/}
-                {/*  <input onClick={this.toggleModalSearch}/>*/}
-                {/*</div>*/}
               </div>
               <div className="col-md-5 app-options">
                 <nav className="app-nav">

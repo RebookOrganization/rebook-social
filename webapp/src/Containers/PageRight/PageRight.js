@@ -185,6 +185,16 @@ class PageRight extends Component {
               <Button className="btn-detail">Chi tiết</Button>
             </CardBody>
           </Card>
+          <Card>
+            <CardBody>
+                <SocialIcon url="http://linkedin.com/in/jaketrent"
+                            style={{marginRight: '10px'}}/>
+                <SocialIcon network="twitter" bgColor="#ff5a01"
+                            style={{marginRight: '10px'}}/>
+                <SocialIcon network="facebook" style={{marginRight: '10px'}}/>
+                <SocialIcon network="google" style={{marginRight: '10px'}}/>
+            </CardBody>
+          </Card>
           <Card
               style={{display: 'flex', flexDirection: 'row', padding: '10px'}}>
             <CardText style={{marginRight: '20px'}}>Tiếng Việt.</CardText>
@@ -198,14 +208,6 @@ class PageRight extends Component {
           </div>
           <span
               style={{color: '#616770'}}>© 2019 Copyright: Rebook.com.vn</span>
-          <div style={{margin: '20px 0'}}>
-            <SocialIcon url="http://linkedin.com/in/jaketrent"
-                        style={{marginRight: '5px'}}/>
-            <SocialIcon network="twitter" bgColor="#ff5a01"
-                        style={{marginRight: '5px'}}/>
-            <SocialIcon network="facebook" style={{marginRight: '5px'}}/>
-            <SocialIcon network="google" style={{marginRight: '5px'}}/>
-          </div>
         </div>
     )
   }

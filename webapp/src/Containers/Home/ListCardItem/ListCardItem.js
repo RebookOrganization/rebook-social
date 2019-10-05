@@ -264,6 +264,7 @@ class ListCardItem extends Component{
                     </a>{' '}
                     <p style={{borderRadius: '30px', width:'470px', padding: '10px',
                       backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                      <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
                       {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"
                       + "Bai viet rat hay!!!Bai viet rat hay!!!"
                       + "Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
@@ -278,6 +279,7 @@ class ListCardItem extends Component{
                     </a>{' '}
                     <p style={{borderRadius: '30px', width:'470px', padding: '10px',
                       backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                      <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
                       {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
                     </p>
                   </div>
