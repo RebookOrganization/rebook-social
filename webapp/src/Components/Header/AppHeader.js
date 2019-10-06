@@ -3,24 +3,27 @@ import {Link, NavLink} from 'react-router-dom';
 import './_appHeader.css';
 import '../../Containers/Home/_home.css';
 import {
-  Button,
-  Collapse,
-  Input,
-  InputGroup, InputGroupAddon,
   Modal,
   ModalBody,
-  ModalHeader
+  ModalHeader, Row, Col
 } from "reactstrap";
-import Row from "reactstrap/es/Row";
-import Col from "reactstrap/es/Col";
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
+import {searchNewsByAddress, searchNewsByUser} from "../../api/UserApi";
+import Alert from "react-s-alert";
 
 class AppHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: this.props.currentUser ? this.props.currentUser : null,
-      isSearch: false
+      isSearch: false,
+      
+      inputSearch: '',
+      inputSearchType: 0,
+      loading: false,
+      resultSearchAddress: null,
+      resultSearchUser: null,
+      allNewsItem: null,
     }
   }
 
@@ -30,8 +33,75 @@ class AppHeader extends Component {
     })
   };
 
+  handleSearchByFiler = () => {
+    const {inputSearch, inputSearchType} = this.state;
+    this.setState({loading: true});
+
+    console.log("input search type: " + inputSearchType);
+    if (parseInt(inputSearchType) === 0) {
+      Alert.error("Vui lòng chọn loại tìm kiếm.");
+      this.setState({loading: false})
+    } else if (parseInt(inputSearchType) === 1) {
+      let address = inputSearch ? inputSearch : Alert.error(
+          "Vui lòng nhập thông tin.");
+
+      console.log("address: " + address);
+      if (address !== null || address !== '') {
+
+        //Api SearchByAddress
+        searchNewsByAddress(address).then(res => {
+          this.setState({
+            resultSearchAddress: res.result,
+            allNewsItem: res.result,
+            loading: false
+          }, () => {
+            this.props.callBackFromPageRight(this.state.allNewsItem,
+                this.state.loading);
+          })
+        }).catch((e) => {
+          console.log(e);
+          this.setState({loading: false});
+          Alert.warning("Không có kết quả trả về.")
+        });
+      }
+    } else {
+      const requestParams = {
+        username: inputSearch ? inputSearch : Alert.error(
+            "Vui lòng nhập thông tin.")
+      };
+      console.log("requestParam: " + JSON.stringify(requestParams));
+
+      //Api SearchByUser
+      searchNewsByUser(requestParams).then(res => {
+        this.setState({
+          resultSearchUser: res.result,
+        })
+      }).catch(err => {
+        console.log(err);
+        Alert.warning("Không có kết quả trả về.")
+      }).finally(() => {
+        this.setState({loading: false})
+      });
+    }
+  };
+
   render() {
     const {currentUser} = this.state;
+
+    const styleChat = {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0'
+    };
+
+    const dot = {
+      height: '8px',
+      width: '8px',
+      backgroundColor: '#4dbd74',
+      borderRadius: '50%',
+      display: 'inline-block',
+      marginLeft: '150px'
+    };
 
     return (
         <header className="app-header">
@@ -68,7 +138,7 @@ class AppHeader extends Component {
                       <ul>
                         <li className="li-profile">
                           <img
-                              src={currentUser
+                              src={currentUser && currentUser.imageUrl
                                   ? currentUser.imageUrl
                                   : '/icon/default.jpg'}
                               className="rounded-circle icon-profile"
@@ -81,7 +151,70 @@ class AppHeader extends Component {
                           <NavLink to="/home">Trang chủ</NavLink>
                         </li>
                         <li>
-                          <NavLink to="/message">Tin Nhắn</NavLink>
+                          {/*<NavLink to="/message">Tin Nhắn</NavLink>*/}
+                          <div className="dropdown message">
+                            <button className="btn border-none-outline"
+                                    type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    style={{fontSize:'16px', fontWeight:'500', color:'white'}}
+                                    aria-expanded="false">
+                              {/*<img src="/icon/menu-5.svg" style={{width:'23px',height:'23px'}} alt={""}/>*/}
+                              Tin Nhắn
+                            </button>
+                            <div className="dropdown-menu"
+                                 aria-labelledby="dropdownMenuButton">
+                              <a className="dropdown-item">
+                                <div style={styleChat}>
+                                  <a className="btn-user">
+                                    <img src={'assets/img/avatars/4.jpg'}
+                                        className="rounded-circle icon-user"
+                                        alt="Username"/>
+                                  </a>{' '}
+                                  <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
+                                  <span className={"pull-right"} style={dot}/>
+                                </div>
+                              </a>
+                              <a className="dropdown-item">
+                                <div style={styleChat}>
+                                  <a className="btn-user">
+                                    <img src={'assets/img/avatars/4.jpg'}
+                                         className="rounded-circle icon-user"
+                                         alt="Username"/>
+                                  </a>{' '}
+                                  <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
+                                  <span className={"pull-right"} style={dot}/>
+                                </div>
+                              </a>
+                              <a className="dropdown-item">
+                                <div style={styleChat}>
+                                  <a className="btn-user">
+                                    <img src={'assets/img/avatars/4.jpg'}
+                                         className="rounded-circle icon-user"
+                                         alt="Username"/>
+                                  </a>{' '}
+                                  <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
+                                  <span className={"pull-right"} style={dot}/>
+                                </div>
+                              </a>
+                              <a className="dropdown-item">
+                                <div style={styleChat}>
+                                  <a className="btn-user">
+                                    <img src={'assets/img/avatars/4.jpg'}
+                                         className="rounded-circle icon-user"
+                                         alt="Username"/>
+                                  </a>{' '}
+                                  <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
+                                  <span className={"pull-right"} style={dot}/>
+                                </div>
+                              </a>
+                              <a className="dropdown-item">
+                                <i className="far fa-save"/> Lưu bài viết
+                              </a>
+                              <a className="dropdown-item">
+                                <i className="far fa-flag"/> Gửi phản hồi
+                              </a>
+                            </div>
+                          </div>
                         </li>
                         <li>
                           <a onClick={this.props.onLogout}
@@ -110,7 +243,7 @@ class AppHeader extends Component {
                  className={'modal-lg modal-lg-custom' + this.props.className}
           >
             <ModalHeader toggle={()=>this.toggleModalSearch()}>
-              <img src="/icon/icons8-search-2.png"/> Tìm kiếm thông tin bất động sản
+              <img src="/icon/icons8-search-2.png" alt={""}/> Tìm kiếm thông tin bất động sản
             </ModalHeader>
             <ModalBody style={{padding:'15px'}}>
               <div className="search-box" style={{marginBottom:"5px"}}>

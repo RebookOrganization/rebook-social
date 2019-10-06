@@ -12,4 +12,5 @@ public interface NewsItemService {
 
     CommonResponse getAllNewsItem() throws IOException;
 
+    CommonResponse getAllNewsByUser(Long userID) throws IOException;
 }

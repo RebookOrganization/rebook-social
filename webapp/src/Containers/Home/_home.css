@@ -89,7 +89,7 @@ p {
 .input-comment {
     display: flex;
     align-items: center;
-    padding: 10px 20px 20px;
+    padding: 10px 0 10px 10px;
 }
 
 .sticky-offset {
@@ -122,7 +122,7 @@ p {
 .btn-circle.btn-lg {
     width: 50px;
     height: 50px;
-    padding: 10px 16px;
+    padding: 10px 6px 10px 12px;
     /*font-size: 18px;*/
     /*line-height: 1.33;*/
     border-radius: 25px;

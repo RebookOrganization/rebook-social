@@ -70,7 +70,6 @@ class Home extends Component {
       createNewsPost: null,
       pictures: [],
 
-      likePosted: null,
       commentPosted: null,
       sharePosted: null,
       currentUser: this.props.currentUser,
@@ -211,23 +210,6 @@ class Home extends Component {
     this.setState({[event.target.name]: event.target.value})
   };
 
-  handleLikePost = (newsId) => {
-    const {currentUser} = this.state;
-
-    const requestParams = {
-      isLike: !this.state.isLike,
-      userId: currentUser ? currentUser.userId : '',
-      newsItemId: newsId ? newsId : '',
-    };
-    //Api Like Post
-    likeNews(requestParams).then(res => {
-      this.setState({
-        likePosted: res.result
-      })
-    })
-
-  };
-
   handleSharePost = (newsId) => {
     const {currentUser} = this.state;
 
@@ -240,23 +222,6 @@ class Home extends Component {
     shareNews(requestParams).then(res => {
       this.setState({
         sharePosted: res.result
-      })
-    })
-
-  };
-
-  handleCommentPost = (newsId) => {
-    const {comment, currentUser} = this.state;
-
-    const requestParams = {
-      comment: comment ? comment : Alert.warn("Viết phản hồi..."),
-      userId: currentUser ? currentUser.userId : '',
-      newsItemId: newsId ? newsId : '',
-    };
-    //Api Comment Post
-    commentNews(requestParams).then(res => {
-      this.setState({
-        commentPosted: res.result
       })
     })
 
@@ -388,7 +353,6 @@ class Home extends Component {
         console.log(err);
         this.setState({loading: false})
       })
-      ;
     }
 
   };
@@ -608,7 +572,7 @@ class Home extends Component {
                style={{paddingLeft: "40px", marginTop: "15px"}}>
             <div className="row" id="scroll">
               <div className="col col-md-2" style={{paddingRight: '10px'}}>
-                <PageLeft/>
+                <PageLeft currentUser={currentUser}/>
               </div>
               <div className="col col-md-5">
                 {authenticated && !this.state.loading ? (
@@ -624,7 +588,8 @@ class Home extends Component {
                             <div style={{display: 'flex', alignItems: 'center'}}>
                               <a className="btn-user-in-create">
                                 <img
-                                    src={currentUser ? currentUser.imageUrl
+                                    src={currentUser && currentUser.imageUrl ?
+                                        currentUser.imageUrl
                                         : '/icon/default.jpg'}
                                     className="rounded-circle icon-user-in-create"
                                     alt="Username"/>
@@ -730,20 +695,10 @@ class Home extends Component {
                   this.state.loading ? <LoadingIndicator/>
                       : <ListCardItem allNewsItem={this.state.allNewsItem}
                                       currentUser={currentUser}
-                                      handleLikePost={this.handleLikePost}
-                                      handleCommentPost={this.handleCommentPost}
                                       handleSharePost={this.handleSharePost}
                                       toggleModalImage={this.toggleModalImage}
                       />
                 }
-
-                {/*<InfiniteScroll*/}
-                {/*    loadMore={this.loadMore.bind(this)}*/}
-                {/*    hasMore={this.state.hasMoreItems}*/}
-                {/*    loader={<div className="loader"><strong> Loading... </strong></div>}*/}
-                {/*    useWindow={false}>*/}
-                {/*  {this.showItems()}{" "}*/}
-                {/*</InfiniteScroll>{" "}*/}
 
               </div>
 
@@ -752,7 +707,7 @@ class Home extends Component {
               </div>
 
               <div className="col col-md-2" style={{padding:'0'}}>
-                <Aside/>
+                <Aside currentUser={currentUser}/>
               </div>
             </div>
 
@@ -774,14 +729,15 @@ class Home extends Component {
           >
             <ModalHeader toggle={() => this.toggleModalCreatedPost()}>
               <strong>
-                <img src="/icon/icons8-browser_window.png"/> Tạo bài viết
+                <img src="/icon/icons8-browser_window.png" alt={""}/> Tạo bài viết
               </strong>
             </ModalHeader>
             <ModalBody style={{padding: '10px'}}>
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <a className="btn-user-in-create">
                   <img
-                      src={currentUser ? currentUser.imageUrl
+                      src={currentUser && currentUser.imageUrl ?
+                          currentUser.imageUrl
                           : '/icon/default.jpg'}
                       className="rounded-circle icon-user-in-create"
                       alt="Username"/>

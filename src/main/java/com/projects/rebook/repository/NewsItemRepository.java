@@ -17,7 +17,8 @@ public interface NewsItemRepository extends JpaRepository<NewsItem, Long> {
 
     List<NewsItem> findAllByUser(User user);
 
-    NewsItem findByPropertyAddress(PropertyAddress propertyAddress);
+    @Query(value = "SELECT * FROM news_item as t where t.property_address_id = ?1", nativeQuery = true)
+    NewsItem findByPropertyAddress(long propertyAddress);
 
     @Query(value = "SELECT * FROM news_item as t where t.posted_milisec > ?1 and t.posted_milisec <= ?2", nativeQuery = true)
     List<NewsItem> findAllByPostedDate(long dateFrom, long dateTo);

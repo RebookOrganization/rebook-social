@@ -204,7 +204,7 @@ public class UserServiceImpl implements UserService {
       Share share = new Share();
       share.setUserId(request.getUserId());
       share.setNewItemId(request.getNewsItemId());
-      share.setShare(request.getShare());
+      share.setShare(request.isShare());
 
       shareRepository.save(share);
 
@@ -214,7 +214,7 @@ public class UserServiceImpl implements UserService {
       return new CommonResponse<>(this.returnCode, this.returnMessage,
           new ShareResponse(listShare, shareAmount));
     } catch (Exception ex) {
-      logger.error("Service shareNewsFeed exception - {}", ex);
+      logger.error("Service shareNewsFeed exception: "+ ex);
       return new CommonResponse.Fail("Service shareNewsFeed exception.");
     }
   }
@@ -247,13 +247,14 @@ public class UserServiceImpl implements UserService {
       List<PropertyAddress> listAddress = propertyAdressRepository.findAllBySummary(address);
       List<NewsResponseDTO> listNewsResponseDTO = new ArrayList<>();
 
-      NewsResponseDTO newsResponseDTO = new NewsResponseDTO();
-
       if (!listAddress.isEmpty()) {
+        NewsItem newsItem;
         for (PropertyAddress addressIndex : listAddress) {
-          NewsItem newsItem = newsItemRepository.findByPropertyAddress(addressIndex);
+          newsItem = newsItemRepository.findByPropertyAddress(addressIndex.getId());
 
           if(newsItem != null) {
+            NewsResponseDTO newsResponseDTO = new NewsResponseDTO();
+            newsResponseDTO.setNewsId(newsItem.getId());
             newsResponseDTO.setUsername(newsItem.getUser().getName());
             newsResponseDTO.setTitleNews(newsItem.getTitle());
             newsResponseDTO.setImageUser(newsItem.getUser().getImageUrl());
@@ -285,7 +286,6 @@ public class UserServiceImpl implements UserService {
             }
 
             newsResponseDTO.setImageUrlList(newsItem.getImages());
-            newsResponseDTO.setNewsId(newsItem.getId());
             newsResponseDTO.setUserId(newsItem.getUser().getId());
 
             List<Comment> commentList = commentRepository.findByNewItemId(newsItem.getId());

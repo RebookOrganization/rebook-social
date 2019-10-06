@@ -1,38 +1,75 @@
 import React, {Component} from 'react'
 import {Badge, Progress} from "reactstrap";
+import InfiniteScroll from "react-infinite-scroller";
 
 class Aside extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listUserChat: []
+      listUserChat: [],
+      currentUser: this.props.currentUser,
+      items: 20,
+      hasMoreItems: true
     }
   }
 
-  render() {
+  showItems() {
+    let items = [];
     const styleChat = {
       display: 'flex',
       alignItems: 'center',
-      padding: '10px 0'
+      padding: '0'
     };
 
     const dot = {
-      height: '7px',
-      width: '7px',
+      height: '8px',
+      width: '8px',
       backgroundColor: '#4dbd74',
       borderRadius: '50%',
       display: 'inline-block',
-      marginLeft: '60px'
+      marginLeft: '100px'
     };
+    for (let i = 0; i < this.state.items; i++) {
+      items.push(
+          <div style={styleChat} key={i}>
+            <a className="btn-user">
+              <img
+                  src={'assets/img/avatars/4.jpg'}
+                  className="rounded-circle icon-user"
+                  alt="Username"/>
+            </a>{' '}
+            <p style={{
+              fontSize: '15px',
+              marginTop: '15px'
+            }}>user chat {i}</p>
+            <span className={"pull-right"} style={dot}/>
+          </div>
+      );
+    }
+    return items;
+  };
 
+  loadMore() {
+    if (this.state.items === 100) {
+      this.setState({ hasMoreItems: false});
+    }
+    else {
+      setTimeout(() => {
+        this.setState({ items: this.state.items + 20});
+      }, 2000);
+    }
+  };
+
+
+  render() {
     return (
         <React.Fragment>
           <div style={{
             position: 'fixed',
-            padding: '10px',
+            padding: '10px 0 10px 10px',
             height: '100%',
             borderLeft: '1px solid #bbc0c4',
-            top: '60px',
+            top: '54px',
             zIndex: '1',
             width: '257px'
           }}
@@ -50,83 +87,15 @@ class Aside extends Component {
             {/*<small className="text-muted">11444GB/16384MB</small>*/}
 
             <hr/>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'assets/img/avatars/7.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'assets/img/avatars/7.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
-            </div>
-            <div style={styleChat}>
-              <a className="btn-user">
-                <img
-                    src={'icon/default.jpg'}
-                    className="rounded-circle icon-user"
-                    alt="Username"/>
-              </a>{' '}
-              <p style={{
-                fontSize: '15px',
-                marginTop: '15px'
-              }}>Lukasz Holeczek</p>
-              <span className={"pull-right"} style={dot}/>
+            <h6 style={{color:'#616770'}}>Bắt đầu trò chuyện</h6>
+            <div style={{height:'100%', overflow:'auto'}}>
+              <InfiniteScroll
+                  loadMore={this.loadMore.bind(this)}
+                  hasMore={this.state.hasMoreItems}
+                  loader={<div className="loader"><strong> Loading... </strong></div>}
+                  useWindow={false}>
+                {this.showItems()}{" "}
+              </InfiniteScroll>
             </div>
 
           </div>
@@ -134,10 +103,10 @@ class Aside extends Component {
             position: 'fixed',
             bottom: '0',
             marginLeft: '0',
-            width: '257px'
+            zIndex:'1'
           }}>
-            <span className="fa fa-search"/>
-            <input style={{borderRadius: '0'}}/>
+            <span className="fa fa-search" style={{color:'#bbc0c4', left:'10px', top:'18px'}}/>
+            <input style={{marginLeft:'1px', borderRadius: '0', width:'262px', border:'none', height:'45px'}} placeholder={"Tìm kiếm"}/>
           </div>
         </React.Fragment>
     );

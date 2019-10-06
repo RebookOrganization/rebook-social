@@ -39,8 +39,8 @@ class Login extends Component {
               <span className="or-text">OR</span>
             </div>
             <LoginForm {...this.props} />
-            <span className="signup-link">New user?
-              <Link to="/signup">Sign up!</Link>
+            <span className="signup-link" style={{fontSize:'15px'}}>New user?
+              <Link to="/signup" style={{fontSize:'15px'}}>Sign up!</Link>
             </span>
           </div>
         </div>
@@ -55,11 +55,11 @@ class SocialLogin extends Component {
     return (
         <div className="social-login">
           <a className="btn btn-block social-btn google"
-             style={{backgroundColor:"#CB3F22",color:'white',fontSize:'16px'}}
+             style={{fontSize:'16px', fontWeight:'500'}}
              href={GOOGLE_AUTH_URL}>
             <img src={googleLogo} alt="Google"/> Log in with Google</a>
           <a className="btn btn-block social-btn facebook"
-             style={{backgroundColor:"#3B5898",color:'white',fontSize:'16px'}}
+             style={{fontSize:'16px', fontWeight:'500'}}
              href={FACEBOOK_AUTH_URL}>
             <img src={fbLogo} alt="Facebook"/> Log in with Facebook</a>
         </div>
@@ -113,20 +113,22 @@ class LoginForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="form-item">
             <input type="email" name="email"
-                   style={{color:'white',fontSize:'16px'}}
+                   style={{fontSize:'16px'}}
                    className="form-control" placeholder="Email"
                    value={this.state.email} onChange={this.handleInputChange}
                    required/>
           </div>
           <div className="form-item">
             <input type="password" name="password"
-                   style={{color:'white',fontSize:'16px'}}
+                   style={{fontSize:'16px', fontWeight:'500'}}
                    className="form-control" placeholder="Password"
                    value={this.state.password} onChange={this.handleInputChange}
                    required/>
           </div>
           <div className="form-item">
-            <button type="submit" className="btn btn-block btn-primary">Login
+            <button type="submit"
+                    style={{fontSize:'16px'}}
+                    className="btn btn-block btn-primary">Login
             </button>
           </div>
         </form>

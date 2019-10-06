@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {Route, Switch, Redirect, Link} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import AppHeader from '../../Components/Header/AppHeader';
 import Home from '../Home/Home';
 import Login from '../../Auth/Login/Login';
 import Signup from '../../Auth/Signup/Signup';
 import Profile from '../../Containers/Profile/Profile';
 import OAuth2RedirectHandler from '../../Auth/Oauth2/OAuth2RedirectHandler';
-import NotFound from '../../Components/Page/NotFound';
 import LoadingIndicator from '../../Components/Loading/LoadingIndicator';
 import {getCurrentUser} from '../../api/APIUtils';
 import {ACCESS_TOKEN} from '../../Constants/constant';
@@ -14,9 +13,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './_app.css';
-import {Card, CardImg} from "reactstrap";
 import Messages from "../Messages/Messages";
-import Aside from "../Aside/Aside";
 
 class App extends Component {
   constructor(props) {
@@ -44,15 +41,11 @@ class App extends Component {
   componentDidMount() {
     this.setState({loading: true});
     getCurrentUser().then(res => {
-      if (res) {
-        this.setState({
-          currentUser: res,
-          authenticated: true,
-          loading: false
-        });
-      } else {
-        Alert.warning("Lấy thông tin user thất bại.")
-      }
+      this.setState({
+        currentUser: res,
+        authenticated: true,
+        loading: false
+      });
     }).catch(() => {
       Alert.warning("Lấy thông tin user thất bại.")
     }).finally(() => {
@@ -108,7 +101,6 @@ class App extends Component {
                        render={() => <Home
                            authenticated={this.state.authenticated}
                            currentUser={this.state.currentUser}
-                           // renderSearchBox={this.state.renderSearchBox}
                        />
                        }
                 />

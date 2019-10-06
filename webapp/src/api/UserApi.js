@@ -76,7 +76,6 @@ export function searchNewsByAddress(address) {
     return request({
       url: API_BASE_URL + API_NEWS + "/search-by-address?address=" + address,
       method: 'GET',
-      // body: formData
     })
   }
   catch (e) {
@@ -101,5 +100,14 @@ export function searchNewsByUser(username) {
 }
 
 export function getAllNewsByUser(userID) {
-  return httpGet("api/user/news-item?userID=" + userID);
+  // return httpGet("api/news/user-news?userID=" + userID);
+  try {
+    return request({
+      url: API_BASE_URL + API_NEWS + "/user-news?userID=" + userID,
+      method: 'GET',
+    })
+  }
+  catch (e) {
+    console.log(e);
+  }
 }

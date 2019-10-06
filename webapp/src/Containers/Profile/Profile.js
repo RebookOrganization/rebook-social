@@ -7,7 +7,7 @@ import {
   CardImg,
   CardText,
   CardTitle,
-  Input, CardHeader, ListGroup, ListGroupItem
+  Input,
 } from "reactstrap";
 import ButtonGroup from "reactstrap/es/ButtonGroup";
 import '../Home/_home.css';
@@ -17,6 +17,11 @@ import {getAllNewsByUser} from "../../api/UserApi";
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+import '../PageLeft/_pageLeft.css';
+import shallowCompare from 'react-addons-shallow-compare';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/scss/image-gallery.scss";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -24,136 +29,36 @@ class Profile extends Component {
 
     this.state = {
       newsByUser: null,
-      loading: false
+      loading: false,
+      currentUser: null,
+      comment: "",
+      newsDetail: false,
+      textOfReadMore: "Chi tiết",
+      indexNews: 0,
+      renderComment: false,
+      likePosted: null,
+      activeLike: false,
+      sharePosted: null,
+      activeShare: false,
+      isLike: false,
+      isShare: false,
     }
   }
 
-  createListCardItemUser = () => {
-    const currentUser = this.props.currentUser;
-    if (currentUser) {
-      console.log("current User profile: " + JSON.stringify(currentUser));
+  componentWillMount() {
+    const {currentUser} = this.props;
+    this.setState({
+      currentUser: currentUser,
+    })
+  }
 
-      const listNews = currentUser.roles.users;
-      console.log("list News Item: " + JSON.stringify(listNews));
-
-      if (listNews) {
-        return listNews.map((item, index) => (
-            <Card className="card" key={index}>
-              <Card className="card">
-                <CardTitle>
-                  <div className="row"
-                       style={{
-                         display: 'flex',
-                         alignItems: 'center',
-                         marginTop: '15px'
-                       }}>
-                    <div className="col-md-9">
-                      <a className="btn-circle btn-lg">
-                        <img
-                            src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                            className="rounded-circle img-profile"
-                            alt="Username"/>
-                      </a>{' '}
-                      <a href="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190"
-                         className="username"
-                      >
-                        <strong>Lê Ngọc Thành</strong>
-                      </a>
-                    </div>
-                    <div className="col-md-3">
-                      <div className="dropdown float-right">
-                        <button className="btn border-none-outline"
-                                type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                          <i className="fas fa-ellipsis-h"></i>
-                        </button>
-                        <div className="dropdown-menu"
-                             aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item">
-                            <i className="far fa-eye-slash"></i> Ẩn bài viết
-                          </a>
-                          <a className="dropdown-item">
-                            <i className="far fa-save"></i> Lưu bài viết
-                          </a>
-                          <a className="dropdown-item">
-                            <i className="far fa-flag"></i> Gửi phản hồi
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardTitle>
-
-                <div className="row"
-                     style={{
-                       display: 'flex',
-                       alignItems: 'center',
-                       marginLeft: '15px',
-                       marginRight: '15px'
-                     }}>
-                  <p>
-                    Chính chủ cần bán đất trong khu dân cư Tân Đô -
-                    Diện tích 5x26m = 1.4 tỷ 6x19m = 1.35 tỷ 10x17.5m = 1.75
-                    tỷ - Cơ sở hạ tầng hoàn thiện đầy đủ - Điện âm, nước sạch,
-                    internet cáp quang - Đường trải nhựa, vỉa hè trồng cây
-                    xanh - Sổ hồng riêng, xây dựng tự do - Liên hệ 0931 333
-                    522 - Danh...
-                  </p>
-                </div>
-
-                <CardImg top width='100%' style={{marginBottom: '10px'}}
-                         src="https://dautucophieu.net/wp-content/uploads/2018/06/B%C4%90S.jpg"
-                         alt="Card image cap"/>
-
-                <hr style={{margin: '5px 20px'}}/>
-
-                <div>
-                  <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
-                    <Button
-                        className="border-none-outline btn-like-share-comment"
-                        onClick={() => this.handleLikePost()}>
-                      <i className="far fa-thumbs-up"></i> Thích
-                    </Button>
-                    <Button
-                        className="border-none-outline btn-like-share-comment"
-                        onClick={() => this.handleCommentPost()}>
-                      <i className="far fa-comment"></i> Bình luận
-                    </Button>
-                    <Button
-                        className="border-none-outline btn-like-share-comment"
-                        onClick={() => this.handleSharePost()}>
-                      <i className="fas fa-share"></i> Chia sẻ
-                    </Button>
-                  </ButtonGroup>
-                </div>
-
-                <hr/>
-
-                <div className="input-comment">
-                  <a className="btn-user">
-                    <img
-                        src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                        className="rounded-circle icon-user"
-                        alt="Username"/>
-                  </a>{' '}
-                  <Input style={{
-                    borderRadius: '36px',
-                    height: '40px',
-                    backgroundColor: '#f2f3f5'
-                  }}
-                         type="text" id="comment"
-                         placeholder="Viết phản hồi..."
-                         onChange={(e) => this.setState(
-                             {comment: e.target.value})}/>
-                </div>
-              </Card>
-            </Card>
-        ))
-      }
-
+  componentWillReceiveProps(nextProps) {
+    if (shallowCompare(this, this.props, nextProps)) {
+      this.setState({
+        currentUser: nextProps.currentUser,
+      })
     }
-  };
+  }
 
   componentDidMount() {
     this.handleGetAllNewByUser();
@@ -161,16 +66,17 @@ class Profile extends Component {
 
   handleGetAllNewByUser = () => {
     this.setState({loading: true});
-    const currentUser = this.props.currentUser;
+    const {currentUser} = this.state;
     if (currentUser) {
-      getAllNewsByUser(currentUser.id).then(res => {
-        if (res && parseInt(res.data.returnCode) !== 0) {
+      getAllNewsByUser(currentUser.userId).then(res => {
+        console.log("res: "+JSON.stringify(res));
+        if (res && parseInt(res.returnCode) !== 0) {
           this.setState({
-            newsByUser: res.data.result
+            newsByUser: res.result
           })
         }
         else {
-          Alert.warn("   ");
+          Alert.warning("   ");
         }
       }).catch((e)=>{
         console.log(e);
@@ -180,22 +86,46 @@ class Profile extends Component {
     }
   };
 
+  handleRenderImageSlide = (imageList) => {
+    if (imageList) {
+      let images = [];
+      imageList.map(i => {
+        images.push({
+          original: i.imageUrl,
+          thumbnail: i.imageUrl,
+        })
+      });
+      return (
+          <ImageGallery items={images}/>
+      )
+    }
+  };
+
   render() {
-    const background = {
-      height: '350px',
+    const {newsDetail, textOfReadMore, currentUser, indexNews,
+      renderComment, activeLike, activeShare, newsByUser} = this.state;
+
+    const styleText = {
+      fontSize: '16px',
+      fontWeight: 'normal',
+      lineHeight: '1.58',
+      fontFamily: 'inherit',
+      marginBottom: '10px',
+      paddingRight: '5px',
     };
 
-    const styleListGroup= {
-      marginBottom: '20px'
+    const styleTitle = {
+      fontSize: '16px',
+      fontWeight: 'normal',
+      lineHeight: '1.58',
+      fontFamily: 'inherit',
+      marginBottom: '10px'
     };
 
-    const styleItem = {
-      backgroundColor: '#e9ebee',
-      color: '#111c26',
-      border: 'none',
-      outline: 'none',
-      fontSize: '15px',
-      fontWeight: '500'
+    const styleIcon = {
+      width: '21px',
+      height: '21px',
+      marginRight: "2px"
     };
 
     return (
@@ -203,394 +133,274 @@ class Profile extends Component {
         <div className="container-fluid" style={{paddingLeft:"40px"}}>
           <div className="row">
             <div className="col col-md-2">
-              <div className="sticky-top profile-info" style={{marginBottom:'20px'}}>
-                <div className="profile-avatar">
+              <div className="sticky-top profile-info" style={{marginBottom:'20px',
+                zIndex:'10'}}>
+                <div className="profile-avatar" style={{textAlign:'center'}}>
                   {
-                    this.props.currentUser ? (
-                        <img src={this.props.currentUser.imageUrl}
-                             alt={this.props.currentUser.name}/>
+                    currentUser ? (
+                        <img src={currentUser.imageUrl ? currentUser.imageUrl : '/icon/default.jpg'}
+                             alt={currentUser.name}/>
                     ) : (
                         <div className="text-avatar">
-                      <span>{this.props.currentUser.name
-                      && this.props.currentUser.name[0]}</span>
+                      <span>{currentUser.name
+                      && currentUser.name[0]}</span>
                         </div>
                     )
                   }
                 </div>
-                <div className="profile-name">
-                  <h2>{this.props.currentUser.name}</h2>
-                  <p className="profile-email">{this.props.currentUser.email}</p>
+                <div className="profile-name" style={{marginBottom:'30px', textAlign:'center'}}>
+                  <h2>{currentUser.name}</h2>
+                  <p className="profile-email">{currentUser.email}</p>
                 </div>
-                <ListGroup flush style={styleListGroup}>
-                  <ListGroupItem style={styleItem} tag="a" href="#">
-                    <img src="/icon/icons8-news.png"/> Bảng tin
-                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                  </ListGroupItem>
-                  <ListGroupItem style={styleItem} tag="a" href="#">
-                    <img src="/icon/icons8-message_group.png"/> Messenger
-                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                  </ListGroupItem>
-                  <ListGroupItem style={styleItem} tag="a" href="#">
-                    <img src="/icon/icons8-retro_tv.png"/> Watch
-                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                  </ListGroupItem>
-                  <ListGroupItem style={styleItem} tag="a" href="#">
-                    <img src="/icon/icons8-group.png"/> Nhóm
-                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                  </ListGroupItem>
-                  <ListGroupItem style={styleItem} tag="a" href="#">
-                    <img src="/icon/icons8-add_user_male.png"/> Tạo
-                    <img src="/icon/menu-5.svg" style={{float:'right'}}/>
-                  </ListGroupItem>
-                </ListGroup>
+
+                <h6 style={{color:'#616770', paddingLeft:'10px'}}>Lối tắt</h6>
+                <div className="list-group list-group-mine" style={{marginBottom: '15px'}}>
+                  <a className="list-group-item" href="#">
+                    <img src="/icon/icons8-group.png" alt={""}/> Nhóm
+                    <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>
+                  </a>
+                  <a className="list-group-item" href="#">
+                    <img src="/icon/icons8-add_user_male.png" alt={""}/> Tạo
+                    <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>
+                  </a>
+                </div>
               </div>
             </div>
             <div className="col col-md-8" style={{paddingRight:'30px'}}>
               <div className="row">
                 <div className="col">
                   <Card style={{border:'none'}}>
-                    <img src="/icon/background-profile.jpg" style={background}/>
+                    {/*<CardBody>*/}
+                      <img src="/icon/background-profile.jpg" style={{height: '350px'}} alt={""}/>
+                    {/*</CardBody>*/}
                   </Card>
+                  {/*<Card className={"sticky-top"} style={{top:'54px'}}>*/}
+                  {/*  <CardBody>*/}
+                  {/*  </CardBody>*/}
+                  {/*</Card>*/}
                 </div>
               </div>
               <div className="row">
-                <div className="col col-md-7">
-                  {this.createListCardItemUser()}
-                  <Card className="card">
-                    <Card className="card">
-                      <CardTitle>
-                        <div className="row"
-                             style={{
-                               display: 'flex',
-                               alignItems: 'center',
-                               marginTop: '15px'
-                             }}>
-                          <div className="col-md-9">
-                            <a className="btn-circle btn-lg">
-                              <img
-                                  src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                                  className="rounded-circle img-profile"
-                                  alt="Username"/>
-                            </a>{' '}
-                            <a href="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190"
-                               className="username"
-                            >
-                              <strong>Lê Ngọc Thành</strong>
-                            </a>
-                          </div>
-                          <div className="col-md-3">
-                            <div className="dropdown float-right">
-                              <button className="btn border-none-outline"
-                                      type="button" id="dropdownMenuButton"
-                                      data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false">
-                                <i className="fas fa-ellipsis-h"></i>
-                              </button>
-                              <div className="dropdown-menu"
-                                   aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item">
-                                  <i className="far fa-eye-slash"></i> Ẩn bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-save"></i> Lưu bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-flag"></i> Gửi phản hồi
-                                </a>
+                <div className="col col-md-8">
+                  {
+                    newsByUser ? newsByUser.map((item, index) => {
+                      return (
+                          <Card className="card" key={index}>
+                            <CardTitle>
+                              <div className="row"
+                                   style={{display: 'flex', alignItems: 'center', marginTop: '12px'}}>
+                                <div className="col-md-9">
+                                  <a className="btn-circle btn-lg">
+                                    <img
+                                        src={item.imageUser ? item.imageUser
+                                            : '/icon/default.jpg'}
+                                        className="rounded-circle img-profile"
+                                        alt="Username"/>
+                                  </a>{' '}
+                                  <a href={item.imageUser ? item.imageUser
+                                      : '/icon/default.jpg'}
+                                     className="username"
+                                  >
+                                    <strong>{item.username ? item.username
+                                        : 'username'}</strong>
+                                  </a>
+
+                                  {/*pub Date*/}
+                                  <div style={{color: '#606770', margin: '0 70px'}}>
+                                    {item.pubDate ? item.pubDate : ''}
+                                  </div>
+                                </div>
+                                <div className="col-md-3">
+                                  <div className="dropdown float-right">
+                                    <button className="btn border-none-outline"
+                                            type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                      <img src="/icon/menu-5.svg" style={{width:'23px',height:'23px'}}/>
+                                    </button>
+                                    <div className="dropdown-menu"
+                                         aria-labelledby="dropdownMenuButton">
+                                      <a className="dropdown-item">
+                                        <i className="far fa-eye-slash"/> Ẩn bài viết
+                                      </a>
+                                      <a className="dropdown-item">
+                                        <i className="far fa-save"/> Lưu bài viết
+                                      </a>
+                                      <a className="dropdown-item">
+                                        <i className="far fa-flag"/> Gửi phản hồi
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
+                            </CardTitle>
+
+                            <div className="row"
+                                 style={{display: 'flex', alignItems: 'center', marginLeft: '15px', marginRight: '15px'}}>
+                              <p style={styleTitle}>
+                                {item.titleNews ? item.titleNews : null}
+                              </p>
+                              <p style={styleText}>
+                                <strong>Giá: </strong>{item.price ? item.price : null}
+                              </p>
+                              <p style={styleText}>
+                                <strong>Diện tích: </strong>{item.area ? item.area : null}
+                              </p>
+                              <p style={styleText}>
+                                <strong>Địa chỉ: </strong>{item.address_prop ? item.address_prop
+                                  : null}
+                              </p>
+                              <p style={styleTitle}>
+                                {item.summaryNews ? item.summaryNews : null}
+                              </p>
+
+                              <a style={{
+                                fontSize: '16px',
+                                fontWeight: 'normal',
+                                lineHeight: '1.58',
+                                fontFamily: 'inherit',
+                                marginBottom: '10px',
+                                paddingRight: '5px',
+                                color: '#20a8d8'
+                              }}
+                                 onClick={()=>this.handleRenderNewsDetail(item.newsId)}>
+                                {textOfReadMore}
+                              </a>
+                              {
+                                newsDetail && indexNews === item.newsId ?
+                                    <p style={styleTitle}>
+                                      {item.descriptionNews ? item.descriptionNews : null}
+                                    </p> : null
+                              }
+
+                              <p style={styleTitle}>
+                                <strong>Liên hệ: </strong>{' '}
+                                {item.contactName ? item.contactName : null}
+                                {item.contactPhone ? item.contactPhone : null}
+                                {item.contactEmail ? item.contactEmail : null}
+                              </p>
+                              <p style={styleTitle}>
+                                {item.projectName ? item.projectName : null}
+                                {item.projectOwner ? item.projectOwner : null}
+                                {item.projectSize ? item.projectSize : null}
+                              </p>
                             </div>
-                          </div>
-                        </div>
-                      </CardTitle>
 
-                      <div className="row"
-                           style={{
-                             display: 'flex',
-                             alignItems: 'center',
-                             marginLeft: '15px',
-                             marginRight: '15px'
-                           }}>
-                        <p>
-                          Chính chủ cần bán đất trong khu dân cư Tân Đô -
-                          Diện tích 5x26m = 1.4 tỷ 6x19m = 1.35 tỷ 10x17.5m = 1.75
-                          tỷ - Cơ sở hạ tầng hoàn thiện đầy đủ - Điện âm, nước sạch,
-                          internet cáp quang - Đường trải nhựa, vỉa hè trồng cây
-                          xanh - Sổ hồng riêng, xây dựng tự do - Liên hệ 0931 333
-                          522 - Danh...
-                        </p>
-                      </div>
+                            <div style={{marginBottom: '10px'}}>
+                              {
+                                item.imageUrlList && item.imageUrlList.length ? this.handleRenderImageSlide(item.imageUrlList) : null
+                              }
+                            </div>
 
-                      <CardImg top width='100%' style={{marginBottom: '10px'}}
-                               src="https://dautucophieu.net/wp-content/uploads/2018/06/B%C4%90S.jpg"
-                               alt="Card image cap"/>
+                            {/*Luot like luot share o day*/}
+                            <div style={{margin: '0 20px'}}>
+                              <a className="amount-like-share" style={{color: '#606770'}}>
+                                <img style={styleIcon} src="/icon/thumb-up.svg"/>
+                                <img style={styleIcon} src="/icon/heart.svg"/>
+                                {item.likeNewsList ? item.likeNewsList.length : 0}
+                              </a>
+                              <a className="float-right amount-like-share"
+                                 style={{marginLeft: '10px',color: '#606770'}}>
+                                {item.shareList ? item.shareList.length : 0} lượt share
+                              </a>
+                              <a className="float-right amount-like-share"
+                                 style={{color: '#606770'}}
+                              >
+                                {item.commentList ? item.commentList.length : 0} comment
+                              </a>
+                            </div>
 
-                      <hr style={{margin: '5px 20px'}}/>
+                            <hr style={{margin: '5px 20px'}}/>
 
-                      <div>
-                        <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleLikePost()}>
-                            <i className="far fa-thumbs-up"></i> Thích
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleCommentPost()}>
-                            <i className="far fa-comment"></i> Bình luận
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleSharePost()}>
-                            <i className="fas fa-share"></i> Chia sẻ
-                          </Button>
-                        </ButtonGroup>
-                      </div>
+                            <div>
+                              <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
+                                <Button
+                                    className="border-none-outline btn-like-share-comment"
+                                    style={activeLike && indexNews === item.newsId ?
+                                        {backgroundColor:'#20a8d8', color:'white'} : {}}
+                                    onClick={() => this.handleLikePost(item.newsId)}>
+                                  <img style={styleIcon} src="/icon/thumb-up.svg"/> Thích
+                                </Button>
+                                <Button
+                                    className="border-none-outline btn-like-share-comment"
+                                    style={renderComment && indexNews === item.newsId ?
+                                        {backgroundColor:'#20a8d8', color:'white'} : {}}
+                                    onClick={() => this.handleRenderComment(item.newsId)}>
+                                  <img style={styleIcon} src="/icon/a-chat.svg"/> Bình luận
+                                </Button>
+                                <Button
+                                    className="border-none-outline btn-like-share-comment"
+                                    style={activeShare && indexNews === item.newsId ?
+                                        {backgroundColor:'#20a8d8', color:'white'} : {}}
+                                    onClick={() => this.handleSharePost(item.newsId)}>
+                                  <img style={styleIcon} src="/icon/share-right.svg"/> Chia sẻ
+                                </Button>
+                              </ButtonGroup>
+                            </div>
 
-                      <hr/>
+                            <hr/>
+                            {
+                              renderComment && indexNews === item.newsId ?
+                                  <React.Fragment>
+                                    <div className="input-comment" style={{paddingBottom:'10px'}}>
+                                      <a className="btn-user">
+                                        <img
+                                            src={'/icon/icons8-checked_user_male.png'}
+                                            className="rounded-circle icon-user"
+                                            alt="Username"/>
+                                      </a>{' '}
+                                      <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                                        backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                                        <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
+                                        {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"
+                                        + "Bai viet rat hay!!!Bai viet rat hay!!!"
+                                        + "Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                                      </p>
+                                    </div>
+                                    <div className="input-comment" style={{paddingBottom:'10px'}}>
+                                      <a className="btn-user">
+                                        <img
+                                            src={'/icon/icons8-checked_user_male.png'}
+                                            className="rounded-circle icon-user"
+                                            alt="Username"/>
+                                      </a>{' '}
+                                      <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                                        backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                                        <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
+                                        {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                                      </p>
+                                    </div>
+                                  </React.Fragment>
+                                  : null
+                            }
 
-                      <div className="input-comment">
-                        <a className="btn-user">
-                          <img
-                              src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                              className="rounded-circle icon-user"
-                              alt="Username"/>
-                        </a>{' '}
-                        <Input style={{
-                          borderRadius: '36px',
-                          height: '40px',
-                          backgroundColor: '#f2f3f5'
-                        }}
-                               type="text" id="comment"
-                               placeholder="Viết phản hồi..."
-                               onChange={(e) => this.setState(
-                                   {comment: e.target.value})}/>
-                      </div>
-                    </Card>
-                  </Card>
-                  <Card className="card">
-                    <Card className="card">
-                      <CardTitle>
-                        <div className="row"
-                             style={{
-                               display: 'flex',
-                               alignItems: 'center',
-                               marginTop: '15px'
-                             }}>
-                          <div className="col-md-9">
-                            <a className="btn-circle btn-lg">
-                              <img
-                                  src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                                  className="rounded-circle img-profile"
-                                  alt="Username"/>
-                            </a>{' '}
-                            <a href="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190"
-                               className="username"
-                            >
-                              <strong>Lê Ngọc Thành</strong>
-                            </a>
-                          </div>
-                          <div className="col-md-3">
-                            <div className="dropdown float-right">
-                              <button className="btn border-none-outline"
-                                      type="button" id="dropdownMenuButton"
-                                      data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false">
-                                <i className="fas fa-ellipsis-h"></i>
+                            <div className="input-comment">
+                              <a className="btn-user">
+                                <img
+                                    src={currentUser && currentUser.imageUrl
+                                        ? currentUser.imageUrl
+                                        : '/icon/default.jpg'}
+                                    className="rounded-circle icon-user"
+                                    alt="Username"/>
+                              </a>{' '}
+                              <Input style={{borderRadius: '36px', height: '40px',
+                                border:'1px solid #bbc0c4',
+                                backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px'}}
+                                     placeholder="Viết bình luận..."
+                                     value={this.state.comment}
+                                     onChange={(e) => this.setState(
+                                         {comment: e.target.value})}/>
+                              <button style={{border:'none', outline:'none'}}
+                                      onClick={()=>this.handleCommentPost(item.newsId)}>
+                                <img style={{width:'40px'}} src={'icon/icons8-circled_up.png'} alt={""}/>
                               </button>
-                              <div className="dropdown-menu"
-                                   aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item">
-                                  <i className="far fa-eye-slash"></i> Ẩn bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-save"></i> Lưu bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-flag"></i> Gửi phản hồi
-                                </a>
-                              </div>
                             </div>
-                          </div>
-                        </div>
-                      </CardTitle>
-
-                      <div className="row"
-                           style={{
-                             display: 'flex',
-                             alignItems: 'center',
-                             marginLeft: '15px',
-                             marginRight: '15px'
-                           }}>
-                        <p>
-                          Chính chủ cần bán đất trong khu dân cư Tân Đô -
-                          Diện tích 5x26m = 1.4 tỷ 6x19m = 1.35 tỷ 10x17.5m = 1.75
-                          tỷ - Cơ sở hạ tầng hoàn thiện đầy đủ - Điện âm, nước sạch,
-                          internet cáp quang - Đường trải nhựa, vỉa hè trồng cây
-                          xanh - Sổ hồng riêng, xây dựng tự do - Liên hệ 0931 333
-                          522 - Danh...
-                        </p>
-                      </div>
-
-                      <CardImg top width='100%' style={{marginBottom: '10px'}}
-                               src="https://dautucophieu.net/wp-content/uploads/2018/06/B%C4%90S.jpg"
-                               alt="Card image cap"/>
-
-                      <hr style={{margin: '5px 20px'}}/>
-
-                      <div>
-                        <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleLikePost()}>
-                            <i className="far fa-thumbs-up"></i> Thích
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleCommentPost()}>
-                            <i className="far fa-comment"></i> Bình luận
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleSharePost()}>
-                            <i className="fas fa-share"></i> Chia sẻ
-                          </Button>
-                        </ButtonGroup>
-                      </div>
-
-                      <hr/>
-
-                      <div className="input-comment">
-                        <a className="btn-user">
-                          <img
-                              src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                              className="rounded-circle icon-user"
-                              alt="Username"/>
-                        </a>{' '}
-                        <Input style={{
-                          borderRadius: '36px',
-                          height: '40px',
-                          backgroundColor: '#f2f3f5'
-                        }}
-                               type="text" id="comment"
-                               placeholder="Viết phản hồi..."
-                               onChange={(e) => this.setState(
-                                   {comment: e.target.value})}/>
-                      </div>
-                    </Card>
-                  </Card>
-                  <Card className="card">
-                    <Card className="card">
-                      <CardTitle>
-                        <div className="row"
-                             style={{
-                               display: 'flex',
-                               alignItems: 'center',
-                               marginTop: '15px'
-                             }}>
-                          <div className="col-md-9">
-                            <a className="btn-circle btn-lg">
-                              <img
-                                  src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                                  className="rounded-circle img-profile"
-                                  alt="Username"/>
-                            </a>{' '}
-                            <a href="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190"
-                               className="username"
-                            >
-                              <strong>Lê Ngọc Thành</strong>
-                            </a>
-                          </div>
-                          <div className="col-md-3">
-                            <div className="dropdown float-right">
-                              <button className="btn border-none-outline"
-                                      type="button" id="dropdownMenuButton"
-                                      data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false">
-                                <i className="fas fa-ellipsis-h"></i>
-                              </button>
-                              <div className="dropdown-menu"
-                                   aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item">
-                                  <i className="far fa-eye-slash"></i> Ẩn bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-save"></i> Lưu bài viết
-                                </a>
-                                <a className="dropdown-item">
-                                  <i className="far fa-flag"></i> Gửi phản hồi
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </CardTitle>
-
-                      <div className="row"
-                           style={{
-                             display: 'flex',
-                             alignItems: 'center',
-                             marginLeft: '15px',
-                             marginRight: '15px'
-                           }}>
-                        <p>
-                          Chính chủ cần bán đất trong khu dân cư Tân Đô -
-                          Diện tích 5x26m = 1.4 tỷ 6x19m = 1.35 tỷ 10x17.5m = 1.75
-                          tỷ - Cơ sở hạ tầng hoàn thiện đầy đủ - Điện âm, nước sạch,
-                          internet cáp quang - Đường trải nhựa, vỉa hè trồng cây
-                          xanh - Sổ hồng riêng, xây dựng tự do - Liên hệ 0931 333
-                          522 - Danh...
-                        </p>
-                      </div>
-
-                      <CardImg top width='100%' style={{marginBottom: '10px'}}
-                               src="https://dautucophieu.net/wp-content/uploads/2018/06/B%C4%90S.jpg"
-                               alt="Card image cap"/>
-
-                      <hr style={{margin: '5px 20px'}}/>
-
-                      <div>
-                        <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleLikePost()}>
-                            <i className="far fa-thumbs-up"></i> Thích
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleCommentPost()}>
-                            <i className="far fa-comment"></i> Bình luận
-                          </Button>
-                          <Button
-                              className="border-none-outline btn-like-share-comment"
-                              onClick={() => this.handleSharePost()}>
-                            <i className="fas fa-share"></i> Chia sẻ
-                          </Button>
-                        </ButtonGroup>
-                      </div>
-
-                      <hr/>
-
-                      <div className="input-comment">
-                        <a className="btn-user">
-                          <img
-                              src={'https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/57226516_130649268042776_946875555297361920_o.jpg?_nc_cat=110&_nc_oc=AQk9xTh7VU9OMW9GO0y3_Lw7sd1627-824YLpvz-MdAS5b4YRRVy-Oz-0IcIqRqNRqrLelyIgDDGvG4uYXQg3ghr&_nc_ht=scontent.fvca1-2.fna&oh=5a0d2ee5d36e31956be164b5c2d796cc&oe=5D9EE190'}
-                              className="rounded-circle icon-user"
-                              alt="Username"/>
-                        </a>{' '}
-                        <Input style={{
-                          borderRadius: '36px',
-                          height: '40px',
-                          backgroundColor: '#f2f3f5'
-                        }}
-                               type="text" id="comment"
-                               placeholder="Viết phản hồi..."
-                               onChange={(e) => this.setState(
-                                   {comment: e.target.value})}/>
-                      </div>
-                    </Card>
-                  </Card>
+                          </Card>
+                      )
+                    }) :  null
+                  }
                 </div>
-                <div className="col col-md-5">
+                <div className="col col-md-4">
                   <div className="sticky-top" style={{zIndex:'1',top:'60px'}}>
                     <Card>
                       <CardBody>

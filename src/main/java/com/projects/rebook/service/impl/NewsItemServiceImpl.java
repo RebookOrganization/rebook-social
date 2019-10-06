@@ -1,6 +1,7 @@
 package com.projects.rebook.service.impl;
 
 import com.projects.rebook.bean.Response.CommonResponse;
+import com.projects.rebook.bean.Response.CommonResponse.Fail;
 import com.projects.rebook.bean.Response.NewsResponseDTO;
 import com.projects.rebook.cache.CacheDataService;
 import com.projects.rebook.cache.NewsItemIndex;
@@ -507,6 +508,25 @@ public class NewsItemServiceImpl implements NewsItemService {
     } catch (Exception ex) {
       logger.error("getAllNewsItem error: "+ ex);
       return new CommonResponse.Fail("getAllNewsItem fail.");
+    }
+  }
+
+  @Override
+  public CommonResponse getAllNewsByUser(Long userID) throws IOException {
+    try {
+      List<NewsItem> newsItemList = new ArrayList<>();
+      List<NewsResponseDTO> newsResponseDTOList = new ArrayList<>();
+      Optional<User> user = userRepository.findById(userID);
+      if (user.isPresent()) {
+        newsItemList = newsRepository.findAllByUser(user.get());
+        for (NewsItem newsItem : newsItemList) {
+          newsResponseDTOList.add(mapNewsToNewsResponseDTO(newsItem));
+        }
+      }
+      return new CommonResponse<>(this.returnCode, this.returnMessage, newsResponseDTOList);
+    }
+    catch (Exception ex) {
+      return new Fail("Lấy thông tin bài viết của user thất bại.");
     }
   }
 

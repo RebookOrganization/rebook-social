@@ -8,7 +8,6 @@ export default function LoadingIndicator(props) {
           <Spinner type="grow" color="info" />
           <Spinner type="grow" color="info" />
           <Spinner type="grow" color="info" />
-          <Spinner type="grow" color="info" />
         </div>
     );
 }

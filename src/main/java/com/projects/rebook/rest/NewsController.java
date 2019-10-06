@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -48,6 +49,7 @@ public class NewsController {
     }
 
     @PostMapping(value = "/create-post")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> createNewsPost(@RequestBody PostNewsRequest request) throws Exception {
         return new ResponseEntity<>(userService.createNewsPost(request), HttpStatus.OK);
     }
@@ -68,5 +70,11 @@ public class NewsController {
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public CommonResponse shareNewsFeed(@RequestBody ShareRequest share) throws Exception {
         return userService.shareNewsFeed(share);
+    }
+
+    @GetMapping(value = "/user-news")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<?> getAllNewsByUser(@RequestParam Long userID) throws IOException {
+        return new ResponseEntity<>(newsItemService.getAllNewsByUser(userID), HttpStatus.OK);
     }
 }

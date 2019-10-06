@@ -2,15 +2,14 @@
   margin-bottom: 20px
 }
 
-.list-item {
+.list-group-mine .list-group-item {
   background-color: #e9ebee;
   color: #111c26;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 10px;
 }
-.list-item:hover {
+.list-group-mine .list-group-item:hover {
   background-color: white;
-  color: #111c26 ;
-  font-size: 15px;
-  font-weight: 500;
 }

@@ -5,6 +5,10 @@ import shallowCompare from 'react-addons-shallow-compare';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import {commentNews, likeNews, shareNews} from "../../../api/UserApi";
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 class ListCardItem extends Component{
   constructor(props) {
@@ -15,7 +19,14 @@ class ListCardItem extends Component{
       textOfReadMore: "Chi tiết",
       currentUser: null,
       indexNews: 0,
-      allNewsItem: null
+      allNewsItem: null,
+      renderComment: false,
+      likePosted: null,
+      activeLike: false,
+      sharePosted: null,
+      activeShare: false,
+      isLike: false,
+      isShare: false,
     }
   }
 
@@ -55,6 +66,13 @@ class ListCardItem extends Component{
     })
   };
 
+  handleRenderComment = (index) => {
+    this.setState({
+      indexNews: index,
+      renderComment: !this.state.renderComment
+    })
+  };
+
   handleRenderImageSlide = (imageList) => {
     if (imageList) {
       let images = [];
@@ -70,12 +88,66 @@ class ListCardItem extends Component{
     }
   };
 
+  handleLikePost = (newsId) => {
+    const {currentUser} = this.state;
+    const requestParams = {
+      isLike: !this.state.isLike,
+      userId: currentUser ? currentUser.userId : '',
+      newsItemId: newsId ? newsId : '',
+    };
+    //Api Like Post
+    likeNews(requestParams).then(res => {
+      this.setState({
+        likePosted: res.result,
+        indexNews: newsId,
+        activeLike: !this.state.activeLike
+      }, ()=> {
+        //todo:
+      })
+    }).catch((e)=>console.log(e))
+
+  };
+
+  handleCommentPost = (newsId) => {
+    const {comment, currentUser} = this.state;
+    const requestParams = {
+      comment: comment ? comment : Alert.warning("Chưa viết nội dung..."),
+      userId: currentUser ? currentUser.userId : '',
+      newsItemId: newsId ? newsId : '',
+    };
+    //Api Comment Post
+    commentNews(requestParams).then(res => {
+      this.setState({
+        commentPosted: res.result
+      }, ()=> {
+        this.setState({
+          comment: ""
+        })
+      })
+    })
+  };
+
+  handleSharePost = (newsId) => {
+    const {currentUser} = this.state;
+    const requestParams = {
+      isShare: !this.state.isShare,
+      userId: currentUser ? currentUser.userId : '',
+      newsItemId: newsId ? newsId : '',
+    };
+    //Api Share Post
+    shareNews(requestParams).then(res => {
+      this.setState({
+        sharePosted: res.result,
+        indexNews: newsId,
+        activeShare: !this.state.activeShare
+      })
+    }).catch(
+        (e)=>console.log(e))
+  };
+
   render() {
-    // let allNewsItem = null;
-    // if (this.props.allNewsItem !== null || true) {
-    //   allNewsItem = this.props.allNewsItem
-    // }
-    const {allNewsItem, newsDetail, textOfReadMore, currentUser, indexNews} = this.state;
+    const {allNewsItem, newsDetail, textOfReadMore, currentUser, indexNews,
+      renderComment, activeLike, activeShare} = this.state;
 
     const styleText = {
       fontSize: '16px',
@@ -109,7 +181,7 @@ class ListCardItem extends Component{
                 <Card className="card" key={index}>
                   <CardTitle>
                     <div className="row"
-                         style={{display: 'flex', alignItems: 'center', marginTop: '15px'}}>
+                         style={{display: 'flex', alignItems: 'center', marginTop: '12px'}}>
                       <div className="col-md-9">
                         <a className="btn-circle btn-lg">
                           <img
@@ -127,7 +199,7 @@ class ListCardItem extends Component{
                         </a>
 
                         {/*pub Date*/}
-                        <div style={{color: '#606770', margin: '0 80px'}}>
+                        <div style={{color: '#606770', margin: '0 70px'}}>
                           {item.pubDate ? item.pubDate : ''}
                         </div>
                       </div>
@@ -142,13 +214,13 @@ class ListCardItem extends Component{
                           <div className="dropdown-menu"
                                aria-labelledby="dropdownMenuButton">
                             <a className="dropdown-item">
-                              <i className="far fa-eye-slash"></i> Ẩn bài viết
+                              <i className="far fa-eye-slash"/> Ẩn bài viết
                             </a>
                             <a className="dropdown-item">
-                              <i className="far fa-save"></i> Lưu bài viết
+                              <i className="far fa-save"/> Lưu bài viết
                             </a>
                             <a className="dropdown-item">
-                              <i className="far fa-flag"></i> Gửi phản hồi
+                              <i className="far fa-flag"/> Gửi phản hồi
                             </a>
                           </div>
                         </div>
@@ -184,11 +256,11 @@ class ListCardItem extends Component{
                       paddingRight: '5px',
                       color: '#20a8d8'
                     }}
-                       onClick={()=>this.handleRenderNewsDetail(index)}>
+                       onClick={()=>this.handleRenderNewsDetail(item.newsId)}>
                       {textOfReadMore}
                     </a>
                     {
-                      newsDetail && indexNews === index ?
+                      newsDetail && indexNews === item.newsId ?
                           <p style={styleTitle}>
                             {item.descriptionNews ? item.descriptionNews : null}
                           </p> : null
@@ -218,16 +290,16 @@ class ListCardItem extends Component{
                     <a className="amount-like-share" style={{color: '#606770'}}>
                       <img style={styleIcon} src="/icon/thumb-up.svg"/>
                       <img style={styleIcon} src="/icon/heart.svg"/>
-                      59
+                      {item.likeNewsList ? item.likeNewsList.length : 0}
                     </a>
                     <a className="float-right amount-like-share"
                        style={{marginLeft: '10px',color: '#606770'}}>
-                      10 lượt share
+                      {item.shareList ? item.shareList.length : 0} lượt share
                     </a>
                     <a className="float-right amount-like-share"
                        style={{color: '#606770'}}
                     >
-                      9 comment
+                      {item.commentList ? item.commentList.length : 0} comment
                     </a>
                   </div>
 
@@ -237,57 +309,68 @@ class ListCardItem extends Component{
                     <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
                       <Button
                           className="border-none-outline btn-like-share-comment"
-                          onClick={() => this.props.handleLikePost(item.newsId)}>
+                          style={activeLike && indexNews === item.newsId ?
+                              {backgroundColor:'#20a8d8', color:'white'} : {}}
+                          onClick={() => this.handleLikePost(item.newsId)}>
                         <img style={styleIcon} src="/icon/thumb-up.svg"/> Thích
                       </Button>
                       <Button
                           className="border-none-outline btn-like-share-comment"
-                          onClick={() => this.props.handleCommentPost(item.newsId)}>
+                          style={renderComment && indexNews === item.newsId ?
+                              {backgroundColor:'#20a8d8', color:'white'} : {}}
+                          onClick={() => this.handleRenderComment(item.newsId)}>
                         <img style={styleIcon} src="/icon/a-chat.svg"/> Bình luận
                       </Button>
                       <Button
                           className="border-none-outline btn-like-share-comment"
-                          onClick={() => this.props.handleSharePost(item.newsId)}>
+                          style={activeShare && indexNews === item.newsId ?
+                              {backgroundColor:'#20a8d8', color:'white'} : {}}
+                          onClick={() => this.handleSharePost(item.newsId)}>
                         <img style={styleIcon} src="/icon/share-right.svg"/> Chia sẻ
                       </Button>
                     </ButtonGroup>
                   </div>
 
                   <hr/>
-
-                  <div className="input-comment" style={{paddingBottom:'10px'}}>
-                    <a className="btn-user">
-                      <img
-                          src={'/icon/icons8-checked_user_male.png'}
-                          className="rounded-circle icon-user"
-                          alt="Username"/>
-                    </a>{' '}
-                    <p style={{borderRadius: '30px', width:'470px', padding: '10px',
-                      backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
-                      <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
-                      {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"
-                      + "Bai viet rat hay!!!Bai viet rat hay!!!"
-                      + "Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
-                    </p>
-                  </div>
-                  <div className="input-comment" style={{paddingBottom:'10px'}}>
-                    <a className="btn-user">
-                      <img
-                          src={'/icon/icons8-checked_user_male.png'}
-                          className="rounded-circle icon-user"
-                          alt="Username"/>
-                    </a>{' '}
-                    <p style={{borderRadius: '30px', width:'470px', padding: '10px',
-                      backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
-                      <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
-                      {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
-                    </p>
-                  </div>
+                  {
+                    renderComment && indexNews === item.newsId ?
+                        <React.Fragment>
+                          <div className="input-comment" style={{paddingBottom:'10px'}}>
+                            <a className="btn-user">
+                              <img
+                                  src={'/icon/icons8-checked_user_male.png'}
+                                  className="rounded-circle icon-user"
+                                  alt="Username"/>
+                            </a>{' '}
+                            <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                              backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                              <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
+                              {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"
+                              + "Bai viet rat hay!!!Bai viet rat hay!!!"
+                              + "Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                            </p>
+                          </div>
+                          <div className="input-comment" style={{paddingBottom:'10px'}}>
+                            <a className="btn-user">
+                              <img
+                                  src={'/icon/icons8-checked_user_male.png'}
+                                  className="rounded-circle icon-user"
+                                  alt="Username"/>
+                            </a>{' '}
+                            <p style={{borderRadius: '30px', width:'470px', padding: '10px',
+                              backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px',marginBottom:'0'}}>
+                              <p style={{fontSize:'16px',fontWeight:'500', color:'#4267B2'}}>{"Other User "}</p>
+                              {"Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!Bai viet rat hay!!!"}
+                            </p>
+                          </div>
+                        </React.Fragment>
+                        : null
+                  }
 
                   <div className="input-comment">
                     <a className="btn-user">
                       <img
-                          src={currentUser
+                          src={currentUser && currentUser.imageUrl
                               ? currentUser.imageUrl
                               : '/icon/default.jpg'}
                           className="rounded-circle icon-user"
@@ -295,11 +378,15 @@ class ListCardItem extends Component{
                     </a>{' '}
                     <Input style={{borderRadius: '36px', height: '40px',
                                     border:'1px solid #bbc0c4',
-                                    backgroundColor: '#f2f3f5',textIdent:'32px',
-                                    color:'#aaa',fontSize:'16px'}}
+                                    backgroundColor: '#f2f3f5',textIdent:'32px',fontSize:'16px'}}
                            placeholder="Viết bình luận..."
+                           value={this.state.comment}
                            onChange={(e) => this.setState(
                                {comment: e.target.value})}/>
+                    <button style={{border:'none', outline:'none'}}
+                            onClick={()=>this.handleCommentPost(item.newsId)}>
+                      <img style={{width:'40px'}} src={'icon/icons8-circled_up.png'} alt={""}/>
+                    </button>
                   </div>
                 </Card>
               )

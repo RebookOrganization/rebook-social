@@ -26,7 +26,9 @@ class Signup extends Component {
                         <span className="or-text">OR</span>
                     </div>
                     <SignupForm {...this.props} />
-                    <span className="login-link">Already have an account? <Link to="/login">Login!</Link></span>
+                    <span className="login-link"
+                          style={{fontSize:'16px'}}>Already have an account?
+                        <Link to="/login" style={{fontSize:'16px'}}>Login!</Link></span>
                 </div>
             </div>
         );
@@ -38,9 +40,13 @@ class SocialSignup extends Component {
     render() {
         return (
             <div className="social-signup">
-                <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
+                <a className="btn btn-block social-btn google"
+                   style={{fontSize:'16px', fontWeight:'500'}}
+                   href={GOOGLE_AUTH_URL}>
                     <img src={googleLogo} alt="Google" /> Sign up with Google</a>
-                <a className="btn btn-block social-btn facebook" href={FACEBOOK_AUTH_URL}>
+                <a className="btn btn-block social-btn facebook"
+                   style={{fontSize:'16px', fontWeight:'500'}}
+                   href={FACEBOOK_AUTH_URL}>
                     <img src={fbLogo} alt="Facebook" /> Sign up with Facebook</a>
             </div>
         );
@@ -87,22 +93,27 @@ class SignupForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-item">
-                    <input type="text" name="name" 
+                    <input type="text" name="name"
+                           style={{fontSize:'16px'}}
                         className="form-control" placeholder="Name"
                         value={this.state.name} onChange={this.handleInputChange} required/>
                 </div>
                 <div className="form-item">
-                    <input type="email" name="email" 
+                    <input type="email" name="email"
+                           style={{fontSize:'16px'}}
                         className="form-control" placeholder="Email"
                         value={this.state.email} onChange={this.handleInputChange} required/>
                 </div>
                 <div className="form-item">
-                    <input type="password" name="password" 
+                    <input type="password" name="password"
+                           style={{fontSize:'16px', fontWeight:'500'}}
                         className="form-control" placeholder="Password"
                         value={this.state.password} onChange={this.handleInputChange} required/>
                 </div>
                 <div className="form-item">
-                    <button type="submit" className="btn btn-block btn-primary" >Sign Up</button>
+                    <button type="submit"
+                            style={{fontSize:'16px'}}
+                            className="btn btn-block btn-primary" >Sign Up</button>
                 </div>
             </form>                    
 

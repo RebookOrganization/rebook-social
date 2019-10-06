@@ -3,7 +3,7 @@
     align-items: center;
     height: 54px;
     position: relative;
-    z-index: 10;
+    z-index: 1;
     border-bottom: 1px solid;
     /*background-color: white;*/
     /*margin-bottom: 10px;*/
@@ -43,7 +43,7 @@
 }
 
 .app-nav ul {
-    list-style-position: none;
+    list-style-position: inside;
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -73,6 +73,24 @@
 }
 
 .app-nav ul li a {
+    display: inline-block;
+    line-height: 54px;
+    vertical-align: middle;
+    padding: 0 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.app-nav ul li .message {
+    display: inline-block;
+    line-height: 54px;
+    vertical-align: middle;
+    padding: 0 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.app-nav ul li .message:hover {
     display: inline-block;
     line-height: 54px;
     vertical-align: middle;

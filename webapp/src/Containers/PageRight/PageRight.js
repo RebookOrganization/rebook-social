@@ -9,7 +9,6 @@ import {
 } from "reactstrap";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
-import CardHeader from "reactstrap/es/CardHeader";
 import Alert from "react-s-alert";
 import {searchNewsByAddress, searchNewsByUser} from "../../api/UserApi";
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
@@ -22,7 +21,7 @@ class PageRight extends Component {
 
     this.state = {
       inputSearch: '',
-      inputSearchType: 0,
+      inputSearchType: 1,
       loading: false,
       resultSearchAddress: null,
       resultSearchUser: null,
@@ -102,7 +101,7 @@ class PageRight extends Component {
               <div className="search-box">
                 <span className="fa fa-search"/>
                 <input id="inputSearch"
-                       placeholder="Nội dung tìm kiếm"
+                       placeholder="Tìm kiếm nhanh địa chỉ"
                        onClick={this.toggleCollapse}
                        style={{
                          textIdent: '32px',
@@ -117,23 +116,7 @@ class PageRight extends Component {
               <Collapse isOpen={this.state.collapseSearch}>
                 <hr style={{marginTop: "5px"}}/>
                 <Row>
-                  <Col md={6} style={{paddingRight: '5px'}}>
-                    <select className="form-control"
-                            style={{
-                              height: '40px',
-                              fontSize: '16px',
-                              backgroundColor: '#f2f3f5',
-                              marginBottom: "5px"
-                            }}
-                            onChange={(e) => this.setState(
-                                {province: e.target.value})}
-                    >
-                      <option value={0}>Tỉnh/Thành phố</option>
-                      <option value={1}>Tp. Hố chí Minh</option>
-                      <option value={2}>Hà Nội</option>
-                    </select>
-                  </Col>
-                  <Col md={6} style={{paddingLeft: '5px'}}>
+                  <Col md={12} style={{paddingLeft: '5px'}}>
                     <select className="form-control"
                             style={{
                               height: '40px',

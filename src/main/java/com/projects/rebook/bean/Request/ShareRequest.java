@@ -4,7 +4,7 @@ public class ShareRequest {
 
   private Long userId;
   private Long newsItemId;
-  private Boolean isShare;
+  private boolean isShare;
 
   public Long getUserId() { return userId; }
 
@@ -14,7 +14,7 @@ public class ShareRequest {
 
   public void setNewsItemId(Long newsItemId) { this.newsItemId = newsItemId; }
 
-  public Boolean getShare() { return isShare; }
+  public boolean isShare() { return isShare; }
 
-  public void setShare(Boolean share) { isShare = share; }
+  public void setShare(boolean share) { isShare = share; }
 }
