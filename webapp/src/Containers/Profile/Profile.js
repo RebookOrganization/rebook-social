@@ -4,14 +4,12 @@ import Card from "reactstrap/es/Card";
 import {
   Button,
   CardBody,
-  CardImg,
   CardText,
   CardTitle,
-  Input,
+  Input, Modal, ModalBody, ModalHeader,
 } from "reactstrap";
 import ButtonGroup from "reactstrap/es/ButtonGroup";
 import '../Home/_home.css';
-import {SocialIcon} from "react-social-icons";
 import Aside from "../Aside/Aside";
 import {getAllNewsByUser} from "../../api/UserApi";
 import Alert from 'react-s-alert';
@@ -22,6 +20,7 @@ import shallowCompare from 'react-addons-shallow-compare';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
+import ReactAvatarEditor from 'react-avatar-editor'
 
 class Profile extends Component {
   constructor(props) {
@@ -42,6 +41,19 @@ class Profile extends Component {
       activeShare: false,
       isLike: false,
       isShare: false,
+
+      modalEditProfile: false,
+
+
+      image: 'assets/img/avatars/avatar.jpg',
+      allowZoomOut: false,
+      position: { x: 0.5, y: 0.5 },
+      scale: 1,
+      rotate: 0,
+      borderRadius: 0,
+      preview: null,
+      width: 300,
+      height: 300,
     }
   }
 
@@ -101,6 +113,25 @@ class Profile extends Component {
     }
   };
 
+  toggleModalEditProfile = () => {
+    this.setState({
+      modalEditProfile: !this.state.modalEditProfile
+    })
+  };
+
+  handleNewImage = e => {
+    this.setState({ image: e.target.files[0] })
+  }
+
+  handleScale = e => {
+    const scale = parseFloat(e.target.value)
+    this.setState({ scale })
+  }
+
+  handlePositionChange = position => {
+    this.setState({ position })
+  }
+
   render() {
     const {newsDetail, textOfReadMore, currentUser, indexNews,
       renderComment, activeLike, activeShare, newsByUser} = this.state;
@@ -139,6 +170,7 @@ class Profile extends Component {
                   {
                     currentUser ? (
                         <img src={currentUser.imageUrl ? currentUser.imageUrl : '/icon/default.jpg'}
+                             onClick={()=>this.toggleModalEditProfile()}
                              alt={currentUser.name}/>
                     ) : (
                         <div className="text-avatar">
@@ -148,6 +180,12 @@ class Profile extends Component {
                     )
                   }
                 </div>
+                <button onClick={()=>this.toggleModalEditProfile()}
+                        className={"pull-right"}
+                        style={{margin:'10px'}}
+                >
+                  <i className="fa fa-plus"/> Edit
+                </button>
                 <div className="profile-name" style={{marginBottom:'30px', textAlign:'center'}}>
                   <h2>{currentUser.name}</h2>
                   <p className="profile-email">{currentUser.email}</p>
@@ -169,15 +207,11 @@ class Profile extends Component {
             <div className="col col-md-8" style={{paddingRight:'30px'}}>
               <div className="row">
                 <div className="col">
-                  <Card style={{border:'none'}}>
-                    {/*<CardBody>*/}
-                      <img src="/icon/background-profile.jpg" style={{height: '350px'}} alt={""}/>
-                    {/*</CardBody>*/}
+                  <Card style={{border:'none', maxHeight:'370px'}}>
+                    <img className={"responsive"}
+                         style={{maxWidth:'100%', minHeight:'100%', objectFit:'cover'}}
+                         src="/icon/background-profile.jpg" alt={""}/>
                   </Card>
-                  {/*<Card className={"sticky-top"} style={{top:'54px'}}>*/}
-                  {/*  <CardBody>*/}
-                  {/*  </CardBody>*/}
-                  {/*</Card>*/}
                 </div>
               </div>
               <div className="row">
@@ -404,15 +438,8 @@ class Profile extends Component {
                   <div className="sticky-top" style={{zIndex:'1',top:'60px'}}>
                     <Card>
                       <CardBody>
-                        <strong style={{color:'#4b4f56'}}>Bất động sản được gợi ý</strong>
-                      </CardBody>
-                      <CardImg top width="100%"
-                               src="https://www.ngoisaoso.vn/uploads/news/2014/02/19/thiet-ke-web-bat-dong-san-2.jpg"
-                               alt="Card image cap"/>
-                      <CardBody>
-                        <CardText>With supporting text below as a natural lead-in to
-                          additional content.</CardText>
-                        <Button className="btn-detail">Chi tiết</Button>
+                        <h6>Giới thiệu</h6>
+
                       </CardBody>
                     </Card>
                     <Card style={{display:'flex',flexDirection:'row',padding:'10px'}}>
@@ -424,12 +451,6 @@ class Profile extends Component {
                       <a href="https://mdbootstrap.com/education/bootstrap/" style={{color: '#616770'}}>Quảng cáo.</a>
                     </div>
                     <span style={{color: '#616770'}}>© 2019 Copyright: Rebook.com.vn</span>
-                    <div style={{margin:'20px 0'}}>
-                      <SocialIcon url="http://linkedin.com/in/jaketrent" style={{marginRight:'5px'}}/>
-                      <SocialIcon network="twitter" bgColor="#ff5a01" style={{marginRight:'5px'}}/>
-                      <SocialIcon network="facebook" style={{marginRight:'5px'}}/>
-                      <SocialIcon network="google" style={{marginRight:'5px'}}/>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -439,8 +460,45 @@ class Profile extends Component {
               <Aside/>
             </div>
           </div>
-
         </div>
+
+        <Modal isOpen={this.state.modalEditProfile}
+               toggle={()=>this.toggleModalEditProfile()}
+               className={'modal-lg modal-lg-custom' + this.props.className}
+        >
+          <ModalHeader toggle={()=>this.toggleModalEditProfile()}>
+            Cập nhật ảnh đại diện
+          </ModalHeader>
+          <ModalBody style={{margin:'auto'}}>
+              <div>
+                <ReactAvatarEditor
+                    scale={parseFloat(this.state.scale)}
+                    width={this.state.width}
+                    height={this.state.height}
+                    position={this.state.position}
+                    onPositionChange={this.handlePositionChange}
+                    rotate={parseFloat(this.state.rotate)}
+                    borderRadius={this.state.width / (100 / this.state.borderRadius)}
+                    image={this.state.image}
+                    className="editor-canvas"
+                />
+              </div>
+              <br />
+              New File:
+              <input name="newImage" type="file" onChange={this.handleNewImage} />
+              <br />
+              Zoom:
+              <input
+                  name="scale"
+                  type="range"
+                  onChange={this.handleScale}
+                  min={this.state.allowZoomOut ? '0.1' : '1'}
+                  max="2"
+                  step="0.01"
+                  defaultValue="1"
+              />
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
