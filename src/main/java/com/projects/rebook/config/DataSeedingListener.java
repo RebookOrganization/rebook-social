@@ -32,7 +32,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
       roleRepository.save(new Role("ROLE_USER"));
     }
 
-    if (!userRepository.findByName("admin").isPresent()) {
+    if (!userRepository.findByName("User Admin").isPresent()) {
       User user = new User();
       user.setName("admin");
       user.setImageUrl("https://lh4.googleusercontent.com/-oTnsvG0mZOY/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcSVx44Jq41IMkB8XO5mJqbnFOOlQ/mo/photo.jpg");

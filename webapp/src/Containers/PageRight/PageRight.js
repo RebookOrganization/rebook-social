@@ -35,10 +35,6 @@ class PageRight extends Component {
     this.setState({collapseSearch: !this.state.collapseSearch})
   };
 
-  componentDidMount() {
-
-  }
-
   handleSearchByFiler = () => {
     const {inputSearch, inputSearchType} = this.state;
     this.setState({loading: true});

@@ -1,5 +1,6 @@
 package com.projects.rebook.rest;
 
+import com.projects.rebook.service.UserService;
 import com.projects.rebook.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserNewsController {
 
   @Autowired
-  UserServiceImpl userService;
+  private UserService userService;
 
   @GetMapping(value = "/news-item")
   @PreAuthorize("hasAnyRole('USER', 'ADMIN')")

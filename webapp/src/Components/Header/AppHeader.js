@@ -10,6 +10,14 @@ import {
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
 import {searchNewsByAddress, searchNewsByUser} from "../../api/UserApi";
 import Alert from "react-s-alert";
+import {
+  loadEnumArea, loadEnumDirectHouse,
+  loadEnumDistrict, loadEnumPrice,
+  loadEnumProvince,
+  loadEnumRentType, loadEnumSaleType
+} from "../../api/SearchFillterApi";
+import LoadingIndicator from "../Loading/LoadingIndicator";
+import Select from 'react-select';
 
 class AppHeader extends Component {
   constructor(props) {
@@ -24,12 +32,60 @@ class AppHeader extends Component {
       resultSearchAddress: null,
       resultSearchUser: null,
       allNewsItem: null,
+
+      optionProvince: null,
+      selectedProvince: 0,
+      optionDistrict: null,
+      selectedDistrict: 0,
+      optionRentType: null,
+      selectedRentType: 0,
+      optionSaleType: null,
+      selectedSaleType: 0,
+      optionPrice: null,
+      selectedPrice: 0,
+      optionArea: null,
+      selectedArea: 0,
+      optionDirectHouse: null,
+      selectedDirectHouse: 0,
     }
   }
+
+  handleLoadEnum = () => {
+    this.setState({loading: true});
+    let provinceCity = loadEnumProvince();
+    let district = loadEnumDistrict();
+    let rentType = loadEnumRentType();
+    let saleType = loadEnumSaleType();
+    let priceOption = loadEnumPrice();
+    let areaOption = loadEnumArea();
+    let directHouse = loadEnumDirectHouse();
+
+    Promise.all([provinceCity, district, rentType, saleType,
+      priceOption, areaOption, directHouse]).then(res => {
+      console.log("res: "+ JSON.stringify(res));
+      this.setState({
+        optionProvince: res[0],
+        optionDistrict: res[1],
+        optionRentType: res[2],
+        optionSaleType: res[3],
+        optionPrice: res[4],
+        optionArea: res[5],
+        optionDirectHouse: res[6],
+      }, ()=> {
+        console.log("optionProvince: "+ JSON.stringify(this.state.optionProvince))
+      })
+    }).catch(e => console.log(e))
+    .finally(()=> {
+      this.setState({loading: false})
+    })
+  };
 
   toggleModalSearch = () => {
     this.setState({
       isSearch: !this.state.isSearch
+    }, () => {
+      this.state.isSearch ?
+          this.handleLoadEnum() : null
     })
   };
 
@@ -85,8 +141,14 @@ class AppHeader extends Component {
     }
   };
 
+  handleChangeProvince = (optionProvince) => {
+    this.setState({optionProvince: optionProvince})
+  };
+
   render() {
-    const {currentUser} = this.state;
+    const {currentUser, optionProvince, optionDistrict, selectedDistrict, optionRentType,
+      selectedRentType, optionSaleType, selectedSaleType, optionPrice, selectedPrice,
+      optionArea, selectedArea, optionDirectHouse, selectedDirectHouse} = this.state;
 
     const styleChat = {
       display: 'flex',
@@ -103,8 +165,67 @@ class AppHeader extends Component {
       marginLeft: '150px'
     };
 
+    let province = [];
+    optionProvince ? Object.keys(optionProvince).map(item => {
+      province.push({
+        value: item,
+        label: optionProvince[item]
+      })
+    }) : null;
+
+    let district = [];
+    optionDistrict ? Object.keys(optionDistrict).map(item => {
+      district.push({
+        value: item,
+        label: optionDistrict[item]
+      })
+    }) : null;
+
+    let rentType = [];
+    optionRentType ? Object.keys(optionRentType).map(item => {
+      rentType.push({
+        value: item,
+        label: optionRentType[item]
+      })
+    }) : null;
+
+    let saleType = [];
+    optionSaleType ? Object.keys(optionSaleType).map(item => {
+      saleType.push({
+        value: item,
+        label: optionSaleType[item]
+      })
+    }) : null;
+
+    let prices = [];
+    optionPrice ? Object.keys(optionPrice).map(item => {
+      prices.push({
+        value: item,
+        label: optionPrice[item]
+      })
+    }) : null;
+
+    let areas = [];
+    optionArea ? Object.keys(optionArea).map(item => {
+      areas.push({
+        value: item,
+        label: optionArea[item]
+      })
+    }) : null;
+
+    let directHouse = [];
+    optionDirectHouse ? Object.keys(optionDirectHouse).map(item => {
+      directHouse.push({
+        value: item,
+        label: optionDirectHouse[item]
+      })
+    }) : null;
+
     return (
         <header className="app-header">
+          {
+            this.state.loading ? <LoadingIndicator/> : null
+          }
           <div className="container-fluid" style={{paddingLeft: "40px"}}>
             <div className="row">
               <div className="col-md-5 app-branding">
@@ -241,6 +362,7 @@ class AppHeader extends Component {
           <Modal isOpen={this.state.isSearch}
                  toggle={()=>this.toggleModalSearch()}
                  className={'modal-lg modal-lg-custom' + this.props.className}
+                 style={{maxWidth: '90%'}}
           >
             <ModalHeader toggle={()=>this.toggleModalSearch()}>
               <img src="/icon/icons8-search-2.png" alt={""}/> Tìm kiếm thông tin bất động sản
@@ -259,7 +381,7 @@ class AppHeader extends Component {
               </div>
               <hr/>
                 <Row>
-                  <Col md={6} style={{paddingRight:'5px'}}>
+                  <Col md={6}>
                     <h5>Loại tìm kiếm</h5>
                     <select className="form-control"
                             style={{height: '40px',fontSize:'16px',backgroundColor: '#f2f3f5',marginBottom:"5px"}}
@@ -270,29 +392,6 @@ class AppHeader extends Component {
                       <option value={1}>Địa điểm bất động sản</option>
                       <option value={2}>Loại giao dịch</option>
                       <option value={3}>Người dùng rebook</option>
-                    </select>
-                  </Col>
-                  <Col md={6} style={{paddingLeft:'5px'}}>
-                    <h5>Tỉnh/Thành phố</h5>
-                    <select className="form-control"
-                            style={{height: '40px',fontSize:'16px',backgroundColor: '#f2f3f5',marginBottom:"5px"}}
-                            onChange={(e) => this.setState({province: e.target.value})}
-                    >
-                      <option value={1}>Tp. Hố chí Minh</option>
-                      <option value={2}>Hà Nội</option>
-                    </select>
-                  </Col>
-                </Row>
-                <hr/>
-                <Row>
-                  <Col md={6}>
-                    <h5>Giá: </h5>
-                    <select className="form-control"
-                            style={{height: '40px',fontSize:'16px',backgroundColor: '#f2f3f5',marginBottom:"5px"}}
-                    >
-                      <option>Mua bán</option>
-                      <option>Cho thuê</option>
-                      <option>Kho bãi</option>
                     </select>
                   </Col>
                   <Col md={6}>
@@ -307,6 +406,70 @@ class AppHeader extends Component {
                   </Col>
                 </Row>
                 <hr/>
+                <Row>
+                  <Col md={6}>
+                    <h5>Giá: </h5>
+                    <Select value={selectedPrice}
+                            onChange={(e)=> this.setState({selectedPrice: e})}
+                            options={prices}
+                            isSearchable={true}
+                            isClearable={true}
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <h5>Tỉnh/Thành phố</h5>
+                    <Select value={this.state.selectedProvince}
+                            onChange={(e)=> this.setState({selectedProvince: e})}
+                            options={province}
+                            isSearchable={true}
+                            isClearable={true}
+                            style={{fontSize:'16px'}}
+                    />
+                  </Col>
+                </Row>
+                <hr/>
+              <Row>
+                <Col md={6}>
+                  <h5>Mua bán: </h5>
+                  <Select value={selectedSaleType}
+                          onChange={(e)=> this.setState({selectedSaleType: e})}
+                          options={saleType}
+                          isSearchable={true}
+                          isClearable={true}
+                  />
+                </Col>
+                <Col md={6}>
+                  <h5>Cho thuê: </h5>
+                  <Select value={selectedRentType}
+                          onChange={(e)=> this.setState({selectedRentType: e})}
+                          options={rentType}
+                          isSearchable={true}
+                          isClearable={true}
+                  />
+                </Col>
+              </Row>
+              <hr/>
+              <Row>
+                <Col md={6}>
+                  <h5>Diện tích: </h5>
+                  <Select value={selectedArea}
+                          onChange={(e)=> this.setState({selectedArea: e})}
+                          options={areas}
+                          isSearchable={true}
+                          isClearable={true}
+                  />
+                </Col>
+                <Col md={6}>
+                  <h5>Hướng nhà: </h5>
+                  <Select value={selectedDirectHouse}
+                          onChange={(e)=> this.setState({selectedDirectHouse: e})}
+                          options={directHouse}
+                          isSearchable={true}
+                          isClearable={true}
+                  />
+                </Col>
+              </Row>
+              <hr/>
                 <Row style={{padding:'0 15px',justifyContent:'flex-end'}}>
                   <LaddaButton
                       className="btn btn-info btn-ladda"

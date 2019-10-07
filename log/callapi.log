@@ -1973,3 +1973,910 @@ java.lang.NullPointerException: null
 2019-10-06 23:56:45,457 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
 2019-10-06 23:56:45,466 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
 2019-10-06 23:56:45,472 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2019-10-07 12:57:53,307 INFO [com.projects.rebook.Main] - Starting Main on MacBookPro-2.local with PID 3216 (/Users/ThanhLe/khoa-luan/sources/rebook/target/classes started by ThanhLe in /Users/ThanhLe/khoa-luan/sources/rebook)
+2019-10-07 12:57:53,312 INFO [com.projects.rebook.Main] - No active profile set, falling back to default profiles: default
+2019-10-07 12:57:53,686 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-10-07 12:57:53,687 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-10-07 12:57:54,749 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-07 12:57:54,862 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 99ms. Found 10 repository interfaces.
+2019-10-07 12:57:55,302 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$9d6ce795] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,348 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c9bad612] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,408 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$62689e4c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,414 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,417 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6d2e5acc' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,423 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$873d40fe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,432 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$ac925914] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,436 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:55,438 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:57:56,090 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8082 (http)
+2019-10-07 12:57:56,109 INFO [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 12:57:56,123 INFO [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2019-10-07 12:57:56,123 INFO [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-10-07 12:57:56,250 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2019-10-07 12:57:56,250 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2563 ms
+2019-10-07 12:57:56,727 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2019-10-07 12:57:56,889 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2019-10-07 12:57:56,955 INFO [org.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-07 12:57:57,068 INFO [org.hibernate.Version] - HHH000412: Hibernate Core {5.3.9.Final}
+2019-10-07 12:57:57,070 INFO [org.hibernate.cfg.Environment] - HHH000206: hibernate.properties not found
+2019-10-07 12:57:57,284 INFO [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-07 12:57:57,469 INFO [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-10-07 12:57:58,511 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 12:57:59,278 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2019-10-07 12:58:20,142 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {}
+2019-10-07 12:58:20,611 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/static/**'], []
+2019-10-07 12:58:20,612 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/css/**'], []
+2019-10-07 12:58:20,612 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/js/**'], []
+2019-10-07 12:58:20,612 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/images/**'], []
+2019-10-07 12:58:20,612 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/vendors/**'], []
+2019-10-07 12:58:20,729 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@366a0ea2, org.springframework.security.web.context.SecurityContextPersistenceFilter@4e173361, org.springframework.security.web.header.HeaderWriterFilter@4824fdfd, org.springframework.web.filter.CorsFilter@36d98b7a, org.springframework.security.web.authentication.logout.LogoutFilter@578c90db, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@5b6a55aa, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@307608b5, com.projects.rebook.auth.TokenAuthenticationFilter@5070e0f2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@475725e9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2325f0b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16630f42, org.springframework.security.web.session.SessionManagementFilter@6cae835a, org.springframework.security.web.access.ExceptionTranslationFilter@551d8051, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ba206a9]
+2019-10-07 12:58:20,901 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 12:58:20,918 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 12:58:20,932 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 12:58:21,000 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-07 12:58:21,123 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService
+2019-10-07 12:58:21,123 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'asyncExecutor'
+2019-10-07 12:58:21,344 WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-07 12:58:21,846 INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] - Adding welcome page template: index
+2019-10-07 12:58:22,249 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Starting...
+2019-10-07 12:58:22,249 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 12:58:22,250 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Started.
+2019-10-07 12:58:22,268 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate Task :: Execution Time - 12:58:22
+2019-10-07 12:58:22,268 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate DiaOcOnline :: Execution Time - 12:58:22
+2019-10-07 12:58:22,280 INFO [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-07 12:58:22,288 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerBatDongSan - MessageBroker-1
+2019-10-07 12:58:22,288 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerDiaOcOnline - MessageBroker-2
+2019-10-07 12:58:22,605 WARN [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] - SQL Error: 1062, SQLState: 23000
+2019-10-07 12:58:22,606 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] - Duplicate entry 'admin@gmail.com' for key 'UKob8kqyqqgmefl0aco34akdtpe'
+2019-10-07 12:58:22,622 INFO [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2019-10-07 12:58:22,628 WARN [org.apache.catalina.loader.WebappClassLoaderBase] - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-10-07 12:58:22,638 INFO [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-10-07 12:58:22,658 ERROR [org.springframework.boot.SpringApplication] - Application run failed
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UKob8kqyqqgmefl0aco34akdtpe]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:296)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:527)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:153)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy117.save(Unknown Source)
+	at com.projects.rebook.config.DataSeedingListener.onApplicationEvent(DataSeedingListener.java:46)
+	at com.projects.rebook.config.DataSeedingListener.onApplicationEvent(DataSeedingListener.java:15)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:402)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:359)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:896)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:163)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:552)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.projects.rebook.Main.main(Main.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:178)
+	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57)
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:42)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3075)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3665)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:81)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:332)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:196)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:127)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:799)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:784)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:308)
+	at com.sun.proxy.$Proxy114.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:489)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:359)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:200)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:644)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:608)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$invoke$3(RepositoryFactorySupport.java:595)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:595)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:59)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	... 31 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'admin@gmail.com' for key 'UKob8kqyqqgmefl0aco34akdtpe'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:970)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1109)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1057)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1377)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1042)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	... 74 common frames omitted
+2019-10-07 12:58:22,665 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopping...
+2019-10-07 12:58:22,665 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 12:58:22,666 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopped.
+2019-10-07 12:58:22,668 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'asyncExecutor'
+2019-10-07 12:58:22,668 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-07 12:58:22,669 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 12:58:22,670 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 12:58:22,670 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 12:58:22,680 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 12:58:22,686 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2019-10-07 12:58:22,690 ERROR [com.projects.rebook.service.impl.NewsItemServiceImpl] - crawlerDiaOcOnline error: org.springframework.dao.InvalidDataAccessApiUsageException: Session/EntityManager is closed; nested exception is java.lang.IllegalStateException: Session/EntityManager is closed
+2019-10-07 12:58:22,693 ERROR [org.springframework.scheduling.support.TaskUtils$LoggingErrorHandler] - Unexpected error occurred in scheduled task.
+org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:755)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$13ced4e4.crawlerDiaOcOnline(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleCrawlerDiaOcOnline(ScheduledTasks.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2019-10-07 12:58:22,698 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2019-10-07 12:58:22,863 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase listNewsItemInsert response - []
+2019-10-07 12:58:22,865 WARN [com.zaxxer.hikari.pool.ProxyConnection] - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@893ff13 marked as broken because of SQLSTATE(08003), ErrorCode(0)
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:813)
+	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:361)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:81)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:272)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$13ced4e4.crawlerBatDongSan(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleTaskWithFixedRate(ScheduledTasks.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:1263)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:575)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:770)
+	... 28 common frames omitted
+2019-10-07 12:58:22,868 ERROR [org.springframework.scheduling.support.TaskUtils$LoggingErrorHandler] - Unexpected error occurred in scheduled task.
+org.springframework.orm.jpa.JpaSystemException: Unable to commit against JDBC Connection; nested exception is org.hibernate.TransactionException: Unable to commit against JDBC Connection
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:351)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:536)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$13ced4e4.crawlerBatDongSan(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleTaskWithFixedRate(ScheduledTasks.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: Unable to commit against JDBC Connection
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:87)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:272)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	... 22 common frames omitted
+Caused by: java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:813)
+	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:361)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:81)
+	... 25 common frames omitted
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:1263)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:575)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:770)
+	... 28 common frames omitted
+2019-10-07 12:59:37,200 INFO [com.projects.rebook.Main] - Starting Main on MacBookPro-2.local with PID 3239 (/Users/ThanhLe/khoa-luan/sources/rebook/target/classes started by ThanhLe in /Users/ThanhLe/khoa-luan/sources/rebook)
+2019-10-07 12:59:37,203 INFO [com.projects.rebook.Main] - No active profile set, falling back to default profiles: default
+2019-10-07 12:59:37,746 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-10-07 12:59:37,746 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-10-07 12:59:38,955 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-07 12:59:39,058 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 94ms. Found 10 repository interfaces.
+2019-10-07 12:59:39,427 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$e8584bb0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,469 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$14a63a2d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,513 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$ad540267] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,518 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,521 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@30ab9010' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,523 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$d228a519] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,531 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$f77dbd2f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,534 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:39,536 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 12:59:40,101 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8082 (http)
+2019-10-07 12:59:40,115 INFO [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 12:59:40,128 INFO [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2019-10-07 12:59:40,128 INFO [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-10-07 12:59:40,207 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2019-10-07 12:59:40,207 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2461 ms
+2019-10-07 12:59:40,576 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2019-10-07 12:59:40,667 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2019-10-07 12:59:40,740 INFO [org.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-07 12:59:40,801 INFO [org.hibernate.Version] - HHH000412: Hibernate Core {5.3.9.Final}
+2019-10-07 12:59:40,803 INFO [org.hibernate.cfg.Environment] - HHH000206: hibernate.properties not found
+2019-10-07 12:59:40,910 INFO [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-07 12:59:41,021 INFO [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-10-07 12:59:41,770 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 12:59:42,359 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2019-10-07 13:00:00,405 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {}
+2019-10-07 13:00:00,935 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/static/**'], []
+2019-10-07 13:00:00,935 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/css/**'], []
+2019-10-07 13:00:00,935 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/js/**'], []
+2019-10-07 13:00:00,935 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/images/**'], []
+2019-10-07 13:00:00,935 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/vendors/**'], []
+2019-10-07 13:00:01,035 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bdf3277, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a2598dc, org.springframework.security.web.header.HeaderWriterFilter@528931cd, org.springframework.web.filter.CorsFilter@7ac9a8f2, org.springframework.security.web.authentication.logout.LogoutFilter@668aebac, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@b0637fa, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@6a836c82, com.projects.rebook.auth.TokenAuthenticationFilter@430932a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@581e9a13, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a6798e8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f79850a, org.springframework.security.web.session.SessionManagementFilter@7404386e, org.springframework.security.web.access.ExceptionTranslationFilter@50c6aa39, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@601d3f3c]
+2019-10-07 13:00:01,234 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:00:01,254 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:00:01,268 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:00:01,353 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:00:01,498 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService
+2019-10-07 13:00:01,500 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'asyncExecutor'
+2019-10-07 13:00:01,821 WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-07 13:00:02,384 INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] - Adding welcome page template: index
+2019-10-07 13:00:02,847 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Starting...
+2019-10-07 13:00:02,847 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:00:02,848 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Started.
+2019-10-07 13:00:02,870 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate Task :: Execution Time - 13:00:02
+2019-10-07 13:00:02,870 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate DiaOcOnline :: Execution Time - 13:00:02
+2019-10-07 13:00:02,875 INFO [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-07 13:00:02,885 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerBatDongSan - MessageBroker-1
+2019-10-07 13:00:02,885 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerDiaOcOnline - MessageBroker-2
+2019-10-07 13:00:03,207 WARN [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] - SQL Error: 1062, SQLState: 23000
+2019-10-07 13:00:03,208 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] - Duplicate entry 'admin@gmail.com' for key 'UKob8kqyqqgmefl0aco34akdtpe'
+2019-10-07 13:00:03,252 INFO [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+2019-10-07 13:00:03,258 WARN [org.apache.catalina.loader.WebappClassLoaderBase] - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-10-07 13:00:03,267 INFO [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-10-07 13:00:03,284 ERROR [org.springframework.boot.SpringApplication] - Application run failed
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UKob8kqyqqgmefl0aco34akdtpe]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:296)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:527)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:153)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy117.save(Unknown Source)
+	at com.projects.rebook.config.DataSeedingListener.onApplicationEvent(DataSeedingListener.java:46)
+	at com.projects.rebook.config.DataSeedingListener.onApplicationEvent(DataSeedingListener.java:15)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:402)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:359)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:896)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:163)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:552)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.projects.rebook.Main.main(Main.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:178)
+	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57)
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:42)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3075)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3665)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:81)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:332)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:196)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:127)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:799)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:784)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:308)
+	at com.sun.proxy.$Proxy114.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:489)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:359)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:200)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:644)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:608)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$invoke$3(RepositoryFactorySupport.java:595)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:595)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:59)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	... 31 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'admin@gmail.com' for key 'UKob8kqyqqgmefl0aco34akdtpe'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:970)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1109)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1057)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1377)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1042)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	... 74 common frames omitted
+2019-10-07 13:00:03,297 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopping...
+2019-10-07 13:00:03,299 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:00:03,299 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopped.
+2019-10-07 13:00:03,303 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'asyncExecutor'
+2019-10-07 13:00:03,304 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:00:03,304 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:00:03,305 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:00:03,305 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:00:03,312 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 13:00:03,316 ERROR [com.projects.rebook.service.impl.NewsItemServiceImpl] - crawlerDiaOcOnline error: org.springframework.dao.InvalidDataAccessApiUsageException: Session/EntityManager is closed; nested exception is java.lang.IllegalStateException: Session/EntityManager is closed
+2019-10-07 13:00:03,317 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2019-10-07 13:00:03,326 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2019-10-07 13:00:03,331 WARN [org.hibernate.engine.loading.internal.LoadContexts] - HHH000100: Fail-safe cleanup (collections) : org.hibernate.engine.loading.internal.CollectionLoadContext@33928c1<rs=HikariProxyResultSet@1907161483 wrapping Result set representing update count of 8375>
+2019-10-07 13:00:03,332 WARN [org.hibernate.engine.loading.internal.CollectionLoadContext] - HHH000160: On CollectionLoadContext#cleanup, localLoadingCollectionKeys contained [1] entries
+2019-10-07 13:00:03,332 ERROR [org.springframework.scheduling.support.TaskUtils$LoggingErrorHandler] - Unexpected error occurred in scheduled task.
+org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:755)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$5d4082bd.crawlerDiaOcOnline(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleCrawlerDiaOcOnline(ScheduledTasks.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2019-10-07 13:00:03,439 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase listNewsItemInsert response - []
+2019-10-07 13:00:03,440 WARN [com.zaxxer.hikari.pool.ProxyConnection] - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@4bee0fb9 marked as broken because of SQLSTATE(08003), ErrorCode(0)
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:813)
+	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:361)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:81)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:272)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$5d4082bd.crawlerBatDongSan(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleTaskWithFixedRate(ScheduledTasks.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:1263)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:575)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:770)
+	... 28 common frames omitted
+2019-10-07 13:00:03,457 ERROR [org.springframework.scheduling.support.TaskUtils$LoggingErrorHandler] - Unexpected error occurred in scheduled task.
+org.springframework.orm.jpa.JpaSystemException: Unable to commit against JDBC Connection; nested exception is org.hibernate.TransactionException: Unable to commit against JDBC Connection
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:351)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:253)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:536)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:533)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:304)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.projects.rebook.service.impl.NewsItemServiceImpl$$EnhancerBySpringCGLIB$$5d4082bd.crawlerBatDongSan(<generated>)
+	at com.projects.rebook.config.ScheduledTasks.scheduleTaskWithFixedRate(ScheduledTasks.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: Unable to commit against JDBC Connection
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:87)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:272)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	... 22 common frames omitted
+Caused by: java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:813)
+	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:361)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:81)
+	... 25 common frames omitted
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:1263)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:575)
+	at com.mysql.cj.jdbc.ConnectionImpl.commit(ConnectionImpl.java:770)
+	... 28 common frames omitted
+2019-10-07 13:01:48,947 INFO [com.projects.rebook.Main] - Starting Main on MacBookPro-2.local with PID 3285 (/Users/ThanhLe/khoa-luan/sources/rebook/target/classes started by ThanhLe in /Users/ThanhLe/khoa-luan/sources/rebook)
+2019-10-07 13:01:48,952 INFO [com.projects.rebook.Main] - No active profile set, falling back to default profiles: default
+2019-10-07 13:01:49,275 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-10-07 13:01:49,275 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-10-07 13:01:50,197 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-07 13:01:50,283 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 81ms. Found 10 repository interfaces.
+2019-10-07 13:01:50,658 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$8be4a923] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,694 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b83297a0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,724 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$50e05fda] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,729 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,730 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@fec6b17' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,734 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$75b5028c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,742 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$9b0a1aa2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,744 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:50,746 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:01:51,279 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8082 (http)
+2019-10-07 13:01:51,293 INFO [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 13:01:51,305 INFO [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2019-10-07 13:01:51,306 INFO [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-10-07 13:01:51,387 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2019-10-07 13:01:51,388 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2112 ms
+2019-10-07 13:01:51,750 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2019-10-07 13:01:51,835 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2019-10-07 13:01:51,884 INFO [org.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-07 13:01:51,931 INFO [org.hibernate.Version] - HHH000412: Hibernate Core {5.3.9.Final}
+2019-10-07 13:01:51,933 INFO [org.hibernate.cfg.Environment] - HHH000206: hibernate.properties not found
+2019-10-07 13:01:52,114 INFO [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-07 13:01:52,245 INFO [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-10-07 13:01:52,976 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 13:01:53,460 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2019-10-07 13:02:13,102 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {}
+2019-10-07 13:02:13,513 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/static/**'], []
+2019-10-07 13:02:13,513 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/css/**'], []
+2019-10-07 13:02:13,513 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/js/**'], []
+2019-10-07 13:02:13,513 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/images/**'], []
+2019-10-07 13:02:13,513 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/vendors/**'], []
+2019-10-07 13:02:13,586 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1710a9d, org.springframework.security.web.context.SecurityContextPersistenceFilter@59bbd6f2, org.springframework.security.web.header.HeaderWriterFilter@200199e9, org.springframework.web.filter.CorsFilter@59eb9b6b, org.springframework.security.web.authentication.logout.LogoutFilter@389742ef, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@518a5f7, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@c1a8b0b, com.projects.rebook.auth.TokenAuthenticationFilter@659411e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@f058fa0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29a7b38, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@747d03f, org.springframework.security.web.session.SessionManagementFilter@655c7345, org.springframework.security.web.access.ExceptionTranslationFilter@5ec2976c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@590671c7]
+2019-10-07 13:02:13,714 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:02:13,732 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:02:13,752 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:02:13,833 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:02:14,012 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService
+2019-10-07 13:02:14,013 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'asyncExecutor'
+2019-10-07 13:02:14,259 WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-07 13:02:14,777 INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] - Adding welcome page template: index
+2019-10-07 13:02:15,112 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Starting...
+2019-10-07 13:02:15,113 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:02:15,114 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Started.
+2019-10-07 13:02:15,131 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate Task :: Execution Time - 13:02:15
+2019-10-07 13:02:15,131 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate DiaOcOnline :: Execution Time - 13:02:15
+2019-10-07 13:02:15,137 INFO [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-07 13:02:15,144 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerBatDongSan - MessageBroker-1
+2019-10-07 13:02:15,144 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerDiaOcOnline - MessageBroker-2
+2019-10-07 13:02:39,648 INFO [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 13:02:39,696 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8082 (http) with context path ''
+2019-10-07 13:02:39,701 INFO [com.projects.rebook.Main] - Started Main in 51.349 seconds (JVM running for 52.678)
+2019-10-07 13:02:54,547 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-07 13:02:54,548 INFO [org.springframework.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2019-10-07 13:02:54,573 INFO [org.springframework.web.servlet.DispatcherServlet] - Completed initialization in 25 ms
+2019-10-07 13:02:58,481 ERROR [com.projects.rebook.auth.RestAuthenticationEntryPoint] - Responding with unauthorized error. Message - Full authentication is required to access this resource
+2019-10-07 13:02:58,499 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@51a5ac92, com.projects.rebook.bean.Response.NewsResponseDTO@65967e2f, com.projects.rebook.bean.Response.NewsResponseDTO@401b7bb9, com.projects.rebook.bean.Response.NewsResponseDTO@3abe9683, com.projects.rebook.bean.Response.NewsResponseDTO@46037c7a, com.projects.rebook.bean.Response.NewsResponseDTO@10320593, com.projects.rebook.bean.Response.NewsResponseDTO@bef629f, com.projects.rebook.bean.Response.NewsResponseDTO@45abf7ef, com.projects.rebook.bean.Response.NewsResponseDTO@1896a38c, com.projects.rebook.bean.Response.NewsResponseDTO@18882390, com.projects.rebook.bean.Response.NewsResponseDTO@68834184, com.projects.rebook.bean.Response.NewsResponseDTO@720dc7f4, com.projects.rebook.bean.Response.NewsResponseDTO@5f2a80fa, com.projects.rebook.bean.Response.NewsResponseDTO@6e7ac2c, com.projects.rebook.bean.Response.NewsResponseDTO@749a5215, com.projects.rebook.bean.Response.NewsResponseDTO@68b40915, com.projects.rebook.bean.Response.NewsResponseDTO@631279a9, com.projects.rebook.bean.Response.NewsResponseDTO@582f2f2b, com.projects.rebook.bean.Response.NewsResponseDTO@7e83d4c1, com.projects.rebook.bean.Response.NewsResponseDTO@36b796a5], size - 20
+2019-10-07 13:03:13,161 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@1f15f455, com.projects.rebook.bean.Response.NewsResponseDTO@5235d8c0, com.projects.rebook.bean.Response.NewsResponseDTO@30f4637c, com.projects.rebook.bean.Response.NewsResponseDTO@6bbbd0fa, com.projects.rebook.bean.Response.NewsResponseDTO@5b3c3684, com.projects.rebook.bean.Response.NewsResponseDTO@27b316fb, com.projects.rebook.bean.Response.NewsResponseDTO@344f7ef2, com.projects.rebook.bean.Response.NewsResponseDTO@1c64481, com.projects.rebook.bean.Response.NewsResponseDTO@3bf4ca2b, com.projects.rebook.bean.Response.NewsResponseDTO@44f0760, com.projects.rebook.bean.Response.NewsResponseDTO@4bb841f5, com.projects.rebook.bean.Response.NewsResponseDTO@78e9f64f, com.projects.rebook.bean.Response.NewsResponseDTO@65d1ceeb, com.projects.rebook.bean.Response.NewsResponseDTO@1959a136, com.projects.rebook.bean.Response.NewsResponseDTO@10e7fc01, com.projects.rebook.bean.Response.NewsResponseDTO@278b2bdc, com.projects.rebook.bean.Response.NewsResponseDTO@4c461f50, com.projects.rebook.bean.Response.NewsResponseDTO@18c257ff, com.projects.rebook.bean.Response.NewsResponseDTO@37eab712, com.projects.rebook.bean.Response.NewsResponseDTO@4941bff8], size - 20
+2019-10-07 13:03:13,836 INFO [org.springframework.web.socket.config.WebSocketMessageBrokerStats] - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 3, queued tasks = 0, completed tasks = 0]
+2019-10-07 13:03:21,621 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:03:21,779 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:21,915 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:22,113 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:22,219 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:22,485 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:22,696 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:22,820 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:22,984 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,096 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,236 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,346 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,490 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,603 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,736 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:23,854 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:23,998 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:24,120 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:24,229 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:24,339 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:24,452 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:24,567 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:24,620 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:24,690 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:24,765 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:24,817 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:24,893 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:03:24,943 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:25,029 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,066 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,172 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:03:25,188 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,297 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:03:25,358 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,443 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:25,484 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:25,578 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,642 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,720 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,823 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:25,937 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:26,046 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:26,157 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:26,258 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:26,367 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:03:26,473 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:03:26,574 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:26,672 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:03:26,777 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:26,885 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:03:28,638 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - listImageInsert save - [com.projects.rebook.model.NewsImageUrl@460e1b24, com.projects.rebook.model.NewsImageUrl@19cf050b, com.projects.rebook.model.NewsImageUrl@3fa975cf, com.projects.rebook.model.NewsImageUrl@7c970ea2, com.projects.rebook.model.NewsImageUrl@4a76ed2f, com.projects.rebook.model.NewsImageUrl@2b705e37, com.projects.rebook.model.NewsImageUrl@5f83419b, com.projects.rebook.model.NewsImageUrl@1ba5b6d7, com.projects.rebook.model.NewsImageUrl@66472f19, com.projects.rebook.model.NewsImageUrl@4fef4400, com.projects.rebook.model.NewsImageUrl@a255bff, com.projects.rebook.model.NewsImageUrl@3c804762, com.projects.rebook.model.NewsImageUrl@63e0880c, com.projects.rebook.model.NewsImageUrl@561a1f34, com.projects.rebook.model.NewsImageUrl@76c05cab, com.projects.rebook.model.NewsImageUrl@48c5ae46, com.projects.rebook.model.NewsImageUrl@2f82efba, com.projects.rebook.model.NewsImageUrl@2967a6c1, com.projects.rebook.model.NewsImageUrl@5db69242, com.projects.rebook.model.NewsImageUrl@3864b02c, com.projects.rebook.model.NewsImageUrl@2377a5, com.projects.rebook.model.NewsImageUrl@14e698ce, com.projects.rebook.model.NewsImageUrl@7d2b3c92, com.projects.rebook.model.NewsImageUrl@60d316cb, com.projects.rebook.model.NewsImageUrl@7bd6cb2b, com.projects.rebook.model.NewsImageUrl@5bd60c77, com.projects.rebook.model.NewsImageUrl@7fbd6433, com.projects.rebook.model.NewsImageUrl@7a05041, com.projects.rebook.model.NewsImageUrl@4ae25c0d, com.projects.rebook.model.NewsImageUrl@21bc5492, com.projects.rebook.model.NewsImageUrl@3534206a, com.projects.rebook.model.NewsImageUrl@30934cd5, com.projects.rebook.model.NewsImageUrl@68c97cfe, com.projects.rebook.model.NewsImageUrl@2b92adb1, com.projects.rebook.model.NewsImageUrl@3fb1efd9, com.projects.rebook.model.NewsImageUrl@15eef91e]
+2019-10-07 13:03:29,560 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - listImageInsert save - [com.projects.rebook.model.NewsImageUrl@67e6c7aa, com.projects.rebook.model.NewsImageUrl@47da35d3, com.projects.rebook.model.NewsImageUrl@2ab4791f, com.projects.rebook.model.NewsImageUrl@32dd8d8a, com.projects.rebook.model.NewsImageUrl@6357c7ec, com.projects.rebook.model.NewsImageUrl@753512f8, com.projects.rebook.model.NewsImageUrl@7cc0e1c0, com.projects.rebook.model.NewsImageUrl@22af920f, com.projects.rebook.model.NewsImageUrl@7f1a5911, com.projects.rebook.model.NewsImageUrl@226536d8, com.projects.rebook.model.NewsImageUrl@59501db5, com.projects.rebook.model.NewsImageUrl@731d37a, com.projects.rebook.model.NewsImageUrl@2acec05c, com.projects.rebook.model.NewsImageUrl@2116f02b, com.projects.rebook.model.NewsImageUrl@78f2ec09, com.projects.rebook.model.NewsImageUrl@71515a6e, com.projects.rebook.model.NewsImageUrl@2d41a838, com.projects.rebook.model.NewsImageUrl@3bc09213, com.projects.rebook.model.NewsImageUrl@543da3c6, com.projects.rebook.model.NewsImageUrl@2fc40105, com.projects.rebook.model.NewsImageUrl@fe46cad, com.projects.rebook.model.NewsImageUrl@308b3748, com.projects.rebook.model.NewsImageUrl@911810c, com.projects.rebook.model.NewsImageUrl@6d27502, com.projects.rebook.model.NewsImageUrl@2a7fe071, com.projects.rebook.model.NewsImageUrl@4327b301, com.projects.rebook.model.NewsImageUrl@463b5388, com.projects.rebook.model.NewsImageUrl@53545428, com.projects.rebook.model.NewsImageUrl@67d5a5b, com.projects.rebook.model.NewsImageUrl@783c4e2e, com.projects.rebook.model.NewsImageUrl@6487f5b2, com.projects.rebook.model.NewsImageUrl@1503181e, com.projects.rebook.model.NewsImageUrl@79c03767, com.projects.rebook.model.NewsImageUrl@63174b4f, com.projects.rebook.model.NewsImageUrl@386618fa, com.projects.rebook.model.NewsImageUrl@35a82400, com.projects.rebook.model.NewsImageUrl@4dab46dd, com.projects.rebook.model.NewsImageUrl@14bf2114, com.projects.rebook.model.NewsImageUrl@1c965ab1, com.projects.rebook.model.NewsImageUrl@68eaf507, com.projects.rebook.model.NewsImageUrl@7fe0db69, com.projects.rebook.model.NewsImageUrl@123ae200, com.projects.rebook.model.NewsImageUrl@3cd77124, com.projects.rebook.model.NewsImageUrl@32ae974, com.projects.rebook.model.NewsImageUrl@7a6841eb, com.projects.rebook.model.NewsImageUrl@3f878644, com.projects.rebook.model.NewsImageUrl@38de9ec1, com.projects.rebook.model.NewsImageUrl@6ceba1e7, com.projects.rebook.model.NewsImageUrl@54b4c288, com.projects.rebook.model.NewsImageUrl@5782cbfc, com.projects.rebook.model.NewsImageUrl@1be67f5b, com.projects.rebook.model.NewsImageUrl@2ab30159, com.projects.rebook.model.NewsImageUrl@58613605, com.projects.rebook.model.NewsImageUrl@19fddbde, com.projects.rebook.model.NewsImageUrl@31c9731d, com.projects.rebook.model.NewsImageUrl@34215b4, com.projects.rebook.model.NewsImageUrl@5242cac7, com.projects.rebook.model.NewsImageUrl@2516c87a, com.projects.rebook.model.NewsImageUrl@5fbd065e, com.projects.rebook.model.NewsImageUrl@4cc147a8, com.projects.rebook.model.NewsImageUrl@891a805, com.projects.rebook.model.NewsImageUrl@1b57e475, com.projects.rebook.model.NewsImageUrl@2cef8eb7, com.projects.rebook.model.NewsImageUrl@6a556085, com.projects.rebook.model.NewsImageUrl@6f012c4a, com.projects.rebook.model.NewsImageUrl@4b511993, com.projects.rebook.model.NewsImageUrl@1b1bbc78, com.projects.rebook.model.NewsImageUrl@5a0bb6d6, com.projects.rebook.model.NewsImageUrl@3c0eb2a1, com.projects.rebook.model.NewsImageUrl@7f50b932, com.projects.rebook.model.NewsImageUrl@39ee32dc, com.projects.rebook.model.NewsImageUrl@3ed48e31, com.projects.rebook.model.NewsImageUrl@7786b8f0, com.projects.rebook.model.NewsImageUrl@de5061b, com.projects.rebook.model.NewsImageUrl@45d5bda9, com.projects.rebook.model.NewsImageUrl@5f6a0624, com.projects.rebook.model.NewsImageUrl@1d696401, com.projects.rebook.model.NewsImageUrl@38197c69, com.projects.rebook.model.NewsImageUrl@5049b636, com.projects.rebook.model.NewsImageUrl@5f9dc13d, com.projects.rebook.model.NewsImageUrl@902ffa3, com.projects.rebook.model.NewsImageUrl@7a0b30de, com.projects.rebook.model.NewsImageUrl@67eed1af, com.projects.rebook.model.NewsImageUrl@564b7046, com.projects.rebook.model.NewsImageUrl@48aa72cb, com.projects.rebook.model.NewsImageUrl@6b8426c0, com.projects.rebook.model.NewsImageUrl@7a76e1b6, com.projects.rebook.model.NewsImageUrl@773277fe, com.projects.rebook.model.NewsImageUrl@6c956ff9, com.projects.rebook.model.NewsImageUrl@266de68d, com.projects.rebook.model.NewsImageUrl@6b5bd8a7, com.projects.rebook.model.NewsImageUrl@f32cfb5, com.projects.rebook.model.NewsImageUrl@489f830d, com.projects.rebook.model.NewsImageUrl@10f5d1d, com.projects.rebook.model.NewsImageUrl@34a4337b, com.projects.rebook.model.NewsImageUrl@2d720d3d, com.projects.rebook.model.NewsImageUrl@19416475, com.projects.rebook.model.NewsImageUrl@625d25f5, com.projects.rebook.model.NewsImageUrl@77f7fd2e, com.projects.rebook.model.NewsImageUrl@4a511d08, com.projects.rebook.model.NewsImageUrl@58a1bafb, com.projects.rebook.model.NewsImageUrl@53585e97, com.projects.rebook.model.NewsImageUrl@1b0ec75f, com.projects.rebook.model.NewsImageUrl@5975206b, com.projects.rebook.model.NewsImageUrl@cd62fdc, com.projects.rebook.model.NewsImageUrl@1deb6437, com.projects.rebook.model.NewsImageUrl@70b27cea, com.projects.rebook.model.NewsImageUrl@b46cef, com.projects.rebook.model.NewsImageUrl@3da11bea, com.projects.rebook.model.NewsImageUrl@7bad0ab5, com.projects.rebook.model.NewsImageUrl@189b6c06, com.projects.rebook.model.NewsImageUrl@3b6bb8ee, com.projects.rebook.model.NewsImageUrl@e209a22, com.projects.rebook.model.NewsImageUrl@1d4bd1f1, com.projects.rebook.model.NewsImageUrl@5ef37502, com.projects.rebook.model.NewsImageUrl@38b91afa, com.projects.rebook.model.NewsImageUrl@32c27645, com.projects.rebook.model.NewsImageUrl@7145edb5, com.projects.rebook.model.NewsImageUrl@34dbddfa, com.projects.rebook.model.NewsImageUrl@44c56f51, com.projects.rebook.model.NewsImageUrl@659459d2, com.projects.rebook.model.NewsImageUrl@3be22890, com.projects.rebook.model.NewsImageUrl@51bc061b, com.projects.rebook.model.NewsImageUrl@3eec449a, com.projects.rebook.model.NewsImageUrl@79f1d05c, com.projects.rebook.model.NewsImageUrl@53fdd15a, com.projects.rebook.model.NewsImageUrl@624099e0, com.projects.rebook.model.NewsImageUrl@3ed4d9a6, com.projects.rebook.model.NewsImageUrl@49508d10, com.projects.rebook.model.NewsImageUrl@741af261, com.projects.rebook.model.NewsImageUrl@1273ea9b, com.projects.rebook.model.NewsImageUrl@a72089a, com.projects.rebook.model.NewsImageUrl@47872cc9, com.projects.rebook.model.NewsImageUrl@64ad57a2, com.projects.rebook.model.NewsImageUrl@69875e9e, com.projects.rebook.model.NewsImageUrl@73abadec, com.projects.rebook.model.NewsImageUrl@d343634, com.projects.rebook.model.NewsImageUrl@3aa7077, com.projects.rebook.model.NewsImageUrl@500aad32, com.projects.rebook.model.NewsImageUrl@7e60be12, com.projects.rebook.model.NewsImageUrl@52c9a27c, com.projects.rebook.model.NewsImageUrl@2b0499a, com.projects.rebook.model.NewsImageUrl@75617c3, com.projects.rebook.model.NewsImageUrl@7cbdb915, com.projects.rebook.model.NewsImageUrl@63783ebc, com.projects.rebook.model.NewsImageUrl@630447d0, com.projects.rebook.model.NewsImageUrl@54dbac7c, com.projects.rebook.model.NewsImageUrl@45bfc2e3, com.projects.rebook.model.NewsImageUrl@67109936, com.projects.rebook.model.NewsImageUrl@266b68c3, com.projects.rebook.model.NewsImageUrl@2f5a983e, com.projects.rebook.model.NewsImageUrl@1449ffec, com.projects.rebook.model.NewsImageUrl@77730d7a, com.projects.rebook.model.NewsImageUrl@a234e27, com.projects.rebook.model.NewsImageUrl@71c3ac35, com.projects.rebook.model.NewsImageUrl@2a2e9b7e, com.projects.rebook.model.NewsImageUrl@45594b9c, com.projects.rebook.model.NewsImageUrl@559b7766, com.projects.rebook.model.NewsImageUrl@39d5dbe4, com.projects.rebook.model.NewsImageUrl@67fe52cb, com.projects.rebook.model.NewsImageUrl@68f4f003, com.projects.rebook.model.NewsImageUrl@665a9a3c, com.projects.rebook.model.NewsImageUrl@714777e8, com.projects.rebook.model.NewsImageUrl@64ba0b01, com.projects.rebook.model.NewsImageUrl@2b019b7d, com.projects.rebook.model.NewsImageUrl@19b87f5b, com.projects.rebook.model.NewsImageUrl@538aa3b3, com.projects.rebook.model.NewsImageUrl@67dc48c0, com.projects.rebook.model.NewsImageUrl@40a1fd35, com.projects.rebook.model.NewsImageUrl@1ab910dd, com.projects.rebook.model.NewsImageUrl@1c28bf02, com.projects.rebook.model.NewsImageUrl@19b76e0f, com.projects.rebook.model.NewsImageUrl@56b07059, com.projects.rebook.model.NewsImageUrl@45dbdaa, com.projects.rebook.model.NewsImageUrl@5dd4d28c, com.projects.rebook.model.NewsImageUrl@7fb1182f, com.projects.rebook.model.NewsImageUrl@2a569d38, com.projects.rebook.model.NewsImageUrl@438fd535, com.projects.rebook.model.NewsImageUrl@38b43f7a, com.projects.rebook.model.NewsImageUrl@4f333823, com.projects.rebook.model.NewsImageUrl@5192d3a0]
+2019-10-07 13:03:29,606 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-dao-tri-phuong-phu-thuan-3-prj-q7-saigon-riverside/gap-54m2-gia-1-6-ty-67m2-gia-2-ty-view-song-sg-sai-gon-tt-24-0904515156-pr22532217=com.projects.rebook.model.NewsItem@74f30c1e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ngan-hang-scb-ho-tro-thanh-ly-28-lo-dat-nen-kv-binh-tan-tphcm-i1916138=com.projects.rebook.model.NewsItem@6b2f1a36, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-900m2-gia-450trnen-dat-tho-cu-co-so-hong-rieng-duong-25m-vi-tri-bao-dep-i1706137=com.projects.rebook.model.NewsItem@751ddf4f, https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-nguyen-huu-canh-phuong-22-prj-vinhomes-central-park/chuyen-gia-re-nhat-100-quang-khanh-0941572233-viber-zalo-pr20624329=com.projects.rebook.model.NewsItem@810dde8, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/mo-ban-30-nen-dat-kdc-ten-lua-2-nam-gan-aeon-mall-binh-tan-i1915858=com.projects.rebook.model.NewsItem@5bb418a8, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-nen-dau-tu-duoc-ngan-hang-ho-tro-dam-bao-loi-nhuan-kep-lh-0888476478-i1908452=com.projects.rebook.model.NewsItem@750753e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-gap-nen-dat-tho-cu-duong-nhua-20m-tinh-lo-10-shr-i1396250=com.projects.rebook.model.NewsItem@4d14be8b, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-kdc-dat-nam-luxury-moi-mo-ban-giai-doan-cuoi-nam-ck-khung-cho-nha-dau-tu-i1916714=com.projects.rebook.model.NewsItem@71285ee3, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-tho-cu-100-o-tphcm-gia-899-trieu130m2-so-hong-rieng-i1915097=com.projects.rebook.model.NewsItem@7e7536ff, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/mo-ban-dot-2-29-lo-dat-nen-binh-tan-kdc-ten-lua-2-gia-tu-899tr-nen-i1915320=com.projects.rebook.model.NewsItem@6638664b, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-tan-do-re-qua-troi-troi-oi-re-qua-qua-troi-re-luon-800-trieu-i1844474=com.projects.rebook.model.NewsItem@7ea65c85, https://batdongsan.com.vn/ban-nha-biet-thu-lien-ke-duong-bung-ong-thoan-phuong-phu-huu-2-prj-park-riverside-tan-cang/toi-chinh-chu-can-pho-5x15-co-so-hong-q-9-he-0909455111-pr22845032=com.projects.rebook.model.NewsItem@15c92e3e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-binh-chanh-sieu-re-sieu-loi-nhuan-nhieu-lo-mat-tien-dep-i1578537=com.projects.rebook.model.NewsItem@29c13939, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ngan-hang-vib-thong-bao-ht-phat-mai-dat-nen-gan-cho-ba-hom-i1917310=com.projects.rebook.model.NewsItem@2208d73f, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-gap-5-nen-dat-dung-tinh-lo-10-co-so-hong-rieng-i1395507=com.projects.rebook.model.NewsItem@323d6ce9, https://batdongsan.com.vn/ban-dat-duong-nguyen-thi-bay-thi-tran-can-giuoc/gap-lo-goc-2-mat-tien-long-an-dien-tich-120m2-gia-990-trieu-tl-pr22846858=com.projects.rebook.model.NewsItem@31df5992, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/tran-trong-thong-bao-mo-ban-du-an-kdc-ten-lua-ii-lien-ke-aeon-mall-binh-tan-so-hong-rieng-i1914677=com.projects.rebook.model.NewsItem@5bda0d44, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/can-thanh-ly-gap-vai-lo-dat-gia-tot-dau-tu-co-so-hong-rieng-i1916202=com.projects.rebook.model.NewsItem@1db25c0d, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-nen-du-an-kdc-tan-do-gia-re-hon-cong-ty-i1916715=com.projects.rebook.model.NewsItem@62451637, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/sacombank-ht-thanh-ly-38-nen-dat-lk-ben-xe-mien-tay-i1916728=com.projects.rebook.model.NewsItem@10ecc0ee}
+2019-10-07 13:03:29,607 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase listNewsItemInsert response - [com.projects.rebook.model.NewsItem@1c11b931, com.projects.rebook.model.NewsItem@7bba9a76, com.projects.rebook.model.NewsItem@623461f5, com.projects.rebook.model.NewsItem@71ad7c49, com.projects.rebook.model.NewsItem@671b401d, com.projects.rebook.model.NewsItem@17c841d2, com.projects.rebook.model.NewsItem@3ca3fea6, com.projects.rebook.model.NewsItem@65d6a465]
+2019-10-07 13:03:30,237 INFO [com.projects.rebook.config.ScheduledTasks] - Crawler DiaOcOnline.vn response - Page 1 of 1 containing com.projects.rebook.model.NewsItem instances
+2019-10-07 13:03:30,633 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-dat-nen-tai-flc-lux-city-quy-nhon-gia-tu-16trm2-sinh-loi-50-lh-0901555164-i1897803=com.projects.rebook.model.NewsItem@1c11b931, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-900m2-gia-450trnen-dat-tho-cu-co-so-hong-rieng-duong-25m-vi-tri-bao-dep-i1706137=com.projects.rebook.model.NewsItem@68d28d98, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ket-tien-sang-gap-lo-goc-2-mat-tien-duong-18-25m-dt-525m221x25m-gia-542trnen-i1110034=com.projects.rebook.model.NewsItem@17c841d2, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-lo-dat-tho-cu-300m2-chi-579tr-gan-kcn-gan-truong-hoc-cho-i1231910=com.projects.rebook.model.NewsItem@3ca3fea6, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-khu-dan-cu-center-city-3-sai-gon-land-2-huyen-bau-bang-chi-tu-574trnen-0901555164-i1911681=com.projects.rebook.model.NewsItem@623461f5, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-gap-nen-dat-tho-cu-duong-nhua-20m-tinh-lo-10-shr-i1396250=com.projects.rebook.model.NewsItem@366cb791, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-center-city-3-chi-574trieu95m2-phap-ly-day-du-thanh-toan-nhe-lh-0901555164-i1921595=com.projects.rebook.model.NewsItem@71ad7c49, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-kdc-dat-nam-luxury-moi-mo-ban-giai-doan-cuoi-nam-ck-khung-cho-nha-dau-tu-i1916714=com.projects.rebook.model.NewsItem@54454258, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/can-ban-gap-300m2-tho-cu-i1832545=com.projects.rebook.model.NewsItem@65d6a465, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-tho-cu-100-o-tphcm-gia-899-trieu130m2-so-hong-rieng-i1915097=com.projects.rebook.model.NewsItem@35d4e43e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/mo-ban-dot-2-29-lo-dat-nen-binh-tan-kdc-ten-lua-2-gia-tu-899tr-nen-i1915320=com.projects.rebook.model.NewsItem@62625e0e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-tan-do-re-qua-troi-troi-oi-re-qua-qua-troi-re-luon-800-trieu-i1844474=com.projects.rebook.model.NewsItem@674327c8, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-binh-chanh-sieu-re-sieu-loi-nhuan-nhieu-lo-mat-tien-dep-i1578537=com.projects.rebook.model.NewsItem@7455b443, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-center-city-3-chi-574trieu95m2-phap-ly-day-du-thanh-toan-nhe-lh-0901555164-i1913146=com.projects.rebook.model.NewsItem@7bba9a76, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ngan-hang-vib-thong-bao-ht-phat-mai-dat-nen-gan-cho-ba-hom-i1917310=com.projects.rebook.model.NewsItem@6dafc998, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-gap-5-nen-dat-dung-tinh-lo-10-co-so-hong-rieng-i1395507=com.projects.rebook.model.NewsItem@2f7183a0, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/tran-trong-thong-bao-mo-ban-du-an-kdc-ten-lua-ii-lien-ke-aeon-mall-binh-tan-so-hong-rieng-i1914677=com.projects.rebook.model.NewsItem@1033f50b, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/can-thanh-ly-gap-vai-lo-dat-gia-tot-dau-tu-co-so-hong-rieng-i1916202=com.projects.rebook.model.NewsItem@18c35b1a, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/dat-nen-du-an-kdc-tan-do-gia-re-hon-cong-ty-i1916715=com.projects.rebook.model.NewsItem@4aa1808e, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-nha-tro-dat-chi-635trnen-thu-hoi-no-xau-cuoi-nam-i1108158=com.projects.rebook.model.NewsItem@671b401d}
+2019-10-07 13:03:30,634 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase listNewsItemInsert response - [com.projects.rebook.model.NewsItem@2634d0dc, com.projects.rebook.model.NewsItem@29ae6783, com.projects.rebook.model.NewsItem@7b7b802e, com.projects.rebook.model.NewsItem@4370cff, com.projects.rebook.model.NewsItem@55ec53c3, com.projects.rebook.model.NewsItem@5534617b, com.projects.rebook.model.NewsItem@700edeef, com.projects.rebook.model.NewsItem@7c724e50, com.projects.rebook.model.NewsItem@6a446a6d, com.projects.rebook.model.NewsItem@368e85f8, com.projects.rebook.model.NewsItem@49198154, com.projects.rebook.model.NewsItem@32d20a4f, com.projects.rebook.model.NewsItem@1da2333d, com.projects.rebook.model.NewsItem@132d6ee9, com.projects.rebook.model.NewsItem@7c2772fb, com.projects.rebook.model.NewsItem@f98bd6, com.projects.rebook.model.NewsItem@20d47086, com.projects.rebook.model.NewsItem@29188c4a, com.projects.rebook.model.NewsItem@6414383d, com.projects.rebook.model.NewsItem@7af28fe8, com.projects.rebook.model.NewsItem@463224e4, com.projects.rebook.model.NewsItem@39ad039f, com.projects.rebook.model.NewsItem@364d4474, com.projects.rebook.model.NewsItem@126f7074, com.projects.rebook.model.NewsItem@43e3e953]
+2019-10-07 13:03:31,050 INFO [com.projects.rebook.config.ScheduledTasks] - Crawler BatDongSan.com.vn response - Page 1 of 1 containing com.projects.rebook.model.NewsItem instances
+2019-10-07 13:04:43,677 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@89fb0ed, com.projects.rebook.bean.Response.NewsResponseDTO@697598e, com.projects.rebook.bean.Response.NewsResponseDTO@16dc5261, com.projects.rebook.bean.Response.NewsResponseDTO@62483659, com.projects.rebook.bean.Response.NewsResponseDTO@1725fa25, com.projects.rebook.bean.Response.NewsResponseDTO@2b428a66, com.projects.rebook.bean.Response.NewsResponseDTO@5f799a35, com.projects.rebook.bean.Response.NewsResponseDTO@7ca0957d, com.projects.rebook.bean.Response.NewsResponseDTO@446cbc1e, com.projects.rebook.bean.Response.NewsResponseDTO@7b421f4f, com.projects.rebook.bean.Response.NewsResponseDTO@68798a20, com.projects.rebook.bean.Response.NewsResponseDTO@100ae12f, com.projects.rebook.bean.Response.NewsResponseDTO@31a7337c, com.projects.rebook.bean.Response.NewsResponseDTO@5a74fa60, com.projects.rebook.bean.Response.NewsResponseDTO@7e784384, com.projects.rebook.bean.Response.NewsResponseDTO@39bcc6fd, com.projects.rebook.bean.Response.NewsResponseDTO@31082e65, com.projects.rebook.bean.Response.NewsResponseDTO@4cd265de, com.projects.rebook.bean.Response.NewsResponseDTO@708a7ba3, com.projects.rebook.bean.Response.NewsResponseDTO@2fdec061], size - 20
+2019-10-07 13:07:28,500 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@50413b08, com.projects.rebook.bean.Response.NewsResponseDTO@3e8f61d3, com.projects.rebook.bean.Response.NewsResponseDTO@201ab2ba, com.projects.rebook.bean.Response.NewsResponseDTO@69a45e3d, com.projects.rebook.bean.Response.NewsResponseDTO@3064a17a, com.projects.rebook.bean.Response.NewsResponseDTO@75a0cf5c, com.projects.rebook.bean.Response.NewsResponseDTO@5a3c30, com.projects.rebook.bean.Response.NewsResponseDTO@4bc4cfb0, com.projects.rebook.bean.Response.NewsResponseDTO@5e3ed8c3, com.projects.rebook.bean.Response.NewsResponseDTO@2d173677, com.projects.rebook.bean.Response.NewsResponseDTO@7cfd3459, com.projects.rebook.bean.Response.NewsResponseDTO@1129cd39, com.projects.rebook.bean.Response.NewsResponseDTO@39f9f71f, com.projects.rebook.bean.Response.NewsResponseDTO@2dc9dad9, com.projects.rebook.bean.Response.NewsResponseDTO@38036cc5, com.projects.rebook.bean.Response.NewsResponseDTO@671c2ef9, com.projects.rebook.bean.Response.NewsResponseDTO@11ab6c0a, com.projects.rebook.bean.Response.NewsResponseDTO@725773f4, com.projects.rebook.bean.Response.NewsResponseDTO@51115c3f, com.projects.rebook.bean.Response.NewsResponseDTO@57fcdb02], size - 20
+2019-10-07 13:09:17,265 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@18590544, com.projects.rebook.bean.Response.NewsResponseDTO@661868d7, com.projects.rebook.bean.Response.NewsResponseDTO@467eb9af, com.projects.rebook.bean.Response.NewsResponseDTO@100c08aa, com.projects.rebook.bean.Response.NewsResponseDTO@402f4cca, com.projects.rebook.bean.Response.NewsResponseDTO@6554dac8, com.projects.rebook.bean.Response.NewsResponseDTO@56d4b40c, com.projects.rebook.bean.Response.NewsResponseDTO@266dbf24, com.projects.rebook.bean.Response.NewsResponseDTO@1c9eee3f, com.projects.rebook.bean.Response.NewsResponseDTO@5f5fe5fe, com.projects.rebook.bean.Response.NewsResponseDTO@2c585ecd, com.projects.rebook.bean.Response.NewsResponseDTO@678740fd, com.projects.rebook.bean.Response.NewsResponseDTO@c03a524, com.projects.rebook.bean.Response.NewsResponseDTO@2c53d14f, com.projects.rebook.bean.Response.NewsResponseDTO@42935c3e, com.projects.rebook.bean.Response.NewsResponseDTO@1fce6c39, com.projects.rebook.bean.Response.NewsResponseDTO@e75c061, com.projects.rebook.bean.Response.NewsResponseDTO@3c9ea149, com.projects.rebook.bean.Response.NewsResponseDTO@64b46848, com.projects.rebook.bean.Response.NewsResponseDTO@8777f43], size - 20
+2019-10-07 13:16:39,346 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopping...
+2019-10-07 13:16:39,348 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:16:39,349 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopped.
+2019-10-07 13:16:39,352 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'asyncExecutor'
+2019-10-07 13:16:39,354 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:16:39,355 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:16:39,355 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:16:39,356 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:16:39,360 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 13:16:39,371 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2019-10-07 13:16:39,379 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2019-10-07 13:31:07,842 INFO [com.projects.rebook.Main] - Starting Main on MacBookPro-2.local with PID 4227 (/Users/ThanhLe/khoa-luan/sources/rebook/target/classes started by ThanhLe in /Users/ThanhLe/khoa-luan/sources/rebook)
+2019-10-07 13:31:07,847 INFO [com.projects.rebook.Main] - No active profile set, falling back to default profiles: default
+2019-10-07 13:31:08,320 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-10-07 13:31:08,320 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-10-07 13:31:09,904 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-07 13:31:10,126 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] - Finished Spring Data repository scanning in 207ms. Found 10 repository interfaces.
+2019-10-07 13:31:10,669 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$cd1a2f2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,729 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$391f916f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,816 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$d1cd59a9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,823 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,825 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@21b2e8c1' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,827 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$f6a1fc5b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,835 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration' of type [org.springframework.security.config.annotation.method.configuration.Jsr250MetadataSourceConfiguration$$EnhancerBySpringCGLIB$$1bf71471] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,838 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'jsr250MethodSecurityMetadataSource' of type [org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:10,839 INFO [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-07 13:31:11,683 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8082 (http)
+2019-10-07 13:31:11,715 INFO [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 13:31:11,740 INFO [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2019-10-07 13:31:11,741 INFO [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-10-07 13:31:11,908 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2019-10-07 13:31:11,910 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3589 ms
+2019-10-07 13:31:12,959 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2019-10-07 13:31:13,094 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2019-10-07 13:31:13,150 INFO [org.hibernate.jpa.internal.util.LogHelper] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-07 13:31:13,224 INFO [org.hibernate.Version] - HHH000412: Hibernate Core {5.3.9.Final}
+2019-10-07 13:31:13,226 INFO [org.hibernate.cfg.Environment] - HHH000206: hibernate.properties not found
+2019-10-07 13:31:13,493 INFO [org.hibernate.annotations.common.Version] - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-07 13:31:13,864 INFO [org.hibernate.dialect.Dialect] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-10-07 13:31:14,841 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 13:31:15,712 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2019-10-07 13:31:35,275 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {}
+2019-10-07 13:31:35,637 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/static/**'], []
+2019-10-07 13:31:35,637 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/css/**'], []
+2019-10-07 13:31:35,637 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/js/**'], []
+2019-10-07 13:31:35,637 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/images/**'], []
+2019-10-07 13:31:35,637 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: Ant [pattern='/vendors/**'], []
+2019-10-07 13:31:35,712 INFO [org.springframework.security.web.DefaultSecurityFilterChain] - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78dba135, org.springframework.security.web.context.SecurityContextPersistenceFilter@58eaaf2a, org.springframework.security.web.header.HeaderWriterFilter@129a62a7, org.springframework.web.filter.CorsFilter@270225b5, org.springframework.security.web.authentication.logout.LogoutFilter@644ace46, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@10bdc5f4, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@a6abd96, com.projects.rebook.auth.TokenAuthenticationFilter@3ecee552, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ed048d2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11c2cde4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51bbe497, org.springframework.security.web.session.SessionManagementFilter@4b5242f5, org.springframework.security.web.access.ExceptionTranslationFilter@30677a2f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@61713f10]
+2019-10-07 13:31:35,836 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:31:35,852 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:31:35,866 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Initializing ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:31:35,948 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:31:36,039 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService
+2019-10-07 13:31:36,039 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Initializing ExecutorService 'asyncExecutor'
+2019-10-07 13:31:36,233 WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-07 13:31:36,690 INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] - Adding welcome page template: index
+2019-10-07 13:31:37,026 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Starting...
+2019-10-07 13:31:37,027 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:31:37,027 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Started.
+2019-10-07 13:31:37,043 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate Task :: Execution Time - 13:31:37
+2019-10-07 13:31:37,043 INFO [com.projects.rebook.config.ScheduledTasks] - Fixed Rate DiaOcOnline :: Execution Time - 13:31:37
+2019-10-07 13:31:37,046 INFO [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-07 13:31:37,055 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerDiaOcOnline - MessageBroker-2
+2019-10-07 13:31:37,055 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - Thread execute crawlerBatDongSan - MessageBroker-1
+2019-10-07 13:31:54,680 INFO [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-0.0.0.0-8082"]
+2019-10-07 13:31:54,731 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8082 (http) with context path ''
+2019-10-07 13:31:54,735 INFO [com.projects.rebook.Main] - Started Main in 47.504 seconds (JVM running for 49.112)
+2019-10-07 13:32:12,160 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:12,296 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:12,453 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:12,594 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:12,760 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:12,909 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,045 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,188 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,227 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,330 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,370 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,477 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,509 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,616 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,662 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,764 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:13,808 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,909 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:13,948 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:14,061 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:14,104 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:14,198 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:14,265 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:14,345 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:14,409 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:14,500 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:14,549 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:14,638 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:14,694 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:14,770 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:32:14,834 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:14,907 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:14,978 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:15,113 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:15,244 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:15,377 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:15,504 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999998
+2019-10-07 13:32:15,649 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:15,784 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:15,915 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:16,048 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:16,182 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0000000000000002
+2019-10-07 13:32:16,316 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:16,447 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:16,573 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:16,707 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:16,837 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:16,964 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 1.0
+2019-10-07 13:32:17,114 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:17,245 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase compareText: 0.9999999999999999
+2019-10-07 13:32:17,713 ERROR [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase error: java.lang.NullPointerException
+2019-10-07 13:32:18,154 ERROR [com.projects.rebook.config.ScheduledTasks] - Crawler DiaOcOnline.vn response fail - handleUpdateDatabase error.
+2019-10-07 13:32:19,570 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - listImageInsert save - [com.projects.rebook.model.NewsImageUrl@1a55497, com.projects.rebook.model.NewsImageUrl@4568baed, com.projects.rebook.model.NewsImageUrl@53dd1608, com.projects.rebook.model.NewsImageUrl@60cf6496, com.projects.rebook.model.NewsImageUrl@4b6595f4, com.projects.rebook.model.NewsImageUrl@4b5af1a7, com.projects.rebook.model.NewsImageUrl@708cd392, com.projects.rebook.model.NewsImageUrl@6bfce2c1, com.projects.rebook.model.NewsImageUrl@c51007f, com.projects.rebook.model.NewsImageUrl@109a0f9b, com.projects.rebook.model.NewsImageUrl@69c4e59, com.projects.rebook.model.NewsImageUrl@a7a5ea1, com.projects.rebook.model.NewsImageUrl@e2ce569, com.projects.rebook.model.NewsImageUrl@4e8ac5e0, com.projects.rebook.model.NewsImageUrl@2a00b4ee, com.projects.rebook.model.NewsImageUrl@72d77859, com.projects.rebook.model.NewsImageUrl@1b39ccc7, com.projects.rebook.model.NewsImageUrl@304af85, com.projects.rebook.model.NewsImageUrl@2c0cdccf, com.projects.rebook.model.NewsImageUrl@65507ca7, com.projects.rebook.model.NewsImageUrl@30dadb3e, com.projects.rebook.model.NewsImageUrl@16043227, com.projects.rebook.model.NewsImageUrl@5ca47e8c, com.projects.rebook.model.NewsImageUrl@3af784fb, com.projects.rebook.model.NewsImageUrl@5c92bbb0, com.projects.rebook.model.NewsImageUrl@6b303f0f, com.projects.rebook.model.NewsImageUrl@141f6cfb, com.projects.rebook.model.NewsImageUrl@12c9f2df, com.projects.rebook.model.NewsImageUrl@5bcf940d, com.projects.rebook.model.NewsImageUrl@316d003c, com.projects.rebook.model.NewsImageUrl@5e7ada5e, com.projects.rebook.model.NewsImageUrl@3f89444, com.projects.rebook.model.NewsImageUrl@243007ca, com.projects.rebook.model.NewsImageUrl@7d859f90, com.projects.rebook.model.NewsImageUrl@75251254, com.projects.rebook.model.NewsImageUrl@32b8f200, com.projects.rebook.model.NewsImageUrl@1692bdca, com.projects.rebook.model.NewsImageUrl@47bac997, com.projects.rebook.model.NewsImageUrl@1a50d486, com.projects.rebook.model.NewsImageUrl@6f0d1d3e, com.projects.rebook.model.NewsImageUrl@6c7291f8, com.projects.rebook.model.NewsImageUrl@7d950b90, com.projects.rebook.model.NewsImageUrl@617d0440, com.projects.rebook.model.NewsImageUrl@661e11bc, com.projects.rebook.model.NewsImageUrl@1e9bb1d6, com.projects.rebook.model.NewsImageUrl@4b07f01e, com.projects.rebook.model.NewsImageUrl@4251a23a, com.projects.rebook.model.NewsImageUrl@5454c83d, com.projects.rebook.model.NewsImageUrl@1782c660, com.projects.rebook.model.NewsImageUrl@6371438e, com.projects.rebook.model.NewsImageUrl@2cfe7da8, com.projects.rebook.model.NewsImageUrl@5e995d2a, com.projects.rebook.model.NewsImageUrl@5f29315f, com.projects.rebook.model.NewsImageUrl@36ad7407, com.projects.rebook.model.NewsImageUrl@69e15c47, com.projects.rebook.model.NewsImageUrl@7d852c5c, com.projects.rebook.model.NewsImageUrl@6bb0497a, com.projects.rebook.model.NewsImageUrl@36e01547, com.projects.rebook.model.NewsImageUrl@558064b8, com.projects.rebook.model.NewsImageUrl@1335598, com.projects.rebook.model.NewsImageUrl@68a1275d, com.projects.rebook.model.NewsImageUrl@5e5d5d23, com.projects.rebook.model.NewsImageUrl@82e57f4, com.projects.rebook.model.NewsImageUrl@13aa4cfc, com.projects.rebook.model.NewsImageUrl@72d00a1b, com.projects.rebook.model.NewsImageUrl@46d0f527, com.projects.rebook.model.NewsImageUrl@3cbb8bfe, com.projects.rebook.model.NewsImageUrl@7db7ed39, com.projects.rebook.model.NewsImageUrl@fc5a046, com.projects.rebook.model.NewsImageUrl@4efd1554, com.projects.rebook.model.NewsImageUrl@2ef9830e, com.projects.rebook.model.NewsImageUrl@6c656dcd, com.projects.rebook.model.NewsImageUrl@4e802797, com.projects.rebook.model.NewsImageUrl@6871dca6, com.projects.rebook.model.NewsImageUrl@af2c355, com.projects.rebook.model.NewsImageUrl@4d3eccc3, com.projects.rebook.model.NewsImageUrl@24df66c, com.projects.rebook.model.NewsImageUrl@643f8e6f, com.projects.rebook.model.NewsImageUrl@784b11d6, com.projects.rebook.model.NewsImageUrl@432892c8, com.projects.rebook.model.NewsImageUrl@2ebbf257, com.projects.rebook.model.NewsImageUrl@36ef4d19, com.projects.rebook.model.NewsImageUrl@160a2fb3, com.projects.rebook.model.NewsImageUrl@11b34168, com.projects.rebook.model.NewsImageUrl@606b2043, com.projects.rebook.model.NewsImageUrl@2ca03ed2, com.projects.rebook.model.NewsImageUrl@6b90eb42, com.projects.rebook.model.NewsImageUrl@60a34f59, com.projects.rebook.model.NewsImageUrl@59731236, com.projects.rebook.model.NewsImageUrl@7488f164, com.projects.rebook.model.NewsImageUrl@182ece4c, com.projects.rebook.model.NewsImageUrl@628d9397, com.projects.rebook.model.NewsImageUrl@232edf52, com.projects.rebook.model.NewsImageUrl@101e0982, com.projects.rebook.model.NewsImageUrl@7e2cf963, com.projects.rebook.model.NewsImageUrl@7033cc1a, com.projects.rebook.model.NewsImageUrl@25b25901, com.projects.rebook.model.NewsImageUrl@4500162c, com.projects.rebook.model.NewsImageUrl@5cfe080e, com.projects.rebook.model.NewsImageUrl@32435c97, com.projects.rebook.model.NewsImageUrl@58e718f, com.projects.rebook.model.NewsImageUrl@40faa664, com.projects.rebook.model.NewsImageUrl@6c68680d, com.projects.rebook.model.NewsImageUrl@44e726f3, com.projects.rebook.model.NewsImageUrl@321325e9, com.projects.rebook.model.NewsImageUrl@274f7c49, com.projects.rebook.model.NewsImageUrl@84850ad, com.projects.rebook.model.NewsImageUrl@75e53fe9, com.projects.rebook.model.NewsImageUrl@5ef260d1, com.projects.rebook.model.NewsImageUrl@203f272, com.projects.rebook.model.NewsImageUrl@488407a7]
+2019-10-07 13:32:20,472 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - newsItemMap - {http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-dat-nen-tai-flc-lux-city-quy-nhon-gia-tu-16trm2-sinh-loi-50-lh-0901555164-i1897803=com.projects.rebook.model.NewsItem@118f980e, https://batdongsan.com.vn/ban-dat-duong-vo-van-bich-xa-binh-my/no-ngan-hang-can-thanh-ly-gap-het-3-lo-tai-huyen-cu-chi-va-tan-phu-trung-pr22850535=com.projects.rebook.model.NewsItem@44376d3c, https://batdongsan.com.vn/ban-nha-biet-thu-lien-ke-phuong-ngoc-thuy-prj-khai-son-city/town-mo-shophouse-quan-long-bien-ho-tro-lai-suat-0-pr22377151=com.projects.rebook.model.NewsItem@1dff9e4a, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ket-tien-sang-gap-lo-goc-2-mat-tien-duong-18-25m-dt-525m221x25m-gia-542trnen-i1110034=com.projects.rebook.model.NewsItem@21c22141, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/ban-lo-dat-tho-cu-300m2-chi-579tr-gan-kcn-gan-truong-hoc-cho-i1231910=com.projects.rebook.model.NewsItem@630292eb, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-khu-dan-cu-center-city-3-sai-gon-land-2-huyen-bau-bang-chi-tu-574trnen-0901555164-i1911681=com.projects.rebook.model.NewsItem@3aef0da7, https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-hoa-binh-1-phuong-hiep-tan-prj-can-ho-richstar/novaland-expo-2019-su-kien-trien-lam-bat-dong-san-novaland-lon-nhat-qua-tang-uu-dai-dac-quyen-pr21208724=com.projects.rebook.model.NewsItem@42b5f81, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-center-city-3-chi-574trieu95m2-phap-ly-day-du-thanh-toan-nhe-lh-0901555164-i1921595=com.projects.rebook.model.NewsItem@57cdad1c, https://batdongsan.com.vn/ban-nha-rieng-duong-quoc-lo-13-phuong-hiep-binh-chanh/can-gap-khuon-dat-goc-2mt-dt-750m-ngay-tai-nga-tu-cau-trieu-than-40x22-gia-23-ty-pr22855784=com.projects.rebook.model.NewsItem@69228c97, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/can-ban-gap-300m2-tho-cu-i1832545=com.projects.rebook.model.NewsItem@599d76da, https://batdongsan.com.vn/ban-dat-duong-44a-xa-an-ngai/biet-thu-bien-so-hong-rieng-long-hai-ba-ria-vung-tau-pr22843861=com.projects.rebook.model.NewsItem@43761d23, https://batdongsan.com.vn/ban-dat-nen-du-an-duong-tinh-lo-10-phuong-binh-tri-dong-b-prj-khu-dan-cu-hai-thanh-ten-lua/can-sang-lai-gap-goc-2-mat-tien-10-gan-aeon-tan-gan-benh-vien-nhi-3-pr22856070=com.projects.rebook.model.NewsItem@1a4e05f8, https://batdongsan.com.vn/ban-dat-duong-quoc-lo-13-phuong-an-phu-2/canh-bao-dep-re-toi-3250m2-hai-mat-tien-570-trieu-mat-tien-13-so-rieng-tho-cu-pr22541204=com.projects.rebook.model.NewsItem@429fa6b4, https://batdongsan.com.vn/ban-dat-duong-tran-van-giau-xa-le-minh-xuan/quen-gia-ca-khi-mua-di-phap-ly-moi-la-then-chot-hang-dau-neu-khong-muon-mat-trang-pr22856388=com.projects.rebook.model.NewsItem@7ba2c908, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/du-an-dat-nen-center-city-3-chi-574trieu95m2-phap-ly-day-du-thanh-toan-nhe-lh-0901555164-i1913146=com.projects.rebook.model.NewsItem@6cb4e89c, https://batdongsan.com.vn/ban-nha-biet-thu-lien-ke-pho-le-trong-tan-phuong-duong-noi-prj-khu-do-thi-geleximco-le-trong-tan/han-phoi-doc-quyen-da-a-b-c-d-va-bao-son-hotline-0918-185-628-0981-627-018-pr21515790=com.projects.rebook.model.NewsItem@16835202, http://diaoconline.vn/ban-dat-du-an-quy-hoach-c12/thanh-ly-nha-tro-dat-chi-635trnen-thu-hoi-no-xau-cuoi-nam-i1108158=com.projects.rebook.model.NewsItem@1cf65f71, https://batdongsan.com.vn/ban-nha-rieng-pho-dai-la-phuong-truong-dinh/moi-xay-5-tang-o-ngo-an-son-dt-30m2-gia-3ti050-lien-he-094-702-4117-pr22581986=com.projects.rebook.model.NewsItem@2574464f, https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-mai-chi-tho-phuong-an-phu-prj-the-sun-avenue/gio-hang-120-cap-nhat-thang-10-2019-gia-thue-2pn-15tr-full-nt-lh-0982989833-pr22854411=com.projects.rebook.model.NewsItem@7b042353, https://batdongsan.com.vn/ban-nha-biet-thu-lien-ke-duong-lac-long-quan-xa-tien-thanh-1-prj-novaworld-phan-thiet/uu-dai-moi-nhat-sieu-pham-ck-den-9-tang-du-lich-my-cam-ket-thue-9-nam-pr22698918=com.projects.rebook.model.NewsItem@4b456dcb}
+2019-10-07 13:32:20,473 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - handleUpdateDatabase listNewsItemInsert response - [com.projects.rebook.model.NewsItem@75f75b8e, com.projects.rebook.model.NewsItem@6cf6befc, com.projects.rebook.model.NewsItem@6a361760, com.projects.rebook.model.NewsItem@67b34cb9, com.projects.rebook.model.NewsItem@733498b3, com.projects.rebook.model.NewsItem@ed8c778, com.projects.rebook.model.NewsItem@1e98d6e4, com.projects.rebook.model.NewsItem@232e60ed, com.projects.rebook.model.NewsItem@493da01e, com.projects.rebook.model.NewsItem@4325ba07, com.projects.rebook.model.NewsItem@41b18bfe, com.projects.rebook.model.NewsItem@5563b16a, com.projects.rebook.model.NewsItem@27b0aa65, com.projects.rebook.model.NewsItem@13d77d62]
+2019-10-07 13:32:20,900 INFO [com.projects.rebook.config.ScheduledTasks] - Crawler BatDongSan.com.vn response - Page 1 of 1 containing com.projects.rebook.model.NewsItem instances
+2019-10-07 13:32:35,952 INFO [org.springframework.web.socket.config.WebSocketMessageBrokerStats] - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 2]
+2019-10-07 13:32:47,196 INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-07 13:32:47,202 INFO [org.springframework.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2019-10-07 13:32:47,232 INFO [org.springframework.web.servlet.DispatcherServlet] - Completed initialization in 29 ms
+2019-10-07 13:32:48,837 ERROR [com.projects.rebook.auth.RestAuthenticationEntryPoint] - Responding with unauthorized error. Message - Full authentication is required to access this resource
+2019-10-07 13:32:49,861 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@482b6f52, com.projects.rebook.bean.Response.NewsResponseDTO@74444634, com.projects.rebook.bean.Response.NewsResponseDTO@4eb346a6, com.projects.rebook.bean.Response.NewsResponseDTO@2b63dcc1, com.projects.rebook.bean.Response.NewsResponseDTO@38a16700, com.projects.rebook.bean.Response.NewsResponseDTO@6e82f3c6, com.projects.rebook.bean.Response.NewsResponseDTO@3a500ec6, com.projects.rebook.bean.Response.NewsResponseDTO@f605899, com.projects.rebook.bean.Response.NewsResponseDTO@3ccab712, com.projects.rebook.bean.Response.NewsResponseDTO@45af7f8e, com.projects.rebook.bean.Response.NewsResponseDTO@7f337fc3, com.projects.rebook.bean.Response.NewsResponseDTO@721a442c, com.projects.rebook.bean.Response.NewsResponseDTO@1b810f5a, com.projects.rebook.bean.Response.NewsResponseDTO@256c50ab, com.projects.rebook.bean.Response.NewsResponseDTO@4145eea2, com.projects.rebook.bean.Response.NewsResponseDTO@615ef982, com.projects.rebook.bean.Response.NewsResponseDTO@72b6d12c, com.projects.rebook.bean.Response.NewsResponseDTO@35983ed9, com.projects.rebook.bean.Response.NewsResponseDTO@5bc6e636, com.projects.rebook.bean.Response.NewsResponseDTO@4dc28625], size - 20
+2019-10-07 13:33:01,104 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@617b05e1, com.projects.rebook.bean.Response.NewsResponseDTO@61836e75, com.projects.rebook.bean.Response.NewsResponseDTO@7e02413c, com.projects.rebook.bean.Response.NewsResponseDTO@4f54de5a, com.projects.rebook.bean.Response.NewsResponseDTO@76399e5c, com.projects.rebook.bean.Response.NewsResponseDTO@cb3b628, com.projects.rebook.bean.Response.NewsResponseDTO@60d40d23, com.projects.rebook.bean.Response.NewsResponseDTO@91bb96d, com.projects.rebook.bean.Response.NewsResponseDTO@33ea1d6c, com.projects.rebook.bean.Response.NewsResponseDTO@22f9ffcf, com.projects.rebook.bean.Response.NewsResponseDTO@620443a6, com.projects.rebook.bean.Response.NewsResponseDTO@36805e5a, com.projects.rebook.bean.Response.NewsResponseDTO@5562349b, com.projects.rebook.bean.Response.NewsResponseDTO@3808be7f, com.projects.rebook.bean.Response.NewsResponseDTO@78d1d3ab, com.projects.rebook.bean.Response.NewsResponseDTO@4c173065, com.projects.rebook.bean.Response.NewsResponseDTO@8951390, com.projects.rebook.bean.Response.NewsResponseDTO@7513afbb, com.projects.rebook.bean.Response.NewsResponseDTO@3296639, com.projects.rebook.bean.Response.NewsResponseDTO@7648ea21], size - 20
+2019-10-07 13:42:02,396 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@35d70dc0, com.projects.rebook.bean.Response.NewsResponseDTO@5d537cb0, com.projects.rebook.bean.Response.NewsResponseDTO@7b6c8356, com.projects.rebook.bean.Response.NewsResponseDTO@6d850642, com.projects.rebook.bean.Response.NewsResponseDTO@6031af3f, com.projects.rebook.bean.Response.NewsResponseDTO@2641f975, com.projects.rebook.bean.Response.NewsResponseDTO@3928b8d8, com.projects.rebook.bean.Response.NewsResponseDTO@7c5a1ea9, com.projects.rebook.bean.Response.NewsResponseDTO@117f1e4a, com.projects.rebook.bean.Response.NewsResponseDTO@38dcd741, com.projects.rebook.bean.Response.NewsResponseDTO@444e56fa, com.projects.rebook.bean.Response.NewsResponseDTO@68cdb78c, com.projects.rebook.bean.Response.NewsResponseDTO@1296991, com.projects.rebook.bean.Response.NewsResponseDTO@5f11c02a, com.projects.rebook.bean.Response.NewsResponseDTO@695ea4b4, com.projects.rebook.bean.Response.NewsResponseDTO@6caa0fc4, com.projects.rebook.bean.Response.NewsResponseDTO@26059621, com.projects.rebook.bean.Response.NewsResponseDTO@7744125b, com.projects.rebook.bean.Response.NewsResponseDTO@6ba36303, com.projects.rebook.bean.Response.NewsResponseDTO@57cb859c], size - 20
+2019-10-07 13:43:33,845 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@1ba538f5, com.projects.rebook.bean.Response.NewsResponseDTO@2db42938, com.projects.rebook.bean.Response.NewsResponseDTO@44e1212, com.projects.rebook.bean.Response.NewsResponseDTO@7db36d8c, com.projects.rebook.bean.Response.NewsResponseDTO@4fe3805f, com.projects.rebook.bean.Response.NewsResponseDTO@43928d72, com.projects.rebook.bean.Response.NewsResponseDTO@37b8d990, com.projects.rebook.bean.Response.NewsResponseDTO@51011de6, com.projects.rebook.bean.Response.NewsResponseDTO@2339ee1, com.projects.rebook.bean.Response.NewsResponseDTO@551d7ac8, com.projects.rebook.bean.Response.NewsResponseDTO@24184da2, com.projects.rebook.bean.Response.NewsResponseDTO@7d2f9aea, com.projects.rebook.bean.Response.NewsResponseDTO@6375c738, com.projects.rebook.bean.Response.NewsResponseDTO@5d802aa4, com.projects.rebook.bean.Response.NewsResponseDTO@3b9319eb, com.projects.rebook.bean.Response.NewsResponseDTO@3a6a3cb9, com.projects.rebook.bean.Response.NewsResponseDTO@776b60cb, com.projects.rebook.bean.Response.NewsResponseDTO@2b62a188, com.projects.rebook.bean.Response.NewsResponseDTO@81db94e, com.projects.rebook.bean.Response.NewsResponseDTO@6379c300], size - 20
+2019-10-07 13:44:46,367 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@848e8dc, com.projects.rebook.bean.Response.NewsResponseDTO@6d1f5b2f, com.projects.rebook.bean.Response.NewsResponseDTO@223947cd, com.projects.rebook.bean.Response.NewsResponseDTO@16a4869, com.projects.rebook.bean.Response.NewsResponseDTO@4e2b4e90, com.projects.rebook.bean.Response.NewsResponseDTO@597aa259, com.projects.rebook.bean.Response.NewsResponseDTO@31159194, com.projects.rebook.bean.Response.NewsResponseDTO@626faedf, com.projects.rebook.bean.Response.NewsResponseDTO@762423cc, com.projects.rebook.bean.Response.NewsResponseDTO@7a403f3b, com.projects.rebook.bean.Response.NewsResponseDTO@67c488d6, com.projects.rebook.bean.Response.NewsResponseDTO@7842dba7, com.projects.rebook.bean.Response.NewsResponseDTO@2fafad20, com.projects.rebook.bean.Response.NewsResponseDTO@54ede609, com.projects.rebook.bean.Response.NewsResponseDTO@17ac567a, com.projects.rebook.bean.Response.NewsResponseDTO@795d38cb, com.projects.rebook.bean.Response.NewsResponseDTO@2b494c6d, com.projects.rebook.bean.Response.NewsResponseDTO@10af3aa3, com.projects.rebook.bean.Response.NewsResponseDTO@6545a14a, com.projects.rebook.bean.Response.NewsResponseDTO@75ce4649], size - 20
+2019-10-07 13:48:18,508 INFO [com.projects.rebook.service.impl.NewsItemServiceImpl] - getAllNewsItem response - [com.projects.rebook.bean.Response.NewsResponseDTO@302aefa6, com.projects.rebook.bean.Response.NewsResponseDTO@23e0298e, com.projects.rebook.bean.Response.NewsResponseDTO@7d77313e, com.projects.rebook.bean.Response.NewsResponseDTO@2d89dd48, com.projects.rebook.bean.Response.NewsResponseDTO@4a395080, com.projects.rebook.bean.Response.NewsResponseDTO@6837bc10, com.projects.rebook.bean.Response.NewsResponseDTO@2c8d8ee9, com.projects.rebook.bean.Response.NewsResponseDTO@4f8d75ad, com.projects.rebook.bean.Response.NewsResponseDTO@4f30918c, com.projects.rebook.bean.Response.NewsResponseDTO@1a327346, com.projects.rebook.bean.Response.NewsResponseDTO@5a885c2f, com.projects.rebook.bean.Response.NewsResponseDTO@7e8c7ace, com.projects.rebook.bean.Response.NewsResponseDTO@35fb2862, com.projects.rebook.bean.Response.NewsResponseDTO@3c5ac5d8, com.projects.rebook.bean.Response.NewsResponseDTO@24ab8f58, com.projects.rebook.bean.Response.NewsResponseDTO@396ccb09, com.projects.rebook.bean.Response.NewsResponseDTO@55384c7e, com.projects.rebook.bean.Response.NewsResponseDTO@3fa62704, com.projects.rebook.bean.Response.NewsResponseDTO@478fbee7, com.projects.rebook.bean.Response.NewsResponseDTO@18e4119c], size - 20
+2019-10-07 13:49:21,908 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopping...
+2019-10-07 13:49:21,908 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-10-07 13:49:21,909 INFO [org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler] - Stopped.
+2019-10-07 13:49:21,911 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'asyncExecutor'
+2019-10-07 13:49:21,912 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'brokerChannelExecutor'
+2019-10-07 13:49:21,913 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] - Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-10-07 13:49:21,916 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-10-07 13:49:21,916 INFO [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] - Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-10-07 13:49:21,920 INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-07 13:49:21,927 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2019-10-07 13:49:21,932 INFO [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.

@@ -12,4 +12,10 @@ public interface LoadEnumService {
 
   Map<Integer, String> loadSaleType();
 
+  Map<Integer, String> loadPrice();
+
+  Map<Integer, String> loadArea();
+
+  Map<Integer, String> loadDirectHouse();
+
 }

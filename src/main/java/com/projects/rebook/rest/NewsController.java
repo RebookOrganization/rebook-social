@@ -5,6 +5,8 @@ import com.projects.rebook.bean.Request.LikeRequest;
 import com.projects.rebook.bean.Request.PostNewsRequest;
 import com.projects.rebook.bean.Request.ShareRequest;
 import com.projects.rebook.bean.Response.CommonResponse;
+import com.projects.rebook.service.NewsItemService;
+import com.projects.rebook.service.UserService;
 import com.projects.rebook.service.impl.NewsItemServiceImpl;
 import com.projects.rebook.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,10 @@ import java.io.IOException;
 public class NewsController {
 
     @Autowired
-    NewsItemServiceImpl newsItemService;
+    private NewsItemService newsItemService;
 
     @Autowired
-    UserServiceImpl userService;
+    private UserService userService;
 
     @GetMapping(value = "/all-news")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")

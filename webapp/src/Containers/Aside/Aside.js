@@ -92,7 +92,7 @@ class Aside extends Component {
               <InfiniteScroll
                   loadMore={this.loadMore.bind(this)}
                   hasMore={this.state.hasMoreItems}
-                  loader={<div className="loader"><strong> Loading... </strong></div>}
+                  loader={<div className="loader" key={""}><strong> Loading... </strong></div>}
                   useWindow={false}>
                 {this.showItems()}{" "}
               </InfiniteScroll>

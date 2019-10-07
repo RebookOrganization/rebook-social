@@ -33,7 +33,7 @@ public class UploadFileController {
   private Logger logger = LoggerFactory.getLogger(UploadFileController.class);
 
   @Autowired
-  FileStorageService fileStorageService;
+  private FileStorageService fileStorageService;
 
   @PostMapping("/uploadFile")
   public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
