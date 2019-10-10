@@ -665,7 +665,7 @@ class Home extends Component {
                                   width: '30%'
                                 }}
                                         onClick={() => this.handleCloseAllInput()}>
-                                  <i className="fas fa-caret-down"></i> Close All
+                                  <i className="fas fa-caret-down"/> Close All
                                 </button>
                                 <LaddaButton
                                     data-style={EXPAND_LEFT}

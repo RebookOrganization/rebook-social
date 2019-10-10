@@ -90,6 +90,10 @@
     font-weight: 500;
 }
 
+.app-nav ul li .message .btn.active {
+    background-color: #0F5484;
+}
+
 .app-nav ul li .message:hover {
     display: inline-block;
     line-height: 54px;
@@ -98,6 +102,13 @@
     color: white;
     font-weight: 500;
 }
+
+.app-nav ul li .message a:hover {
+    color: white;
+    font-weight: 500;
+    background-color: #63c2de;
+}
+
 
 .app-nav ul li a:hover {
     background-color: #0F5484; /*#3B70C5*/
@@ -158,4 +169,11 @@
     width: 32px;
     height: 32px;
     border-radius: 25px;
+}
+
+.dropdown-menu-center {
+    left: 50% !important;
+    right: auto !important;
+    /*text-align: center !important;*/
+    transform: translate(-50%, 52px) !important;
 }

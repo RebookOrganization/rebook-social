@@ -153,7 +153,8 @@ class AppHeader extends Component {
     const styleChat = {
       display: 'flex',
       alignItems: 'center',
-      padding: '0'
+      padding: '0',
+      maxHeight:'56px'
     };
 
     const dot = {
@@ -162,7 +163,7 @@ class AppHeader extends Component {
       backgroundColor: '#4dbd74',
       borderRadius: '50%',
       display: 'inline-block',
-      marginLeft: '150px'
+      marginLeft: '200px'
     };
 
     let province = [];
@@ -277,13 +278,13 @@ class AppHeader extends Component {
                             <button className="btn border-none-outline"
                                     type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true"
-                                    style={{fontSize:'16px', fontWeight:'500', color:'white'}}
+                                    style={{fontSize:'16px', fontWeight:'500',
+                                      color:'white'}}
                                     aria-expanded="false">
                               {/*<img src="/icon/menu-5.svg" style={{width:'23px',height:'23px'}} alt={""}/>*/}
                               Tin Nhắn
                             </button>
-                            <div className="dropdown-menu"
-                                 aria-labelledby="dropdownMenuButton">
+                            <div className="dropdown-menu dropdown-menu-center">
                               <a className="dropdown-item">
                                 <div style={styleChat}>
                                   <a className="btn-user">
@@ -464,6 +465,18 @@ class AppHeader extends Component {
                   <Select value={selectedDirectHouse}
                           onChange={(e)=> this.setState({selectedDirectHouse: e})}
                           options={directHouse}
+                          isSearchable={true}
+                          isClearable={true}
+                  />
+                </Col>
+              </Row>
+              <hr/>
+              <Row>
+                <Col md={6}>
+                  <h5>Quận/Huyện: </h5>
+                  <Select value={selectedDistrict}
+                          onChange={(e)=> this.setState({selectedDistrict: e})}
+                          options={district}
                           isSearchable={true}
                           isClearable={true}
                   />

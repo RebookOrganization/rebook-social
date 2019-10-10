@@ -297,6 +297,7 @@ class ListCardItem extends Component{
                       {item.shareList ? item.shareList.length : 0} lượt share
                     </a>
                     <a className="float-right amount-like-share"
+                       onClick={()=>this.handleRenderComment(item.newsId)}
                        style={{color: '#606770'}}
                     >
                       {item.commentList ? item.commentList.length : 0} comment
