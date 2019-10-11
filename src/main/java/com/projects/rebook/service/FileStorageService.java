@@ -1,5 +1,7 @@
 package com.projects.rebook.service;
 
+import com.projects.rebook.auth.UserPrincipal;
+import com.projects.rebook.bean.Response.UploadFileResponse;
 import com.projects.rebook.config.WebAppConfig;
 import com.projects.rebook.exception.FileStorageException;
 import com.projects.rebook.exception.MyFileNotFoundException;
@@ -9,14 +11,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Service
 public class FileStorageService {
@@ -33,7 +45,7 @@ public class FileStorageService {
     try {
       Files.createDirectories(this.fileStorageLocation);
     } catch (Exception ex) {
-      logger.error("FileStorageService createDirectories - {}", ex);
+      logger.error("FileStorageService createDirectories - "+ ex);
       throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
     }
   }
@@ -59,7 +71,7 @@ public class FileStorageService {
     }
   }
 
-  public Resource loadFileAsResource(String fileName) {
+  private Resource loadFileAsResource(String fileName) {
     try {
       Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
       Resource resource = new UrlResource(filePath.toUri());
@@ -71,5 +83,51 @@ public class FileStorageService {
     } catch (MalformedURLException ex) {
       throw new MyFileNotFoundException("File not found " + fileName, ex);
     }
+  }
+
+  public UploadFileResponse uploadFile(MultipartFile file) {
+    String fileName = storeFile(file);
+
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    UserPrincipal currentUser = (UserPrincipal) authentication.getPrincipal();
+    String username = currentUser.getUsername();
+
+    String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+        .path("/downloadFile/")
+        .path(fileName)
+        .toUriString();
+
+    return new UploadFileResponse(username, fileName, fileDownloadUri,
+        file.getContentType(), file.getSize());
+  }
+
+  public List<UploadFileResponse> uploadMultipleFiles(MultipartFile[] files) {
+    return Arrays.stream(files)
+        .map(this::uploadFile)
+        .collect(Collectors.toList());
+  }
+
+  public ResponseEntity<Resource> downloadFile(String fileName, HttpServletRequest request) {
+    // Load file as Resource
+    Resource resource = loadFileAsResource(fileName);
+
+    // Try to determine file's content type
+    String contentType = null;
+    try {
+      contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+    } catch (IOException ex) {
+      logger.info("Could not determine file type.");
+    }
+
+    // Fallback to the default content type if type could not be determined
+    if(contentType == null) {
+      contentType = "application/octet-stream";
+    }
+
+    return ResponseEntity.ok()
+        .contentType(MediaType.parseMediaType(contentType))
+        .header(
+            HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+        .body(resource);
   }
 }

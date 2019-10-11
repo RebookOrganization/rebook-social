@@ -83,12 +83,13 @@ class App extends Component {
     return (
         <div className="app">
           {
-            this.state.authenticated === true ?
+            // this.state.authenticated === true ?
                 <div className="app-top-box sticky-top">
                   <AppHeader authenticated={this.state.authenticated}
                              currentUser={this.state.currentUser}
                              onLogout={this.handleLogout}/>
-                </div> : null
+                </div>
+                // : null
           }
 
           <div className="app-body" id="app-body">
@@ -148,7 +149,7 @@ class App extends Component {
             </Route>
           </div>
 
-          <div className="app-footer"></div>
+          <div className="app-footer"/>
           <Alert stack={{limit: 3}}
                  timeout={3000}
                  position='top-right' effect='slide' offset={65}/>

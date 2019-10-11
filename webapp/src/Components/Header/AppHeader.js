@@ -236,9 +236,10 @@ class AppHeader extends Component {
                   marginRight: '20px'
                 }}/>
                 <Link to="/profile" className="app-title">Rebook</Link>
-                <div className="input-group input-group-sm"
-                     style={{marginLeft:'20px', width:'350px'}}
-                >
+                {
+                  this.props.authenticated ?
+                  <div className="input-group input-group-sm"
+                     style={{marginLeft:'20px', width:'350px'}}>
                   <input type="text" className="form-control"
                          placeholder="Tìm kiếm"
                          style={{fontSize:'14px'}}
@@ -252,7 +253,8 @@ class AppHeader extends Component {
                         <span className="fa fa-search" style={{color:'gray',marginLeft:'10px'}}/>
                       </span>
                     </div>
-                </div>
+                  </div> : null
+                }
               </div>
               <div className="col-md-5 app-options">
                 <nav className="app-nav">
@@ -279,10 +281,12 @@ class AppHeader extends Component {
                                     type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true"
                                     style={{fontSize:'16px', fontWeight:'500',
-                                      color:'white'}}
+                                      color:'white', padding:'0 5px'}}
                                     aria-expanded="false">
-                              {/*<img src="/icon/menu-5.svg" style={{width:'23px',height:'23px'}} alt={""}/>*/}
-                              Tin Nhắn
+                              <img className={"responsive"}
+                                   src="/icon/iconfinder_messenger.svg"
+                                   style={{width:'34px'}} alt={""}/>
+                              {/*Tin Nhắn*/}
                             </button>
                             <div className="dropdown-menu dropdown-menu-center">
                               <a className="dropdown-item">
@@ -339,8 +343,12 @@ class AppHeader extends Component {
                           </div>
                         </li>
                         <li>
-                          <a onClick={this.props.onLogout}
-                             style={{color: 'white'}}>Logout</a>
+                          <a onClick={this.props.onLogout}>
+                            <img className={"responsive"}
+                                 src="/icon/iconfinder_close.svg"
+                                 style={{width:'30px'}} alt={""}/>
+                            {/*Logout*/}
+                          </a>
                         </li>
                       </ul>
                   ) : (

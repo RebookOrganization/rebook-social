@@ -24,6 +24,9 @@ public class NewsImageUrl implements Serializable {
 
     private Long imageSize;
 
+    @Lob
+    private byte[] picByte;
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
@@ -43,4 +46,8 @@ public class NewsImageUrl implements Serializable {
     public Long getImageSize() { return imageSize; }
 
     public void setImageSize(Long imageSize) { this.imageSize = imageSize; }
+
+    public byte[] getPicByte() { return picByte; }
+
+    public void setPicByte(byte[] picByte) { this.picByte = picByte; }
 }

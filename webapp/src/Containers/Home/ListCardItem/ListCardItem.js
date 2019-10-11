@@ -383,11 +383,18 @@ class ListCardItem extends Component{
                            placeholder="Viết bình luận..."
                            value={this.state.comment}
                            onChange={(e) => this.setState(
-                               {comment: e.target.value})}/>
-                    <button style={{border:'none', outline:'none'}}
-                            onClick={()=>this.handleCommentPost(item.newsId)}>
-                      <img style={{width:'40px'}} src={'icon/icons8-circled_up.png'} alt={""}/>
-                    </button>
+                               {comment: e.target.value})}
+                           onKeyDown={(e)=>{if (e.key === "Enter") {
+                             this.handleCommentPost(item.newsId)
+                           }}}
+                    />
+                    <img className={"responsive"} src={"/icon/iconfinder_face.svg"} style={{width:'36px'}} alt={""}/>
+                    <img className={"responsive"} src={"/icon/iconfinder_ins.svg"} style={{width:'36px'}} alt={""}/>
+                    <img className={"responsive"} src={"/icon/iconfinder_picture.svg"} style={{width:'36px'}} alt={""}/>
+                    {/*<button style={{border:'none', outline:'none'}}*/}
+                    {/*        onClick={()=>this.handleCommentPost(item.newsId)}>*/}
+                    {/*  <img style={{width:'40px'}} src={'icon/icons8-circled_up.png'} alt={""}/>*/}
+                    {/*</button>*/}
                   </div>
                 </Card>
               )

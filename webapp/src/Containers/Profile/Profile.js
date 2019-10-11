@@ -121,16 +121,16 @@ class Profile extends Component {
 
   handleNewImage = e => {
     this.setState({ image: e.target.files[0] })
-  }
+  };
 
   handleScale = e => {
-    const scale = parseFloat(e.target.value)
+    const scale = parseFloat(e.target.value);
     this.setState({ scale })
-  }
+  };
 
   handlePositionChange = position => {
     this.setState({ position })
-  }
+  };
 
   render() {
     const {newsDetail, textOfReadMore, currentUser, indexNews,
@@ -211,6 +211,23 @@ class Profile extends Component {
                     <img className={"responsive"}
                          style={{maxWidth:'100%', minHeight:'100%', objectFit:'cover'}}
                          src="/icon/background-profile.jpg" alt={""}/>
+                  </Card>
+                </div>
+              </div>
+              <div className={"row"}>
+                <div className={"col"}>
+                  <Card style={{width:'100%'}}>
+                    <CardBody style={{padding:'15px'}}>
+                      <button style={{marginRight:'20px'}}>
+                        <i className="fa fa-plus"/> Bạn bè
+                      </button>
+                      <button style={{marginRight:'20px'}}>
+                        <i className="fa fa-plus"/> Ảnh/Video
+                      </button>
+                      <button className={'pull-right'} style={{marginRight:'20px'}}>
+                        <i className="fa fa-plus"/> Thêm
+                      </button>
+                    </CardBody>
                   </Card>
                 </div>
               </div>
@@ -297,7 +314,8 @@ class Profile extends Component {
                                 paddingRight: '5px',
                                 color: '#20a8d8'
                               }}
-                                 onClick={()=>this.handleRenderNewsDetail(item.newsId)}>
+                                 // onClick={()=>this.handleRenderNewsDetail(item.newsId)}
+                              >
                                 {textOfReadMore}
                               </a>
                               {
@@ -359,7 +377,8 @@ class Profile extends Component {
                                     className="border-none-outline btn-like-share-comment"
                                     style={renderComment && indexNews === item.newsId ?
                                         {backgroundColor:'#20a8d8', color:'white'} : {}}
-                                    onClick={() => this.handleRenderComment(item.newsId)}>
+                                    // onClick={() => this.handleRenderComment(item.newsId)}
+                                >
                                   <img style={styleIcon} src="/icon/a-chat.svg"/> Bình luận
                                 </Button>
                                 <Button
@@ -445,6 +464,9 @@ class Profile extends Component {
                     <Card style={{display:'flex',flexDirection:'row',padding:'10px'}}>
                       <CardText style={{marginRight:'20px'}}>Tiếng Việt.</CardText>
                       <CardText style={{marginRight:'20px'}}>English.</CardText>
+                      <button className={'pull-right'} style={{marginRight:'20px'}}>
+                        <i className="fa fa-plus"/> Thêm
+                      </button>
                     </Card>
                     <div style={{display: 'flex'}}>
                       <a href="https://mdbootstrap.com/education/bootstrap/" style={{color: '#616770', marginRight: '10px'}}>Điều khoản.</a>
