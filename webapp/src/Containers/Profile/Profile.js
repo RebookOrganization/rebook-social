@@ -218,6 +218,11 @@ class Profile extends Component {
                 <div className={"col"}>
                   <Card style={{width:'100%'}}>
                     <CardBody style={{padding:'15px'}}>
+                      <button style={{marginRight:'20px'}}
+                              onClick={()=>this.toggleModalEditProfile()}
+                      >
+                        <i className="fa fa-plus"/> Cập nhật hình nền
+                      </button>
                       <button style={{marginRight:'20px'}}>
                         <i className="fa fa-plus"/> Bạn bè
                       </button>

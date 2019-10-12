@@ -161,7 +161,9 @@ class PageRight extends Component {
             <CardBody>
               <CardText>With supporting text below as a natural lead-in to
                 additional content.</CardText>
-              <Button className="btn-detail">Chi tiết</Button>
+              <button className={"pull-right"}>
+                <i className="fa fa-plus"/> Chi tiết
+              </button>
             </CardBody>
           </Card>
           <Card>
@@ -178,6 +180,9 @@ class PageRight extends Component {
               style={{display: 'flex', flexDirection: 'row', padding: '10px'}}>
             <CardText style={{marginRight: '20px'}}>Tiếng Việt.</CardText>
             <CardText style={{marginRight: '20px'}}>English.</CardText>
+            <button className={"pull-right"}>
+              <i className="fa fa-plus"/> Thêm
+            </button>
           </Card>
           <div style={{display: 'flex'}}>
             <a href="https://mdbootstrap.com/education/bootstrap/"

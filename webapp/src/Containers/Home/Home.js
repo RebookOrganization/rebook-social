@@ -93,7 +93,8 @@ class Home extends Component {
       modalCreatedPost: false,
 
       items: 20,
-      hasMoreItems: true
+      hasMoreItems: true,
+      hideNav: false,
     };
 
   }
@@ -134,6 +135,16 @@ class Home extends Component {
       Alert.warning("Không thể lấy tất cả tin tức.");
     }).finally(() => this.setState({loading: false}));
 
+    //
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  resize() {
+    let currentHideNav = (window.innerWidth <= 790);
+    if (currentHideNav !== this.state.hideNav) {
+      this.setState({hideNav: currentHideNav});
+    }
   }
 
   handleRenderMoreButton = () => {
@@ -417,18 +428,26 @@ class Home extends Component {
           <div>
             <hr/>
             <h6>Người liên hệ</h6>
-            <Input name="contactName" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập tên người liên hệ..."/>
-            <Input name="contactPhone" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập số điện thoại người liên hệ..."/>
-            <Input name="contactAddress" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập địa chỉ người liên hệ..."/>
+            <div className={"row"}>
+              <div className="col col-md-6">
+                <Input name="contactName" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập tên người liên hệ..."/>
+              </div>
+              <div className="col col-md-6">
+                <Input name="contactPhone" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập số điện thoại người liên hệ..."/>
+              </div>
+            </div>
+            <div className={"row"}>
+              <Input name="contactAddress" type="text"
+                     style={inputStyle}
+                     onChange={this.handleChangeInput}
+                     placeholder="Vui lòng nhập địa chỉ người liên hệ..."/>
+            </div>
           </div>
     } else {
       inputContact = null
@@ -439,18 +458,26 @@ class Home extends Component {
           <div>
             <hr/>
             <h6>Dự án</h6>
-            <Input name="projectName" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập tên dự án..."/>
-            <Input name="projectOwner" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập chủ dự án..."/>
-            <Input name="projectSize" type="text"
-                   style={inputStyle}
-                   onChange={this.handleChangeInput}
-                   placeholder="Vui lòng nhập quy mô dự án..."/>
+            <div className={"row"}>
+              <div className={"col col-md-6"}>
+                <Input name="projectName" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập tên dự án..."/>
+              </div>
+              <div className={"col col-md-6"}>
+                <Input name="projectOwner" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập chủ dự án..."/>
+              </div>
+            </div>
+            <div className={"row"}>
+              <Input name="projectSize" type="text"
+                     style={inputStyle}
+                     onChange={this.handleChangeInput}
+                     placeholder="Vui lòng nhập quy mô dự án..."/>
+            </div>
           </div>
     } else {
       inputProject = null
@@ -563,7 +590,7 @@ class Home extends Component {
             {' '}
           </div>
     } else {
-      moreButton = <div></div>
+      moreButton = <div/>
     }
 
     return (
@@ -706,9 +733,13 @@ class Home extends Component {
                 <PageRight callBackFromPageRight={this.callBackFromPageRight}/>
               </div>
 
-              <div className="col col-md-2" style={{padding:'0'}}>
-                <Aside currentUser={currentUser}/>
-              </div>
+              {
+                !this.state.hideNav ?
+                    <div className="col col-md-2" style={{padding:'0'}}>
+                      <Aside currentUser={currentUser}/>
+                    </div> : null
+              }
+
             </div>
 
           </div>
@@ -811,7 +842,7 @@ class Home extends Component {
                   width: '30%'
                 }}
                         onClick={() => this.handleCloseAllInput()}>
-                  <i className="fas fa-caret-down"></i> Close All
+                  <i className="fas fa-caret-down"/> Close All
                 </button>
                 <LaddaButton
                     data-style={EXPAND_LEFT}

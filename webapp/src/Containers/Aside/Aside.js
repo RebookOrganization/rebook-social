@@ -74,17 +74,12 @@ class Aside extends Component {
             width: '257px'
           }}
           >
+            <h6 style={{color:'#616770'}}>Trò chơi</h6>
             <div className="text-uppercase mb-1 mt-2">
-              <small><b>CPU Usage</b></small>
+              {/*<small><b>Memory Usage</b></small>*/}
             </div>
-            <Progress className="progress-xs" color="info" value="25"/>
-            {/*<small className="text-muted">348 Processes. 1/4 Cores.</small>*/}
-
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>Memory Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="warning" value="70"/>
-            {/*<small className="text-muted">11444GB/16384MB</small>*/}
+            <Progress className="progress-xs" color="warning" value="60"/>
+            <small className="text-muted">11444GB/16384MB</small>
 
             <hr/>
             <h6 style={{color:'#616770'}}>Bắt đầu trò chuyện</h6>

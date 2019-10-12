@@ -54,7 +54,7 @@ class PageLeft extends Component{
               <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>
             </a>
           </div>
-          <h6 style={{color:'#616770', paddingLeft:'10px'}}>QR for App</h6>
+          <h6 style={{color:'#616770', paddingLeft:'10px'}}>QR for App Android</h6>
           <Card style={{width:'50%', height:'50%', marginLeft:'10px'}}>
             <CardImg top
                      src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market_full/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"

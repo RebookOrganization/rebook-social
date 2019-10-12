@@ -308,26 +308,49 @@ class ListCardItem extends Component{
 
                   <div>
                     <ButtonGroup style={{width: '100%', padding: '0 20px'}}>
+                      {/*<div className="dropup">*/}
+                      {/*  /!*<button className="dropbtn border-none-outline">Dropup</button>*!/*/}
+                      {/*  <Button*/}
+                      {/*      className="dropbtn border-none-outline"*/}
+                      {/*      style={activeLike && indexNews === item.newsId ?*/}
+                      {/*          {backgroundColor:'#20a8d8', color:'white'} : {}}*/}
+                      {/*      onClick={() => this.handleLikePost(item.newsId)}>*/}
+                      {/*    <img style={styleIcon} src="/icon/thumb-up.svg" alt={""}/> Thích*/}
+                      {/*  </Button>*/}
+                      {/*  <div className="dropup-content">*/}
+                      {/*    <div style={{display:'flex', padding:'5px'}}>*/}
+                      {/*      <a href={"#"}>*/}
+                      {/*        <img style={styleIcon} src="/icon/thumb-up.svg" alt={""}/>*/}
+                      {/*      </a>*/}
+                      {/*      <a href={"#"}>*/}
+                      {/*        <img style={styleIcon} src="/icon/heart.svg" alt={""}/>*/}
+                      {/*      </a>*/}
+                      {/*      <a href={"#"}>*/}
+                      {/*        <img style={styleIcon} src="/icon/a-chat.svg" alt={""}/>*/}
+                      {/*      </a>*/}
+                      {/*    </div>*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
                       <Button
                           className="border-none-outline btn-like-share-comment"
                           style={activeLike && indexNews === item.newsId ?
                               {backgroundColor:'#20a8d8', color:'white'} : {}}
                           onClick={() => this.handleLikePost(item.newsId)}>
-                        <img style={styleIcon} src="/icon/thumb-up.svg"/> Thích
+                        <img style={styleIcon} src="/icon/thumb-up.svg" alt={""}/> Thích
                       </Button>
                       <Button
                           className="border-none-outline btn-like-share-comment"
                           style={renderComment && indexNews === item.newsId ?
                               {backgroundColor:'#20a8d8', color:'white'} : {}}
                           onClick={() => this.handleRenderComment(item.newsId)}>
-                        <img style={styleIcon} src="/icon/a-chat.svg"/> Bình luận
+                        <img style={styleIcon} src="/icon/a-chat.svg" alt={""}/> Bình luận
                       </Button>
                       <Button
                           className="border-none-outline btn-like-share-comment"
                           style={activeShare && indexNews === item.newsId ?
                               {backgroundColor:'#20a8d8', color:'white'} : {}}
                           onClick={() => this.handleSharePost(item.newsId)}>
-                        <img style={styleIcon} src="/icon/share-right.svg"/> Chia sẻ
+                        <img style={styleIcon} src="/icon/share-right.svg" alt={""}/> Chia sẻ
                       </Button>
                     </ButtonGroup>
                   </div>
@@ -388,13 +411,15 @@ class ListCardItem extends Component{
                              this.handleCommentPost(item.newsId)
                            }}}
                     />
-                    <img className={"responsive"} src={"/icon/iconfinder_face.svg"} style={{width:'36px'}} alt={""}/>
-                    <img className={"responsive"} src={"/icon/iconfinder_ins.svg"} style={{width:'36px'}} alt={""}/>
-                    <img className={"responsive"} src={"/icon/iconfinder_picture.svg"} style={{width:'36px'}} alt={""}/>
-                    {/*<button style={{border:'none', outline:'none'}}*/}
-                    {/*        onClick={()=>this.handleCommentPost(item.newsId)}>*/}
-                    {/*  <img style={{width:'40px'}} src={'icon/icons8-circled_up.png'} alt={""}/>*/}
-                    {/*</button>*/}
+                    <button style={{border:'none', outline:'none'}}>
+                      <img className={"responsive"} src={"/icon/iconfinder_face.svg"} style={{width:'34px'}} alt={""}/>
+                    </button>
+                    <button style={{border:'none', outline:'none'}}>
+                      <img className={"responsive"} src={"/icon/iconfinder_ins.svg"} style={{width:'34px'}} alt={""}/>
+                    </button>
+                    <button style={{border:'none', outline:'none'}}>
+                      <img className={"responsive"} src={"/icon/iconfinder_picture.svg"} style={{width:'36px'}} alt={""}/>
+                    </button>
                   </div>
                 </Card>
               )
