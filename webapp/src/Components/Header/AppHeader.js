@@ -300,6 +300,7 @@ class AppHeader extends Component {
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
                               </a>
+                              <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
                                   <a className="btn-user">
@@ -311,6 +312,7 @@ class AppHeader extends Component {
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
                               </a>
+                              <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
                                   <a className="btn-user">
@@ -322,6 +324,7 @@ class AppHeader extends Component {
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
                               </a>
+                              <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
                                   <a className="btn-user">
@@ -333,9 +336,11 @@ class AppHeader extends Component {
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
                               </a>
+                              <hr/>
                               <a className="dropdown-item">
                                 <i className="far fa-save"/> Lưu bài viết
                               </a>
+                              <hr/>
                               <a className="dropdown-item">
                                 <i className="far fa-flag"/> Gửi phản hồi
                               </a>

@@ -428,7 +428,7 @@ class Home extends Component {
           <div>
             <hr/>
             <h6>Người liên hệ</h6>
-            <div className={"row"}>
+            <div className={"row"} style={{padding:'0 10px'}}>
               <div className="col col-md-6">
                 <Input name="contactName" type="text"
                        style={inputStyle}
@@ -442,11 +442,13 @@ class Home extends Component {
                        placeholder="Vui lòng nhập số điện thoại người liên hệ..."/>
               </div>
             </div>
-            <div className={"row"}>
-              <Input name="contactAddress" type="text"
-                     style={inputStyle}
-                     onChange={this.handleChangeInput}
-                     placeholder="Vui lòng nhập địa chỉ người liên hệ..."/>
+            <div className={"row"} style={{padding:'0 10px'}}>
+              <div className={"col"}>
+                <Input name="contactAddress" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập địa chỉ người liên hệ..."/>
+              </div>
             </div>
           </div>
     } else {
@@ -458,7 +460,7 @@ class Home extends Component {
           <div>
             <hr/>
             <h6>Dự án</h6>
-            <div className={"row"}>
+            <div className={"row"} style={{padding:'0 10px'}}>
               <div className={"col col-md-6"}>
                 <Input name="projectName" type="text"
                        style={inputStyle}
@@ -472,11 +474,13 @@ class Home extends Component {
                        placeholder="Vui lòng nhập chủ dự án..."/>
               </div>
             </div>
-            <div className={"row"}>
-              <Input name="projectSize" type="text"
-                     style={inputStyle}
-                     onChange={this.handleChangeInput}
-                     placeholder="Vui lòng nhập quy mô dự án..."/>
+            <div className={"row"} style={{padding:'0 10px'}}>
+              <div className={"col"}>
+                <Input name="projectSize" type="text"
+                       style={inputStyle}
+                       onChange={this.handleChangeInput}
+                       placeholder="Vui lòng nhập quy mô dự án..."/>
+              </div>
             </div>
           </div>
     } else {

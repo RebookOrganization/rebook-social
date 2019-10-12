@@ -41,3 +41,11 @@
     color: #fff;
     font-size: 3em;
 }
+
+.sticky-navbar {
+    position: fixed;
+    top: 54px;
+    width: auto;
+    min-width: 1035px;
+    z-index: 100;
+}

@@ -14,6 +14,7 @@ import {searchNewsByAddress, searchNewsByUser} from "../../api/UserApi";
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
 import 'ladda/dist/ladda-themeless.min.css';
 import {SocialIcon} from "react-social-icons";
+import "./_pageRight.css"
 
 class PageRight extends Component {
   constructor(props) {
@@ -30,6 +31,27 @@ class PageRight extends Component {
       collapseSearch: false,
     }
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    let copyright = document.getElementById("Copyright");
+    let pageRight = document.getElementById("page-right");
+    console.log("copyright.offsetTop: "+ copyright.offsetTop);
+    console.log("window.pageYOffset: "+ window.pageYOffset);
+    if (window.pageYOffset > copyright.offsetTop - 0.25) {
+      pageRight.classList.add("sticky-page-right")
+    }
+    else {
+      pageRight.classList.remove("sticky-page-right")
+    }
+  };
 
   toggleCollapse = () => {
     this.setState({collapseSearch: !this.state.collapseSearch})
@@ -91,7 +113,7 @@ class PageRight extends Component {
     const {loading} = this.state;
     // className="sticky-top" style={{top: '60px', zIndex:'1'}}
     return (
-        <div className="sticky-top" style={{top: '60px', zIndex:'1'}}>
+        <div id={"page-right"}>
           <Card>
             <div style={{padding: '15px'}}>
               <div className="search-box">
@@ -167,6 +189,30 @@ class PageRight extends Component {
             </CardBody>
           </Card>
           <Card>
+            <CardImg top width="100%"
+                     src="https://www.worldatlas.com/r/w728-h425-c728x425/upload/31/4c/3d/beautiful-new-zealand.jpg"
+                     alt="Card image cap"/>
+            <CardBody>
+              <CardText>With supporting text below as a natural lead-in to
+                additional content.</CardText>
+              <button className={"pull-right"}>
+                <i className="fa fa-plus"/> Chi tiết
+              </button>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardImg top width="100%"
+                     src="http://image.english.vov.vn/h500/uploaded/tmt2b47lhgly8uzveukg/2017_10_10/h_1_VEWM.jpg"
+                     alt="Card image cap"/>
+            <CardBody>
+              <CardText>With supporting text below as a natural lead-in to
+                additional content.</CardText>
+              <button className={"pull-right"}>
+                <i className="fa fa-plus"/> Chi tiết
+              </button>
+            </CardBody>
+          </Card>
+          <Card>
             <CardBody>
                 <SocialIcon url="http://linkedin.com/in/jaketrent"
                             style={{marginRight: '10px'}}/>
@@ -190,7 +236,7 @@ class PageRight extends Component {
             <a href="https://mdbootstrap.com/education/bootstrap/"
                style={{color: '#616770'}}>Quảng cáo.</a>
           </div>
-          <span
+          <span id={"Copyright"}
               style={{color: '#616770'}}>© 2019 Copyright: Rebook.com.vn</span>
         </div>
     )

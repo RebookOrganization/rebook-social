@@ -54,6 +54,7 @@ class Profile extends Component {
       preview: null,
       width: 300,
       height: 300,
+      hideNav: false
     }
   }
 
@@ -72,8 +73,33 @@ class Profile extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   componentDidMount() {
     this.handleGetAllNewByUser();
+
+    window.addEventListener('scroll', this.handleScroll);
+    //
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  handleScroll = () => {
+    let navbar = document.getElementById("navbar");
+    if (window.pageYOffset >= 350) {
+      navbar.classList.add("sticky-navbar")
+    } else {
+      navbar.classList.remove("sticky-navbar");
+    }
+  };
+
+  resize() {
+    let currentHideNav = (window.innerWidth <= 790);
+    if (currentHideNav !== this.state.hideNav) {
+      this.setState({hideNav: currentHideNav});
+    }
   }
 
   handleGetAllNewByUser = () => {
@@ -207,16 +233,13 @@ class Profile extends Component {
             <div className="col col-md-8" style={{paddingRight:'30px'}}>
               <div className="row">
                 <div className="col">
-                  <Card style={{border:'none', maxHeight:'370px'}}>
+                  <Card style={{border:'none', maxHeight:'370px', marginBottom:'0'}}>
                     <img className={"responsive"}
                          style={{maxWidth:'100%', minHeight:'100%', objectFit:'cover'}}
-                         src="/icon/background-profile.jpg" alt={""}/>
+                         src="https://images.pexels.com/photos/237018/pexels-photo-237018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt={""}/>
                   </Card>
-                </div>
-              </div>
-              <div className={"row"}>
-                <div className={"col"}>
-                  <Card style={{width:'100%'}}>
+                  {/*<div className={"row"}>*/}
+                  <Card id={"navbar"} style={{marginTop:'-1px', borderRadius: "0"}}>
                     <CardBody style={{padding:'15px'}}>
                       <button style={{marginRight:'20px'}}
                               onClick={()=>this.toggleModalEditProfile()}
@@ -234,6 +257,7 @@ class Profile extends Component {
                       </button>
                     </CardBody>
                   </Card>
+                  {/*</div>*/}
                 </div>
               </div>
               <div className="row">
@@ -459,7 +483,7 @@ class Profile extends Component {
                   }
                 </div>
                 <div className="col col-md-4">
-                  <div className="sticky-top" style={{zIndex:'1',top:'60px'}}>
+                  <div className="sticky-top" style={{zIndex:'1',top:'120px'}}>
                     <Card>
                       <CardBody>
                         <h6>Giới thiệu</h6>
@@ -483,9 +507,12 @@ class Profile extends Component {
               </div>
             </div>
 
-            <div className="col col-md-2">
-              <Aside/>
-            </div>
+            {
+              !this.state.hideNav ?
+              <div className="col col-md-2">
+                <Aside/>
+              </div> : null
+            }
           </div>
         </div>
 
