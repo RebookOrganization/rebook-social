@@ -107,7 +107,6 @@ class Profile extends Component {
     const {currentUser} = this.state;
     if (currentUser) {
       getAllNewsByUser(currentUser.userId).then(res => {
-        console.log("res: "+JSON.stringify(res));
         if (res && parseInt(res.returnCode) !== 0) {
           this.setState({
             newsByUser: res.result

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Badge, Progress} from "reactstrap";
 import InfiniteScroll from "react-infinite-scroller";
+import {SocialIcon} from "react-social-icons";
 
 class Aside extends Component {
   constructor(props) {
@@ -71,15 +72,20 @@ class Aside extends Component {
             borderLeft: '1px solid #bbc0c4',
             top: '54px',
             zIndex: '1',
-            width: '257px'
-          }}
-          >
+            width: '257px',
+          }}>
+            {/*<div className={"col col-sm-12"}>*/}
             <h6 style={{color:'#616770'}}>Trò chơi</h6>
-            <div className="text-uppercase mb-1 mt-2">
-              {/*<small><b>Memory Usage</b></small>*/}
-            </div>
-            <Progress className="progress-xs" color="warning" value="60"/>
-            <small className="text-muted">11444GB/16384MB</small>
+            <SocialIcon network="twitter" bgColor="#ff5a01"
+                        style={{marginRight: '10px'}}/>
+            <SocialIcon network="facebook" style={{marginRight: '10px'}}/>
+            <SocialIcon url="http://linkedin.com/in/jaketrent"
+                        style={{marginRight: '10px'}}/>
+            {/*<div className="text-uppercase mb-1 mt-2">*/}
+            {/*  /!*<small><b>Memory Usage</b></small>*!/*/}
+            {/*</div>*/}
+            {/*<Progress className="progress-xs" color="warning" value="60"/>*/}
+            {/*<small className="text-muted">11444GB/16384MB</small>*/}
 
             <hr/>
             <h6 style={{color:'#616770'}}>Bắt đầu trò chuyện</h6>
@@ -102,6 +108,7 @@ class Aside extends Component {
           }}>
             <span className="fa fa-search" style={{color:'#bbc0c4', left:'10px', top:'18px'}}/>
             <input style={{marginLeft:'1px', borderRadius: '0', width:'262px', border:'none', height:'45px'}} placeholder={"Tìm kiếm"}/>
+          {/*</div>*/}
           </div>
         </React.Fragment>
     );

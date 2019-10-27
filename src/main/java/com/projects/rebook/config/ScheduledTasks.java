@@ -20,8 +20,8 @@ public class ScheduledTasks {
   @Autowired
   NewsItemServiceImpl newsItemService;
 
-  @Scheduled(fixedRate = 3600000)
-  public void scheduleTaskWithFixedRate() throws IOException {
+  @Scheduled(fixedRate = 60000)
+  public void scheduleTaskWithFixedRate() {
     logger.info("Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
     CommonResponse response = newsItemService.crawlerBatDongSan();
     int returnCode = response.getReturnCode();
@@ -33,7 +33,7 @@ public class ScheduledTasks {
     }
   }
 
-  @Scheduled(fixedRate = 3600000)
+  @Scheduled(fixedRate = 120000)
   public void scheduleCrawlerDiaOcOnline() throws IOException {
     logger.info("Fixed Rate DiaOcOnline :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
     CommonResponse response = newsItemService.crawlerDiaOcOnline();

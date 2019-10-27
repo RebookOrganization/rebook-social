@@ -6,6 +6,7 @@ import {
   Card,
   CardImg,
 } from "reactstrap";
+import {NavLink} from "react-router-dom";
 
 class PageLeft extends Component{
   constructor(props) {
@@ -22,22 +23,24 @@ class PageLeft extends Component{
     return (
         <div className="sticky-top sticky-offset">
           <div className="list-group list-group-mine" style={{marginBottom: '15px'}}>
-            <a className="list-group-item" href="#">
+            <NavLink tag={"a"} className="list-group-item" to={"/profile"}>
               <img src={currentUser && currentUser.imageUrl ?
                   currentUser.imageUrl
                       : '/icon/default.jpg'}
                   className="rounded-circle icon-profile"
                   style={{marginRight:'10px'}}
                   alt="Username"/> {currentUser ? currentUser.name : "username"}
-            </a>
+            </NavLink>
             <a className="list-group-item" href="#">
               <img src="/icon/icons8-news.png" alt={""}/> Bảng tin
               <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>
             </a>
-            <a className="list-group-item" href="#">
-              <img src="/icon/icons8-message_group.png" alt={""}/> Messenger
+            <NavLink tag={"a"} className="list-group-item" to={"/message"}>
+              {/*<NavLink to={"/message"}>*/}
+                <img src="/icon/icons8-message_group.png" alt={""}/> Messenger
+              {/*</NavLink>*/}
               <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>
-            </a>
+            </NavLink>
             <a className="list-group-item" href="#">
               <img src="/icon/icons8-retro_tv.png" alt={""}/> Watch
               <img src="/icon/menu-5.svg" style={{float:'right'}} alt={""}/>

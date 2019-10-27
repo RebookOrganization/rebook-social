@@ -1,6 +1,7 @@
 package com.projects.rebook.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,4 +20,16 @@ public class HomeController {
 
   @GetMapping(value = "/home")
   public String home() { return "home"; }
+
+  @GetMapping(value = "/login")
+  public String login(Model model) {
+    model.addAttribute("navActive", "active");
+    return "login";
+  }
+
+  @GetMapping(value = "/signup")
+  public String signup(Model model) {
+    model.addAttribute("navActive", "active");
+    return "signup";
+  }
 }

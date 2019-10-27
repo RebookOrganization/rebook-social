@@ -52,28 +52,9 @@ class App extends Component {
       this.setState({
         loading: false
       });
-    })
-    ;
+    });
 
-    // window.addEventListener('scroll', this.handleScroll);
   }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('scroll', this.handleScroll);
-  // }
-
-  // handleScroll = () => {
-  //   let currentScrollPos = window.pageYOffset;
-  //   if (currentScrollPos >= 65) {
-  //     this.setState({
-  //       renderInputHeader: true,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       renderInputHeader: false,
-  //     });
-  //   }
-  // };
 
   render() {
     if (this.state.loading) {

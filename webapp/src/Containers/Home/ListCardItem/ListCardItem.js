@@ -411,9 +411,9 @@ class ListCardItem extends Component{
                              this.handleCommentPost(item.newsId)
                            }}}
                     />
-                    <button style={{border:'none', outline:'none'}}>
-                      <img className={"responsive"} src={"/icon/iconfinder_face.svg"} style={{width:'34px'}} alt={""}/>
-                    </button>
+                    {/*<button style={{border:'none', outline:'none'}}>*/}
+                    {/*  <img className={"responsive"} src={"/icon/iconfinder_face.svg"} style={{width:'34px'}} alt={""}/>*/}
+                    {/*</button>*/}
                     <button style={{border:'none', outline:'none'}}>
                       <img className={"responsive"} src={"/icon/iconfinder_ins.svg"} style={{width:'34px'}} alt={""}/>
                     </button>

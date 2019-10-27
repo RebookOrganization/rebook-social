@@ -63,10 +63,9 @@ public class DateTimeUtils {
     return dateFormat.format(date);
   }
 
-  public static String getCurrentDatePartition() {
+  public static Integer getPartition() {
     Calendar now = Calendar.getInstance();
-    String yearMonth = String.valueOf(now.get(Calendar.YEAR)) + String.valueOf(now.get(Calendar.MONTH) + 1);
-    return yearMonth;
+    return Integer.parseInt(String.valueOf(now.get(Calendar.YEAR) + String.valueOf(now.get(Calendar.MONTH) + 1)));
   }
 
   public static Long getCurrentDateMilisec() {

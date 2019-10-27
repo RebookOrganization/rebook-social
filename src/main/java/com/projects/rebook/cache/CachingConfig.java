@@ -18,7 +18,9 @@ public class CachingConfig {
     cacheManager.setCaches(Arrays.asList(
         new ConcurrentMapCache("findAllNewsItem"),
         new ConcurrentMapCache("findNewsThreeDateBefore"),
-        new ConcurrentMapCache("findLastNRowsInPartition")
+        new ConcurrentMapCache("findNewsByPartition"),
+        new ConcurrentMapCache("listAllMessages"),
+        new ConcurrentMapCache("findLastRow")
     ));
 
     return cacheManager;

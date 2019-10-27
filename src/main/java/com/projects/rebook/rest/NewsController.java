@@ -5,10 +5,13 @@ import com.projects.rebook.bean.Request.LikeRequest;
 import com.projects.rebook.bean.Request.PostNewsRequest;
 import com.projects.rebook.bean.Request.ShareRequest;
 import com.projects.rebook.bean.Response.CommonResponse;
+import com.projects.rebook.model.ContactOwner;
+import com.projects.rebook.repository.ContactOwnerRepository;
 import com.projects.rebook.service.NewsItemService;
 import com.projects.rebook.service.UserService;
 import com.projects.rebook.service.impl.NewsItemServiceImpl;
 import com.projects.rebook.service.impl.UserServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,4 +82,5 @@ public class NewsController {
     public ResponseEntity<?> getAllNewsByUser(@RequestParam Long userID) throws IOException {
         return new ResponseEntity<>(newsItemService.getAllNewsByUser(userID), HttpStatus.OK);
     }
+
 }

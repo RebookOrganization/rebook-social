@@ -28,16 +28,16 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
 //    private WebAppProperties appProperties;
 
-    private WebAppConfig appConfig;
+    private WebAppConfig webAppConfig;
 
     private HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
 
     @Autowired
-    OAuth2AuthenticationSuccessHandler(TokenProvider tokenProvider, WebAppConfig appConfig,
+    OAuth2AuthenticationSuccessHandler(TokenProvider tokenProvider, WebAppConfig webAppConfig,
                                        HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository) {
         this.tokenProvider = tokenProvider;
-        this.appConfig = appConfig;
+        this.webAppConfig = webAppConfig;
         this.httpCookieOAuth2AuthorizationRequestRepository = httpCookieOAuth2AuthorizationRequestRepository;
     }
 
@@ -54,7 +54,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+    private String determineTargetUrl(HttpServletRequest request, HttpServletResponse response,
+        Authentication authentication) {
         Optional<String> redirectUri = CookieUtils.getCookie(request, REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue);
 
@@ -71,7 +72,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                 .build().toUriString();
     }
 
-    protected void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response) {
+    private void clearAuthenticationAttributes(HttpServletRequest request,
+        HttpServletResponse response) {
         super.clearAuthenticationAttributes(request);
         httpCookieOAuth2AuthorizationRequestRepository.removeAuthorizationRequestCookies(request, response);
     }
@@ -79,16 +81,18 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     private boolean isAuthorizedRedirectUri(String uri) {
         URI clientRedirectUri = URI.create(uri);
 
-        return appConfig.getAuthorizedRedirectUris()
-                .stream()
-                .anyMatch(authorizedRedirectUri -> {
-                    // Only validate host and port. Let the clients use different paths if they want to
-                    URI authorizedURI = URI.create(authorizedRedirectUri);
-                    if(authorizedURI.getHost().equalsIgnoreCase(clientRedirectUri.getHost())
-                            && authorizedURI.getPort() == clientRedirectUri.getPort()) {
-                        return true;
-                    }
-                    return false;
-                });
+        String authorizedRedirectUri = WebAppConfig.authorizedRedirectUri;
+        URI authorizedURI = URI.create(authorizedRedirectUri);
+        return authorizedURI.getHost().equalsIgnoreCase(clientRedirectUri.getHost())
+            && authorizedURI.getPort() == clientRedirectUri.getPort();
+
+//        return webAppConfig.getAuthorizedRedirectUris()
+//                .stream()
+//                .anyMatch(authorizedRedirectUri -> {
+//                    // Only validate host and port. Let the clients use different paths if they want to
+//                    URI authorizedURI = URI.create(authorizedRedirectUri);
+//                    return authorizedURI.getHost().equalsIgnoreCase(clientRedirectUri.getHost())
+//                        && authorizedURI.getPort() == clientRedirectUri.getPort();
+//                });
     }
 }

@@ -2,6 +2,7 @@ package com.projects.rebook.config;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,7 @@ public class WebAppConfig {
   private long tokenExpirationMsec;
   private List<String> authorizedRedirectUris = new ArrayList<>();
   private String uploadDir;
+  public static String authorizedRedirectUri;
 
   public String getTokenSecret() { return tokenSecret; }
 
@@ -38,6 +40,11 @@ public class WebAppConfig {
   @Value("{'${oauth2.authorizedRedirectUris}'.split(',')}")
   public void setAuthorizedRedirectUris(List<String> authorizedRedirectUris) {
     this.authorizedRedirectUris = authorizedRedirectUris;
+  }
+
+  @Value("${oauth2.authorizedRedirectUri}")
+  public void setAuthorizedRedirectUri(@NotBlank String authorizedRedirectUri) {
+    WebAppConfig.authorizedRedirectUri = authorizedRedirectUri;
   }
 
   public String getUploadDir() { return uploadDir; }

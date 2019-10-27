@@ -242,7 +242,7 @@ class AppHeader extends Component {
                      style={{marginLeft:'20px', width:'350px'}}>
                   <input type="text" className="form-control"
                          placeholder="Tìm kiếm"
-                         style={{fontSize:'14px'}}
+                         style={{fontSize:'14px',height:'36px'}}
                          onClick={this.toggleModalSearch}
                          aria-label="Tìm kiếm"
                          aria-describedby="basic-addon2"/>
@@ -291,11 +291,11 @@ class AppHeader extends Component {
                             <div className="dropdown-menu dropdown-menu-center">
                               <a className="dropdown-item">
                                 <div style={styleChat}>
-                                  <a className="btn-user">
+                                  <div className="btn-user">
                                     <img src={'assets/img/avatars/4.jpg'}
                                         className="rounded-circle icon-user"
                                         alt="Username"/>
-                                  </a>{' '}
+                                  </div>{' '}
                                   <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
@@ -303,11 +303,11 @@ class AppHeader extends Component {
                               <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
-                                  <a className="btn-user">
+                                  <div className="btn-user">
                                     <img src={'assets/img/avatars/4.jpg'}
                                          className="rounded-circle icon-user"
                                          alt="Username"/>
-                                  </a>{' '}
+                                  </div>{' '}
                                   <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
@@ -315,11 +315,11 @@ class AppHeader extends Component {
                               <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
-                                  <a className="btn-user">
+                                  <div className="btn-user">
                                     <img src={'assets/img/avatars/4.jpg'}
                                          className="rounded-circle icon-user"
                                          alt="Username"/>
-                                  </a>{' '}
+                                  </div>{' '}
                                   <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
                                   <span className={"pull-right"} style={dot}/>
                                 </div>
@@ -327,11 +327,11 @@ class AppHeader extends Component {
                               <hr/>
                               <a className="dropdown-item">
                                 <div style={styleChat}>
-                                  <a className="btn-user">
+                                  <div className="btn-user">
                                     <img src={'assets/img/avatars/4.jpg'}
                                          className="rounded-circle icon-user"
                                          alt="Username"/>
-                                  </a>{' '}
+                                  </div>{' '}
                                   <p style={{fontSize: '15px', marginTop: '15px'}}>user chat</p>
                                   <span className={"pull-right"} style={dot}/>
                                 </div>

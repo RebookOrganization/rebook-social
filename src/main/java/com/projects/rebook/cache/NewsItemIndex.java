@@ -1,8 +1,6 @@
 package com.projects.rebook.cache;
 
-import com.projects.rebook.model.NewsImageUrl;
 import com.projects.rebook.model.NewsItem;
-import com.projects.rebook.model.User;
 import com.projects.rebook.repository.ImagesRepository;
 import com.projects.rebook.repository.NewsItemRepository;
 import com.projects.rebook.repository.UserRepository;
@@ -27,6 +25,10 @@ public class NewsItemIndex {
 
   public static Map<String, NewsItem> newsItemMap = new HashMap<>();
 
+  public static NewsItem newsItem = new NewsItem();
+
+  private static Integer partition = DateTimeUtils.getPartition();
+
   @Autowired
   NewsItemRepository newsItemRepository;
 
@@ -41,21 +43,23 @@ public class NewsItemIndex {
 
   @PostConstruct
   public void mapToIndexNewsItem() {
-    mapToIndexNews();
+    indexNewsItem(partition);
+    mapToIndexNews(partition);
   }
 
-  public void mapToIndexNews() {
-//    Long currentDateTimeMilisec = DateTimeUtils
-//        .convertTimeStampMilisecond(DateTimeUtils.getCurrentDate(), DateTimeUtils.DATE_TIME_FORMAT);
-//    logger.info("current dateTime milisec - {}", currentDateTimeMilisec);
-    List<NewsItem> newsItemList = cacheDataService.findLastNRowsInPartition();
+  public void mapToIndexNews(Integer partition) {
+    List<NewsItem> newsItemList = cacheDataService.findNewsByPartition(partition);
     if (newsItemList != null && !newsItemList.isEmpty()) {
-      logger.info("newsItemMap - {}", NewsItemIndex.newsItemMap);
+      logger.info("NewsItemIndex newsItemMap - {}", NewsItemIndex.newsItemMap);
       NewsItemIndex.newsItemMap.clear();
       for (int i = 0; i < newsItemList.size(); i++) {
         NewsItemIndex.newsItemMap.put(newsItemList.get(i).getUrl(), newsItemList.get(i));
       }
     }
+  }
+
+  public void indexNewsItem(Integer partition) {
+    NewsItemIndex.newsItem = cacheDataService.findLastRow(partition);
   }
 
 }

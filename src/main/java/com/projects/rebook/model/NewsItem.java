@@ -33,10 +33,6 @@ public class NewsItem implements Serializable {
     private Long postedMilisec;
     private String trans_type;
 
-//    @OneToOne(mappedBy = "newsItem", cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private NewsDetails newsDetails;
-
     private String description;
     private String city;
 
@@ -62,7 +58,7 @@ public class NewsItem implements Serializable {
     @Column(name = "pub_date")
     private String pubDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_owner_id")
     @JsonIgnore
     private ContactOwner contactOwner;
@@ -106,10 +102,6 @@ public class NewsItem implements Serializable {
     public String getTrans_type() { return trans_type; }
 
     public void setTrans_type(String trans_type) { this.trans_type = trans_type; }
-
-//    public NewsDetails getNewsDetails() { return newsDetails; }
-//
-//    public void setNewsDetails(NewsDetails newsDetails) { this.newsDetails = newsDetails; }
 
     public Long getPostedMilisec() { return postedMilisec; }
 

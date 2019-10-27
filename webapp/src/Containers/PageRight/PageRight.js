@@ -14,7 +14,9 @@ import {searchNewsByAddress, searchNewsByUser} from "../../api/UserApi";
 import LaddaButton, {EXPAND_LEFT} from "react-ladda";
 import 'ladda/dist/ladda-themeless.min.css';
 import {SocialIcon} from "react-social-icons";
-import "./_pageRight.css"
+import "./_pageRight.css";
+
+
 
 class PageRight extends Component {
   constructor(props) {
@@ -29,7 +31,8 @@ class PageRight extends Component {
       allNewsItem: null,
 
       collapseSearch: false,
-    }
+    };
+
   }
 
   componentWillUnmount() {
@@ -41,11 +44,9 @@ class PageRight extends Component {
   }
 
   handleScroll = () => {
-    let copyright = document.getElementById("Copyright");
     let pageRight = document.getElementById("page-right");
-    console.log("copyright.offsetTop: "+ copyright.offsetTop);
-    console.log("window.pageYOffset: "+ window.pageYOffset);
-    if (window.pageYOffset > copyright.offsetTop - 0.25) {
+    let copyright = document.getElementById("Copyright");
+    if (window.pageYOffset > copyright.offsetTop) {
       pageRight.classList.add("sticky-page-right")
     }
     else {
@@ -110,7 +111,6 @@ class PageRight extends Component {
   };
 
   render() {
-    const {loading} = this.state;
     // className="sticky-top" style={{top: '60px', zIndex:'1'}}
     return (
         <div id={"page-right"}>
@@ -212,16 +212,16 @@ class PageRight extends Component {
               </button>
             </CardBody>
           </Card>
-          <Card>
-            <CardBody>
-                <SocialIcon url="http://linkedin.com/in/jaketrent"
-                            style={{marginRight: '10px'}}/>
-                <SocialIcon network="twitter" bgColor="#ff5a01"
-                            style={{marginRight: '10px'}}/>
-                <SocialIcon network="facebook" style={{marginRight: '10px'}}/>
-                <SocialIcon network="google" style={{marginRight: '10px'}}/>
-            </CardBody>
-          </Card>
+          {/*<Card>*/}
+          {/*  <CardBody>*/}
+          {/*      <SocialIcon url="http://linkedin.com/in/jaketrent"*/}
+          {/*                  style={{marginRight: '10px'}}/>*/}
+          {/*      <SocialIcon network="twitter" bgColor="#ff5a01"*/}
+          {/*                  style={{marginRight: '10px'}}/>*/}
+          {/*      <SocialIcon network="facebook" style={{marginRight: '10px'}}/>*/}
+          {/*      <SocialIcon network="google" style={{marginRight: '10px'}}/>*/}
+          {/*  </CardBody>*/}
+          {/*</Card>*/}
           <Card
               style={{display: 'flex', flexDirection: 'row', padding: '10px'}}>
             <CardText style={{marginRight: '20px'}}>Tiếng Việt.</CardText>

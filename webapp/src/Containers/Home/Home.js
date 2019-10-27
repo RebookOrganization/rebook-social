@@ -741,7 +741,8 @@ class Home extends Component {
                 !this.state.hideNav ?
                     <div className="col col-md-2" style={{padding:'0'}}>
                       <Aside currentUser={currentUser}/>
-                    </div> : null
+                    </div>
+                    : null
               }
 
             </div>

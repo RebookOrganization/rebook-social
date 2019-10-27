@@ -68,13 +68,14 @@ public class NewsItemServiceImpl implements NewsItemService {
   private int returnCode = 1;
   private String returnMessage = "success";
 
+  private static Integer currentPartition = DateTimeUtils.getPartition();
+
   @Override
   @Transactional
-//  @Async("asyncExecutor")
-  public CommonResponse crawlerBatDongSan() throws IOException {
+  public CommonResponse crawlerBatDongSan() {
     logger.info("Thread execute crawlerBatDongSan - {}", Thread.currentThread().getName());
     List<NewsItem> newsItemList = new ArrayList<>();
-    List<NewsImageUrl> newsImageUrlList = new ArrayList<>();
+    double compareTfIdf;
     try {
       Document doc = Jsoup.connect(FOR_SALE).get();
       Elements elements = doc.select("item");
@@ -88,169 +89,186 @@ public class NewsItemServiceImpl implements NewsItemService {
 
         NewsItem newsItem = new NewsItem();
         newsItem.setTitle(title);
-        newsItem.setUrl(url);
-        newsItem.setSummary(descriptMain);
-        newsItem.setPostedDate(pubDate);
-        newsItem.setPostedMilisec(DateTimeUtils.convertTimeStampMilisecond(pubDate, DateTimeUtils.GMT_FORMAT));
 
-        Optional<User> user = userRepository.findByEmail("admin@gmail.com");
-        user.ifPresent(newsItem::setUser);
+        //check trùng url tại đây.
+        if (NewsItemIndex.newsItem != null && !NewsItemIndex.newsItem.getUrl().equals(url))
+        {
+          newsItem.setUrl(url);
+          newsItem.setSummary(descriptMain);
+          newsItem.setPostedDate(pubDate);
+          newsItem.setPostedMilisec(DateTimeUtils.convertTimeStampMilisecond(pubDate, DateTimeUtils.GMT_FORMAT));
 
-        Document document = Jsoup.connect(url).get();
-        Element productDetail = document.getElementById(NEW_DETAILS_TAG);
+          Optional<User> user = userRepository.findByEmail("admin@gmail.com");
+          user.ifPresent(newsItem::setUser);
 
-        if (productDetail != null) {
-          if (productDetail.getElementsByClass(LOCATION_PROP) != null) {
-            String khuvuc = productDetail.getElementsByClass(LOCATION_PROP).select("a").text();
-            newsItem.setCity(khuvuc);
-          }
-
-          String price = productDetail.getElementsByClass(PRICE_PROP).first().select("strong").text();
-          String area = productDetail.getElementsByClass(PRICE_PROP).get(1).select("strong").text();
-          newsItem.setPrice(price);
-          newsItem.setArea(area);
-
-          String desc = productDetail.getElementsByClass(DESCRIPTION_PROP).text()
-              .replaceAll("<br>", "\t");
-          newsItem.setDescription(desc);
-
-          if (productDetail.getElementById(ROOM_NUMBER) != null) {
-            String room = productDetail.getElementById(ROOM_NUMBER).getElementsByClass("right")
-                .text();
-            newsItem.setRoom_number(room);
-          }
-
-          if (productDetail.getElementById(TOILET_NUMBER) != null) {
-            String toilet = productDetail.getElementById(TOILET_NUMBER).getElementsByClass("right")
-                .text();
-            newsItem.setToilet_number(toilet);
-          }
-
-          if (productDetail.getElementById(DIRECTOFHOUSE) != null) {
-            String huongNha = productDetail.getElementById(DIRECTOFHOUSE).getElementsByClass("right")
-                .text();
-            newsItem.setDirect_of_house(huongNha);
-          }
-
-          if (productDetail.getElementById(BALCONY) != null) {
-            String balcony = productDetail.getElementById(BALCONY).getElementsByClass("right").text();
-            newsItem.setBalcony(balcony);
-          }
-
-          if (productDetail.getElementById(FLOOR_NUMBER) != null) {
-            String floorNumber = productDetail.getElementById(FLOOR_NUMBER)
-                .getElementsByClass("right").text();
-            newsItem.setFloor_number(floorNumber);
-          }
-
-          if (productDetail.getElementById(WARDIN) != null) {
-            String wardin = productDetail.getElementById(WARDIN).getElementsByClass("right").text();
-            newsItem.setWardin(wardin);
-          }
-
-          if (productDetail.getElementById(FRONT_END) != null) {
-            String frontEnd = productDetail.getElementById(FRONT_END).getElementsByClass("right")
-                .text();
-            newsItem.setFrontEnd(frontEnd);
-          }
-
-          if (productDetail.getElementById(INTERIOR) != null) {
-            String interior = productDetail.getElementById(INTERIOR).getElementsByClass("right")
-                .text();
-            newsItem.setInterior(interior);
-          }
-
-          String startDate = productDetail.getElementsByClass("prd-more-info").first()
-              .getElementsByTag("div").get(4).text().substring(10);
-          newsItem.setPubDate(startDate);
-
-          ContactOwner contactOwner = new ContactOwner();
-          if(productDetail.getElementById(OWNER_NAME) != null) {
-            String owner = productDetail.getElementById(OWNER_NAME).getElementsByClass("right").text();
-            contactOwner.setContactName(owner);
-          }
-          if (productDetail.getElementById(OWNER_PHONE) != null) {
-            String phone = productDetail.getElementById(OWNER_PHONE).getElementsByClass("right").text();
-            contactOwner.setPhoneNumber(phone);
-          }
-          if (productDetail.getElementById(OWNER_EMAIL) != null) {
-            String email = productDetail.getElementById(OWNER_EMAIL).getElementsByClass("right")
-                .select("a").text();
-            contactOwner.setEmail(email);
-          }
-          if (productDetail.getElementById(OWNER_ADDRESS) != null) {
-            String address = productDetail.getElementById(OWNER_ADDRESS).getElementsByClass("right")
-                .text();
-            contactOwner.setAddress(address);
-          }
-          contactOwnerRepository.save(contactOwner);
-          newsItem.setContactOwner(contactOwner);
-
-          PropertyProject propertyProject = new PropertyProject();
-          Element project = productDetail.getElementById(PROJECT);
-          if (project != null) {
-            String projectName = project.getElementsByClass("table-detail").first()
-                .getElementsByClass("row").first().getElementsByClass("right").text();
-            propertyProject.setProjectName(projectName);
-
-            if (project.getElementById(PROJECT_OWNER) != null) {
-              String projectOwner = project.getElementById(PROJECT_OWNER).getElementsByClass("right")
-                  .text();
-              propertyProject.setProjectOwner(projectOwner);
-            }
-            if (project.getElementById(PROJECT_SIZE) != null) {
-              String projectSize = project.getElementById(PROJECT_SIZE).getElementsByClass("right")
-                  .text();
-              propertyProject.setProjectSize(projectSize);
-            }
-            propertyProjectRepository.save(propertyProject);
-            newsItem.setPropertyProject(propertyProject);
-          }
-
-          PropertyAddress propertyAddress = new PropertyAddress();
-          Elements row = productDetail.getElementsByClass("div-hold").first()
-              .getElementsByClass("row");
-          String prop_address = row.get(1).getElementsByClass("right").text();
-          propertyAddress.setSummary(prop_address);
-          propertyAdressRepository.save(propertyAddress);
-          newsItem.setPropertyAddress(propertyAddress);
-        }
-
-        newsItemList.add(newsItem);
-      }
-
-      if (NewsItemIndex.newsItemMap.isEmpty()) {
-        newsRepository.saveAll(newsItemList);
-        for (int i = 0; i < newsItemList.size(); i++) {
-          String url = newsItemList.get(i).getUrl();
           Document document = Jsoup.connect(url).get();
           Element productDetail = document.getElementById(NEW_DETAILS_TAG);
 
-          if (productDetail.getElementById("thumbs") != null) {
-            int imgsSize = productDetail.getElementById("thumbs").getElementsByTag("img").size();
-            for (int j = 0; j < imgsSize; j++) {
-              NewsImageUrl newsImageUrl = new NewsImageUrl();
-              newsImageUrl.setNewsItem(newsItemList.get(i));
-              newsImageUrl.setImageUrl(
-                  productDetail.getElementById("thumbs").getElementsByTag("img").get(j)
-                      .attr("src"));
-              newsImageUrlList.add(newsImageUrl);
+          if (productDetail != null) {
+            if (productDetail.getElementsByClass(LOCATION_PROP) != null) {
+              String khuvuc = productDetail.getElementsByClass(LOCATION_PROP).select("a").text();
+              newsItem.setCity(khuvuc);
+            }
+
+            String price = productDetail.getElementsByClass(PRICE_PROP).first().select("strong").text();
+            String area = productDetail.getElementsByClass(PRICE_PROP).get(1).select("strong").text();
+            newsItem.setPrice(price);
+            newsItem.setArea(area);
+
+            String desc = productDetail.getElementsByClass(DESCRIPTION_PROP).text()
+                .replaceAll("<br>", "\t");
+
+            // check TfIdf tại đây.
+            compareTfIdf = new TfIdfMain().compareText(NewsItemIndex.newsItem.getDescription(), desc);
+            if (compareTfIdf >= 0.45) {
+              newsItem.setDescription(desc);
+
+              if (productDetail.getElementById(ROOM_NUMBER) != null) {
+                String room = productDetail.getElementById(ROOM_NUMBER).getElementsByClass("right")
+                    .text();
+                newsItem.setRoom_number(room);
+              }
+
+              if (productDetail.getElementById(TOILET_NUMBER) != null) {
+                String toilet = productDetail.getElementById(TOILET_NUMBER).getElementsByClass("right")
+                    .text();
+                newsItem.setToilet_number(toilet);
+              }
+
+              if (productDetail.getElementById(DIRECTOFHOUSE) != null) {
+                String huongNha = productDetail.getElementById(DIRECTOFHOUSE).getElementsByClass("right")
+                    .text();
+                newsItem.setDirect_of_house(huongNha);
+              }
+
+              if (productDetail.getElementById(BALCONY) != null) {
+                String balcony = productDetail.getElementById(BALCONY).getElementsByClass("right").text();
+                newsItem.setBalcony(balcony);
+              }
+
+              if (productDetail.getElementById(FLOOR_NUMBER) != null) {
+                String floorNumber = productDetail.getElementById(FLOOR_NUMBER)
+                    .getElementsByClass("right").text();
+                newsItem.setFloor_number(floorNumber);
+              }
+
+              if (productDetail.getElementById(WARDIN) != null) {
+                String wardin = productDetail.getElementById(WARDIN).getElementsByClass("right").text();
+                newsItem.setWardin(wardin);
+              }
+
+              if (productDetail.getElementById(FRONT_END) != null) {
+                String frontEnd = productDetail.getElementById(FRONT_END).getElementsByClass("right")
+                    .text();
+                newsItem.setFrontEnd(frontEnd);
+              }
+
+              if (productDetail.getElementById(INTERIOR) != null) {
+                String interior = productDetail.getElementById(INTERIOR).getElementsByClass("right")
+                    .text();
+                newsItem.setInterior(interior);
+              }
+
+              String startDate = productDetail.getElementsByClass("prd-more-info").first()
+                  .getElementsByTag("div").get(4).text().substring(10);
+              newsItem.setPubDate(startDate);
+
+              String owner = "";
+              String phone = "";
+              String email = "";
+              String address = "";
+              ContactOwner contactOwner1 = new ContactOwner();
+              if(productDetail.getElementById(OWNER_NAME) != null) {
+                owner = productDetail.getElementById(OWNER_NAME).getElementsByClass("right").text();
+              }
+              if (productDetail.getElementById(OWNER_PHONE) != null) {
+                phone = productDetail.getElementById(OWNER_PHONE).getElementsByClass("right").text();
+              }
+              if (productDetail.getElementById(OWNER_EMAIL) != null) {
+                email = productDetail.getElementById(OWNER_EMAIL).getElementsByClass("right")
+                    .select("a").text();
+              }
+              if (productDetail.getElementById(OWNER_ADDRESS) != null) {
+                address = productDetail.getElementById(OWNER_ADDRESS).getElementsByClass("right")
+                    .text();
+              }
+
+              contactOwnerRepository.insertWithPartition(currentPartition, address, owner, email, phone);
+              contactOwner1 = contactOwnerRepository.findLastRow(currentPartition);
+              newsItem.setContactOwner(contactOwner1);
+
+              String projectName = "";
+              String projectOwner = "";
+              String projectSize = "";
+              PropertyProject propertyProject1 = new PropertyProject();
+              Element project = productDetail.getElementById(PROJECT);
+              if (project != null) {
+                projectName = project.getElementsByClass("table-detail").first()
+                    .getElementsByClass("row").first().getElementsByClass("right").text();
+
+                if (project.getElementById(PROJECT_OWNER) != null) {
+                  projectOwner = project.getElementById(PROJECT_OWNER).getElementsByClass("right")
+                      .text();
+                }
+                if (project.getElementById(PROJECT_SIZE) != null) {
+                  projectSize = project.getElementById(PROJECT_SIZE).getElementsByClass("right")
+                      .text();
+                }
+
+                propertyProjectRepository.saveByPartition(currentPartition, projectName, projectOwner, projectSize);
+                propertyProject1 = propertyProjectRepository.findLastRow(currentPartition);
+                newsItem.setPropertyProject(propertyProject1);
+
+              }
+
+              PropertyAddress propertyAddress1 = new PropertyAddress();
+              Elements row = productDetail.getElementsByClass("div-hold").first()
+                  .getElementsByClass("row");
+              String prop_address = row.get(1).getElementsByClass("right").text();
+
+              propertyAdressRepository.saveByPartition(currentPartition, "",
+                  "", "", prop_address);
+              propertyAddress1 = propertyAdressRepository.findLastRow(currentPartition);
+              newsItem.setPropertyAddress(propertyAddress1);
+
+              newsRepository.saveToPartition(newsItem.getArea(), newsItem.getBalcony(), newsItem.getCity(), newsItem.getDescription(),
+                  newsItem.getDirect_of_house(), newsItem.getFloor_number(), newsItem.getFrontEnd(), newsItem.getInterior(),
+                  newsItem.getPostedDate(), newsItem.getPostedMilisec(), newsItem.getPrice(), newsItem.getPubDate(), newsItem.getRoom_number(),
+                  newsItem.getSummary(), newsItem.getTitle(), newsItem.getToilet_number(), newsItem.getTrans_type(), newsItem.getUrl(),
+                  newsItem.getWardin(), contactOwner1.getId(), propertyAddress1.getId(),
+                  propertyProject1.getId(), newsItem.getUser().getId(), currentPartition);
+
+              NewsItem newsItem1 = newsRepository.findLastRow(currentPartition);
+              newsItemList.add(newsItem1);
+
+              if (newsItem1.getId() != null) {
+                if (productDetail.getElementById("thumbs") != null) {
+                  int imgsSize = productDetail.getElementById("thumbs").getElementsByTag("img").size();
+                  for (int j = 0; j < imgsSize; j++) {
+                    NewsImageUrl newsImageUrl = new NewsImageUrl();
+                    newsImageUrl.setNewsItem(newsItem1);
+                    newsImageUrl.setImageUrl(productDetail.getElementById("thumbs").getElementsByTag("img").get(j)
+                            .attr("src"));
+                    imagesRepository.saveByPartition(newsImageUrl.getImageSize(), newsImageUrl.getImageType(),
+                        newsImageUrl.getImageUrl(), newsImageUrl.getPicByte(), newsItem1.getId(), currentPartition);
+                  }
+                }
+              }
+            }
+            else {
+              logger.info("Tin tức trùng description - {}", desc);
             }
           }
-        }
 
-        if (!newsImageUrlList.isEmpty()) {
-          imagesRepository.saveAll(newsImageUrlList);
         }
-
-        mapToIndexNewsItemAndNewsDetail();
-        return new CommonResponse<>(this.returnCode, this.returnMessage,
-            new PageImpl<>(newsItemList));
-      }
-      else {
-        return handleUpdateDatabase(newsItemList, 1);
+        else {
+          logger.info("Tin trùng lặp url - {}", url);
+        }
       }
 
+      indexNewsItem();
+      mapToIndexNewsItem();
+      return new CommonResponse<>(this.returnCode, this.returnMessage, new PageImpl<>(newsItemList));
     } catch (IOException e) {
       logger.error("crawlerBatDongSan exception: " + e);
       return new CommonResponse.Fail("crawlerBatDongSan exception.");
@@ -337,7 +355,7 @@ public class NewsItemServiceImpl implements NewsItemService {
             imagesRepository.saveAll(listImageInsert);
           }
 
-          mapToIndexNewsItemAndNewsDetail();
+          mapToIndexNewsItem();
           logger.info("handleUpdateDatabase listNewsItemInsert response - {}", listNewsItemInsert);
           return new CommonResponse<>(this.returnCode, this.returnMessage,
               new PageImpl<>(listNewsItemInsert));
@@ -356,8 +374,8 @@ public class NewsItemServiceImpl implements NewsItemService {
     }
   }
 
-  private void mapToIndexNewsItemAndNewsDetail() {
-    List<NewsItem> newsItemList = cacheDataService.findLastNRowsInPartition();
+  private void mapToIndexNewsItem() {
+    List<NewsItem> newsItemList = cacheDataService.findNewsByPartition(currentPartition);
     if (newsItemList != null && !newsItemList.isEmpty()) {
       logger.info("newsItemMap - {}", NewsItemIndex.newsItemMap);
       NewsItemIndex.newsItemMap.clear();
@@ -367,9 +385,12 @@ public class NewsItemServiceImpl implements NewsItemService {
     }
   }
 
+  private void indexNewsItem() {
+    NewsItemIndex.newsItem = cacheDataService.findLastRow(currentPartition);
+  }
+
   @Override
   @Transactional
-//  @Async("asyncExecutor")
   public CommonResponse crawlerDiaOcOnline() throws IOException {
     logger.info("Thread execute crawlerDiaOcOnline - {}", Thread.currentThread().getName());
     List<NewsItem> newsItemList = new ArrayList<>();
@@ -466,7 +487,7 @@ public class NewsItemServiceImpl implements NewsItemService {
           imagesRepository.saveAll(newsImageUrlList);
         }
 
-        mapToIndexNewsItemAndNewsDetail();
+        mapToIndexNewsItem();
         return new CommonResponse<>(this.returnCode, this.returnMessage,
             new PageImpl<>(newsItemList));
       }
@@ -495,9 +516,7 @@ public class NewsItemServiceImpl implements NewsItemService {
         }
       }
       else {
-//        long dateFrom = DateTimeUtils.getThreeDateBefore();
-//        long dateTo = DateTimeUtils.getCurrentDateMilisec();
-        List<NewsItem> newsItemList = newsRepository.findLastNRowsInPartition("");
+        List<NewsItem> newsItemList = newsRepository.findNewsByPartition(currentPartition);
         for (NewsItem newsItem : newsItemList) {
           newsResponseDTOList.add(mapNewsToNewsResponseDTO(newsItem));
         }
@@ -514,7 +533,7 @@ public class NewsItemServiceImpl implements NewsItemService {
   @Override
   public CommonResponse getAllNewsByUser(Long userID) throws IOException {
     try {
-      List<NewsItem> newsItemList = new ArrayList<>();
+      List<NewsItem> newsItemList;
       List<NewsResponseDTO> newsResponseDTOList = new ArrayList<>();
       Optional<User> user = userRepository.findById(userID);
       if (user.isPresent()) {
@@ -547,7 +566,10 @@ public class NewsItemServiceImpl implements NewsItemService {
     newsResponseDTO.setPubDate(newsItem.getPostedDate());
     newsResponseDTO.setPrice(newsItem.getPrice());
     newsResponseDTO.setArea(newsItem.getArea());
-    newsResponseDTO.setAddress_prop(newsItem.getPropertyAddress().getSummary());
+
+    if (newsItem.getPropertyAddress() != null) {
+      newsResponseDTO.setAddress_prop(newsItem.getPropertyAddress().getSummary());
+    }
 
     newsResponseDTO.setImageUrlList(newsItem.getImages());
     newsResponseDTO.setNewsId(newsItem.getId());

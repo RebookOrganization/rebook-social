@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   /*background-color: rgba(228, 233, 240, 0.5);*/
@@ -5,8 +8,4 @@ body {
   color: #152944 !important;
   font-size: 14px !important;
   line-height: 1.38;
-}
-
-html {
-  scroll-behavior: smooth;
 }
