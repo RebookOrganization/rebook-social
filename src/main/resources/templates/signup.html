@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-md-5 app-branding">
             <img src="/assets/brand/sygnet.svg" alt="" style="width:40px;height:40px;margin-right:20px"/>
-            <a th:href="@{/profile}" class="app-title">Rebook</a>
+            <a th:href="@{/signup}" class="app-title">Rebook</a>
           </div>
           <div class="col-md-5">
             <nav class="app-nav">
@@ -47,19 +47,22 @@
     <div class="signup-container">
       <div class="signup-content">
         <h1 class="signup-title">SignUp to Real Estate Social</h1>
-        <form action="#" th:action="@{/signup}" method="post">
+        <div class="or-separator">
+          <span class="or-text">Rebook</span>
+        </div>
+        <p th:text="${message}" class="error" style="color:red;">
+        <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
           <div class="form-item">
             <input type="text" name="name" style="font-size:16px"
-                   class="form-control" placeholder="Username" required>
+                   th:field="*{name}" class="form-control" placeholder="Username" required>
           </div>
           <div class="form-item">
             <input type="email" name="email" style="font-size:16px"
-                   class="form-control" placeholder="Email" required>
+                   th:field="*{email}" class="form-control" placeholder="Email" required>
           </div>
           <div class="form-item">
-            <input type="password" name="password"
-                   style="font-size:16px; font-weight:500"
-                   class="form-control" placeholder="Password" required>
+            <input type="password" name="password" style="font-size:16px; font-weight:500"
+                   th:field="*{password}" class="form-control" placeholder="Password" required>
           </div>
           <div class="form-item">
             <button type="submit" style="font-size:16px"

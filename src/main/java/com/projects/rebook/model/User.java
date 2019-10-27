@@ -23,13 +23,11 @@ public class User {
   @Column(nullable = false)
   private String email;
 
-  @Column(nullable = false)
-  private Boolean emailVerified = false;
+  private boolean emailVerified;
 
   @JsonIgnore
   private String password;
 
-  @NotNull
   @Enumerated(EnumType.STRING)
   private AuthProvider provider;
 
@@ -79,11 +77,11 @@ public class User {
     this.email = email;
   }
 
-  public Boolean getEmailVerified() {
+  public boolean getEmailVerified() {
     return emailVerified;
   }
 
-  public void setEmailVerified(Boolean emailVerified) {
+  public void setEmailVerified(boolean emailVerified) {
     this.emailVerified = emailVerified;
   }
 

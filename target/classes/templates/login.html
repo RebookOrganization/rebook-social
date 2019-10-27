@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-md-5 app-branding">
             <img src="/assets/brand/sygnet.svg" alt="" style="width:40px;height:40px;margin-right:20px"/>
-            <a th:href="@{/profile}" class="app-title">Rebook</a>
+            <a th:href="@{/login}" class="app-title">Rebook</a>
           </div>
           <div class="col-md-5">
             <nav class="app-nav">
@@ -33,7 +33,7 @@
                   <a th:href="@{/login}" th:class="${navActive}">Login</a>
                 </li>
                 <li>
-                  <a th:href="@{/signup}" th:class="${navActive}">Signup</a>
+                  <a th:href="@{/signup}">Signup</a>
                 </li>
               </ul>
             </nav>
@@ -47,10 +47,17 @@
     <div class="login-container">
       <div class="login-content">
         <h1 class="login-title">Login to Real Estate Social</h1>
+        <div class="or-separator">
+          <span class="or-text">Rebook</span>
+        </div>
+        <p th:if="${param.error}" class="error" style="color:red;">Invalid email or password</p>
+        <p th:if="${param.logout}" class="success" style="color:#4dbd74;">You have been logged out</p>
+        <p th:text="${verifyFail}" class="error" style="color:red;">
+        <p th:text="${registerSuccess}" class="success" style="color:#4dbd74;">
         <form action="#" th:action="@{/login}" method="post">
           <div class="form-item">
-            <input type="email" name="email" style="font-size:16px"
-                   class="form-control" placeholder="Email" required>
+              <input type="email" name="email" style="font-size:16px"
+                     class="form-control" placeholder="Email" required>
           </div>
           <div class="form-item">
             <input type="password" name="password"
