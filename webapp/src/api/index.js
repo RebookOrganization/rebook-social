@@ -1,5 +1,7 @@
 import axios, {post} from 'axios';
-import {API_BASE_URL} from '../Constants/constant';
+import {API_BASE_URL} from '../constants/constant';
+
+axios.defaults.withCredentials = true;
 
 export function httpGet(url, body) {
   return callApi(url, 'GET', body);
@@ -20,7 +22,6 @@ export function httpUploadFile(url, body) {
     return response;
   }).catch((error) => {
     console.log("fail!", error);
-    // message.error(error.response.statusText);
     return false;
   })
 }
@@ -34,13 +35,11 @@ function callApi(url, method, body = null) {
   if (body) {
     meta.data = JSON.stringify(body);
   }
-  console.log("url: " + `${API_BASE_URL}/${url}`);
   return axios(`${API_BASE_URL}/${url}`, meta) // eslint-disable-line
   .then(response => {
     return response;
   }).catch((error) => {
     console.log("fail!", error);
-    // message.error(error.response.statusText);
     return false;
   });
 }

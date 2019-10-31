@@ -1,7 +1,7 @@
 package com.projects.rebook.config;
 
 import com.projects.rebook.bean.Response.CommonResponse;
-import com.projects.rebook.service.impl.NewsItemServiceImpl;
+import com.projects.rebook.service.CrawlerService;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,32 +18,32 @@ public class ScheduledTasks {
   private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
   @Autowired
-  NewsItemServiceImpl newsItemService;
+  private CrawlerService crawlerService;
 
-  @Scheduled(fixedRate = 60000)
-  public void scheduleTaskWithFixedRate() {
-    logger.info("Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-    CommonResponse response = newsItemService.crawlerBatDongSan();
-    int returnCode = response.getReturnCode();
-    if (returnCode == 1) {
-      logger.info("Crawler BatDongSan.com.vn response - {}", response.getResult());
-    }
-    else {
-      logger.error("Crawler BatDongSan.com.vn response fail - {}", response.getReturnMessage());
-    }
-  }
-
-  @Scheduled(fixedRate = 120000)
-  public void scheduleCrawlerDiaOcOnline() throws IOException {
-    logger.info("Fixed Rate DiaOcOnline :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-    CommonResponse response = newsItemService.crawlerDiaOcOnline();
-    int returnCode = response.getReturnCode();
-    if (returnCode == 1) {
-      logger.info("Crawler DiaOcOnline.vn response - {}",response.getResult());
-    }
-    else {
-      logger.error("Crawler DiaOcOnline.vn response fail - {}", response.getReturnMessage());
-    }
-  }
+//  @Scheduled(fixedRate = 60000)
+//  public void scheduleTaskWithFixedRate() throws IOException {
+//    logger.info("Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
+//    CommonResponse response = crawlerService.crawlerBatDongSan();
+//    int returnCode = response.getReturnCode();
+//    if (returnCode == 1) {
+//      logger.info("Crawler BatDongSan.com.vn response - {}", response.getResult());
+//    }
+//    else {
+//      logger.error("Crawler BatDongSan.com.vn Exception - {}", response.getReturnMessage());
+//    }
+//  }
+//
+//  @Scheduled(fixedRate = 120000)
+//  public void scheduleCrawlerDiaOcOnline() throws IOException {
+//    logger.info("Fixed Rate DiaOcOnline :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
+//    CommonResponse response = crawlerService.crawlerDiaOcOnline();
+//    int returnCode = response.getReturnCode();
+//    if (returnCode == 1) {
+//      logger.info("Crawler DiaOcOnline.vn response - {}", response.getResult());
+//    }
+//    else {
+//      logger.error("Crawler DiaOcOnline.vn Exception - {}", response.getReturnMessage());
+//    }
+//  }
 
 }

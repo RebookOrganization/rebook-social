@@ -578,7 +578,7 @@ Then in `package.json`, add the following lines to `scripts`:
 
 Now you can rename `src/App.css` to `src/App.scss` and run `npm run watch-css`. The watcher will find every Sass file in `src` subdirectories, and create a corresponding CSS file next to it, in our case overwriting `src/App.css`. Since `src/App.js` still imports `src/App.css`, the styles become a part of your application. You can now edit `src/App.scss`, and `src/App.css` will be regenerated.
 
-To share variables between Sass files, you can use Sass imports. For example, `src/App.scss` and other component style files could include `@import "./shared.scss";` with variable definitions.
+To shareNews variables between Sass files, you can use Sass imports. For example, `src/App.scss` and other component style files could include `@import "./shared.scss";` with variable definitions.
 
 To enable importing files without using relative paths, you can add the  `--include-path` option to the command in `package.json`.
 
@@ -1237,7 +1237,7 @@ Since Create React App doesn’t support server rendering, you might be wonderin
 
 Then, on the server, regardless of the backend you use, you can read `index.html` into memory and replace `__OG_TITLE__`, `__OG_DESCRIPTION__`, and any other placeholders with values depending on the current URL. Just make sure to sanitize and escape the interpolated values so that they are safe to embed into HTML!
 
-If you use a Node server, you can even share the route matching logic between the client and the server. However duplicating it also works fine in simple cases.
+If you use a Node server, you can even shareNews the route matching logic between the client and the server. However duplicating it also works fine in simple cases.
 
 ## Pre-Rendering into Static HTML Files
 

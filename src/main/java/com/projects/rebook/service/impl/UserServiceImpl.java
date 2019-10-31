@@ -17,7 +17,7 @@ import com.projects.rebook.model.NewsImageUrl;
 import com.projects.rebook.model.NewsItem;
 import com.projects.rebook.model.PropertyAddress;
 import com.projects.rebook.model.PropertyProject;
-import com.projects.rebook.model.Share;
+import com.projects.rebook.model.ShareNews;
 import com.projects.rebook.model.User;
 import com.projects.rebook.repository.CommentRepository;
 import com.projects.rebook.repository.ContactOwnerRepository;
@@ -30,6 +30,7 @@ import com.projects.rebook.repository.ShareRepository;
 import com.projects.rebook.repository.UserRepository;
 import com.projects.rebook.service.FileStorageService;
 import com.projects.rebook.service.UserService;
+import com.projects.rebook.utils.DateTimeUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.omg.CORBA.DATA_CONVERSION;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +85,8 @@ public class UserServiceImpl implements UserService {
 
   private int returnCode = 1;
   private String returnMessage = "success";
+
+  private static Integer currentPartition = DateTimeUtils.getPartition();
 
   @Override
   @Transactional
@@ -130,13 +134,13 @@ public class UserServiceImpl implements UserService {
       contactOwner.setAddress(request.getOwnerAddress());
       contactOwnerRepository.save(contactOwner);
 
-      newsItem.setContactOwner(contactOwner);
+      newsItem.setContactOwnerId(contactOwner.getId());
 
       PropertyAddress propAddress = new PropertyAddress();
       propAddress.setSummary(request.getProp_address());
       propertyAdressRepository.save(propAddress);
 
-      newsItem.setPropertyAddress(propAddress);
+      newsItem.setPropertyAddressId(propAddress.getId());
 
       PropertyProject propertyProject = new PropertyProject();
       propertyProject.setProjectName(request.getProject_name());
@@ -144,13 +148,13 @@ public class UserServiceImpl implements UserService {
       propertyProject.setProjectOwner(request.getProject_owner());
       propertyProjectRepository.save(propertyProject);
 
-      newsItem.setPropertyProject(propertyProject);
+      newsItem.setPropertyProjectId(propertyProject.getId());
 
       newsItemRepository.save(newsItem);
 
       return new CommonResponse<>(this.returnCode, this.returnMessage, newsItem);
     } catch (Exception ex) {
-      logger.error("Service createNewsPost exception - {}", ex);
+      logger.error("Service createNewsPost exception: ", ex);
       return new CommonResponse.Fail("Service createNewsPost exception.");
     }
   }
@@ -201,18 +205,18 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public CommonResponse shareNewsFeed(ShareRequest request) throws IOException {
     try {
-      Share share = new Share();
-      share.setUserId(request.getUserId());
-      share.setNewItemId(request.getNewsItemId());
-      share.setShare(request.isShare());
+      ShareNews shareNews = new ShareNews();
+      shareNews.setUserId(request.getUserId());
+      shareNews.setNewItemId(request.getNewsItemId());
+      shareNews.setShare(request.isShare());
 
-      shareRepository.save(share);
+      shareRepository.save(shareNews);
 
-      List<Share> listShare = shareRepository.findByNewItemId(request.getNewsItemId());
-      int shareAmount = listShare.size();
+      List<ShareNews> listShareNews = shareRepository.findByNewItemId(request.getNewsItemId());
+      int shareAmount = listShareNews.size();
 
       return new CommonResponse<>(this.returnCode, this.returnMessage,
-          new ShareResponse(listShare, shareAmount));
+          new ShareResponse(listShareNews, shareAmount));
     } catch (Exception ex) {
       logger.error("Service shareNewsFeed exception: "+ ex);
       return new CommonResponse.Fail("Service shareNewsFeed exception.");
@@ -264,25 +268,31 @@ public class UserServiceImpl implements UserService {
             newsResponseDTO.setPubDate(newsItem.getPostedDate());
             newsResponseDTO.setPrice(newsItem.getPrice());
             newsResponseDTO.setArea(newsItem.getArea());
-            newsResponseDTO.setAddress_prop(newsItem.getPropertyAddress().getSummary());
+            newsResponseDTO.setAddress_prop(addressIndex.getSummary());
 
             if (newsItem.getDescription() != null) {
               newsResponseDTO.setDescriptionNews(newsItem.getDescription());
             }
 
-            if (newsItem.getContactOwner() != null) {
-              if (newsItem.getContactOwner().getEmail() != null) {
-                newsResponseDTO.setContactEmail(newsItem.getContactOwner().getEmail());
+            if (newsItem.getContactOwnerId() != null) {
+              Optional<ContactOwner> contactOwner = contactOwnerRepository.findById(currentPartition,
+                  newsItem.getContactOwnerId());
+              assert contactOwner.isPresent();
+              if (contactOwner.get().getEmail() != null) {
+                newsResponseDTO.setContactEmail(contactOwner.get().getEmail());
               }
 
-              newsResponseDTO.setContactName(newsItem.getContactOwner().getContactName());
-              newsResponseDTO.setContactPhone(newsItem.getContactOwner().getPhoneNumber());
+              newsResponseDTO.setContactName(contactOwner.get().getContactName());
+              newsResponseDTO.setContactPhone(contactOwner.get().getPhoneNumber());
             }
 
-            if (newsItem.getPropertyProject() != null) {
-              newsResponseDTO.setProjectOwner(newsItem.getPropertyProject().getProjectOwner());
-              newsResponseDTO.setProjectSize(newsItem.getPropertyProject().getProjectSize());
-              newsResponseDTO.setProjectName(newsItem.getPropertyProject().getProjectName());
+            if (newsItem.getPropertyProjectId() != null) {
+              Optional<PropertyProject> propertyProject = propertyProjectRepository.findById(currentPartition,
+                  newsItem.getPropertyProjectId());
+              assert propertyProject.isPresent();
+              newsResponseDTO.setProjectOwner(propertyProject.get().getProjectOwner());
+              newsResponseDTO.setProjectSize(propertyProject.get().getProjectSize());
+              newsResponseDTO.setProjectName(propertyProject.get().getProjectName());
             }
 
             newsResponseDTO.setImageUrlList(newsItem.getImages());
@@ -294,8 +304,8 @@ public class UserServiceImpl implements UserService {
             List<LikeNews> likeNewsList = likeRepository.findByNewsItemId(newsItem.getId());
             newsResponseDTO.setLikeNewsList(likeNewsList);
 
-            List<Share> shareList = shareRepository.findByNewItemId(newsItem.getId());
-            newsResponseDTO.setShareList(shareList);
+            List<ShareNews> shareNewsList = shareRepository.findByNewItemId(newsItem.getId());
+            newsResponseDTO.setShareNewsList(shareNewsList);
 
             listNewsResponseDTO.add(newsResponseDTO);
           }
@@ -322,9 +332,8 @@ public class UserServiceImpl implements UserService {
   }
 
   private List<UploadFileResponse> uploadMultiImages(MultipartFile[] files) {
-    return Arrays.asList(files)
-        .stream()
-        .map(file -> uploadImage(file))
+    return Arrays.stream(files)
+        .map(this::uploadImage)
         .collect(Collectors.toList());
   }
 

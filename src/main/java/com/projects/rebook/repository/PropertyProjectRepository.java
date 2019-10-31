@@ -1,6 +1,7 @@
 package com.projects.rebook.repository;
 
 import com.projects.rebook.model.PropertyProject;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,8 @@ public interface PropertyProjectRepository extends JpaRepository<PropertyProject
 
   @Query(value = "select * from property_project?1 order by id desc limit 1", nativeQuery = true)
   PropertyProject findLastRow(int partition);
+
+  @Query(value = "select * from property_project?1 as t where t.id = ?2", nativeQuery = true)
+  Optional<PropertyProject> findById(int partition, Long id);
 
 }

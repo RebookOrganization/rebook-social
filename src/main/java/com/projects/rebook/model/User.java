@@ -2,6 +2,7 @@ package com.projects.rebook.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -53,6 +54,11 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private Set<NewsItem> newsItems;
 
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date lastLogin;
+
+  private String ipLogin;
+
   public Long getId() {
     return id;
   }
@@ -75,14 +81,6 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public boolean getEmailVerified() {
-    return emailVerified;
-  }
-
-  public void setEmailVerified(boolean emailVerified) {
-    this.emailVerified = emailVerified;
   }
 
   public String getPassword() {
@@ -156,4 +154,16 @@ public class User {
   public void setNewsItems(Set<NewsItem> newsItems) {
     this.newsItems = newsItems;
   }
+
+  public Date getLastLogin() { return lastLogin; }
+
+  public void setLastLogin(Date lastLogin) { this.lastLogin = lastLogin; }
+
+  public String getIpLogin() { return ipLogin; }
+
+  public void setIpLogin(String ipLogin) { this.ipLogin = ipLogin; }
+
+  public boolean isEmailVerified() { return emailVerified; }
+
+  public void setEmailVerified(boolean emailVerified) { this.emailVerified = emailVerified; }
 }

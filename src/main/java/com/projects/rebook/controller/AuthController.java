@@ -4,6 +4,7 @@ import com.projects.rebook.bean.Request.LoginRequest;
 import com.projects.rebook.bean.Request.SignUpRequest;
 import com.projects.rebook.bean.Response.ApiResponse;
 import com.projects.rebook.bean.Response.AuthResponse;
+import com.projects.rebook.dto.UserRegistrationDTO;
 import com.projects.rebook.exception.BadRequestException;
 import com.projects.rebook.model.AuthProvider;
 import com.projects.rebook.model.EmailVerifyToken;
@@ -64,6 +65,9 @@ public class AuthController {
     @Autowired
     private EmailSenderService emailSenderService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping(value = "/")
     public String home(Model model) { return "redirect:/index"; }
 
@@ -85,43 +89,51 @@ public class AuthController {
         return "signup";
     }
 
-    @ModelAttribute("user")
-    public User user() { return new User(); }
+    @ModelAttribute("userDto")
+    public UserRegistrationDTO userRegistrationDTO() {
+        return new UserRegistrationDTO();
+    }
 
     @RequestMapping(value="/signup", method=RequestMethod.POST)
-    public String registerUser(Model model, @ModelAttribute("user") User user,
+    public String registerUser(Model model, @ModelAttribute("userDto") @Valid UserRegistrationDTO userDto,
         BindingResult bindingResult) {
 
-        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        Optional<User> existingUser = userRepository.findByEmail(userDto.getEmail());
         if(existingUser.isPresent()) {
             model.addAttribute("message", "Người dùng đã tồn tại.");
-            model.addAttribute(user);
+            model.addAttribute(userDto);
             bindingResult.rejectValue("email", null, "Người dùng đã tồn tại.");
             return "signup";
         }
-        else
-        {
-            Set<Role> roles = new HashSet<>();
-            roles.add(roleRepository.findByName("ROLE_USER"));
-            user.setRoles(roles);
-            userRepository.save(user);
 
-            EmailVerifyToken confirmationToken = new EmailVerifyToken(user);
-
-            emailVerifyRepository.save(confirmationToken);
-
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(user.getEmail());
-            mailMessage.setSubject("Complete Registration!");
-            mailMessage.setFrom("rebook.thanhle@gmail.com");
-            mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8082/confirm-account?token="+confirmationToken.getVerifyToken());
-
-            emailSenderService.sendEmail(mailMessage);
-
-            model.addAttribute("registerSuccess", "Vui lòng check mail để đăng nhập vào hệ thống.");
-            return "login";
+        if (bindingResult.hasErrors()) {
+            return "signup";
         }
+
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_USER"));
+        User user = new User();
+        user.setRoles(roles);
+        user.setName(userDto.getFullName());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        userRepository.save(user);
+
+        EmailVerifyToken confirmationToken = new EmailVerifyToken(user);
+
+        emailVerifyRepository.save(confirmationToken);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("rebook.thanhle@gmail.com");
+        mailMessage.setText("To confirm your account, please click here : "
+            +"http://localhost:8082/confirm-account?token="+confirmationToken.getVerifyToken());
+
+        emailSenderService.sendEmail(mailMessage);
+
+        model.addAttribute("registerSuccess", "Vui lòng check mail để đăng nhập vào hệ thống.");
+        return "login";
 
     }
 

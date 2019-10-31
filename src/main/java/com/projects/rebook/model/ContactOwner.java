@@ -19,8 +19,8 @@ public class ContactOwner {
     private String phoneNumber;
     private String email;
 
-    @OneToMany(mappedBy = "contactOwner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<NewsItem> newsItems;
+//    @OneToMany(mappedBy = "contactOwner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private Set<NewsItem> newsItems;
 
     public Long getId() { return id; }
 
@@ -42,11 +42,11 @@ public class ContactOwner {
 
     public void setEmail(String email) { this.email = email; }
 
-    public Set<NewsItem> getNewsItems() {
-        return newsItems;
-    }
-
-    public void setNewsItems(Set<NewsItem> newsItems) {
-        this.newsItems = newsItems;
-    }
+//    public Set<NewsItem> getNewsItems() {
+//        return newsItems;
+//    }
+//
+//    public void setNewsItems(Set<NewsItem> newsItems) {
+//        this.newsItems = newsItems;
+//    }
 }

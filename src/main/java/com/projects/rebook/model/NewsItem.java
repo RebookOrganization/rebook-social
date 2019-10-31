@@ -36,15 +36,20 @@ public class NewsItem implements Serializable {
     private String description;
     private String city;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn
-    @JsonIgnore
-    private PropertyAddress propertyAddress;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn
+//    @JsonIgnore
+    private Long propertyAddressId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn
-    @JsonIgnore
-    private PropertyProject propertyProject;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn
+//    @JsonIgnore
+    private Long propertyProjectId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "contact_owner_id")
+//    @JsonIgnore
+    private Long contactOwnerId;
 
     private String direct_of_house;
     private String frontEnd;
@@ -57,11 +62,6 @@ public class NewsItem implements Serializable {
 
     @Column(name = "pub_date")
     private String pubDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contact_owner_id")
-    @JsonIgnore
-    private ContactOwner contactOwner;
 
     public Long getId() { return id; }
 
@@ -115,13 +115,17 @@ public class NewsItem implements Serializable {
 
     public void setCity(String city) { this.city = city; }
 
-    public PropertyAddress getPropertyAddress() { return propertyAddress; }
+    public Long getPropertyAddressId() { return propertyAddressId; }
 
-    public void setPropertyAddress(PropertyAddress propertyAddress) { this.propertyAddress = propertyAddress; }
+    public void setPropertyAddressId(Long propertyAddressId) { this.propertyAddressId = propertyAddressId; }
 
-    public PropertyProject getPropertyProject() { return propertyProject; }
+    public Long getPropertyProjectId() { return propertyProjectId; }
 
-    public void setPropertyProject(PropertyProject propertyProject) { this.propertyProject = propertyProject; }
+    public void setPropertyProjectId(Long propertyProjectId) { this.propertyProjectId = propertyProjectId; }
+
+    public Long getContactOwnerId() { return contactOwnerId; }
+
+    public void setContactOwnerId(Long contactOwnerId) { this.contactOwnerId = contactOwnerId; }
 
     public String getDirect_of_house() { return direct_of_house; }
 
@@ -159,7 +163,4 @@ public class NewsItem implements Serializable {
 
     public void setPubDate(String pubDate) { this.pubDate = pubDate; }
 
-    public ContactOwner getContactOwner() { return contactOwner; }
-
-    public void setContactOwner(ContactOwner contactOwner) { this.contactOwner = contactOwner; }
 }

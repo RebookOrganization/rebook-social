@@ -1,24 +1,24 @@
 package com.projects.rebook.bean.Response;
 
-import com.projects.rebook.model.Share;
+import com.projects.rebook.model.ShareNews;
 import java.util.List;
 
 public class ShareResponse {
 
-  private List<Share> listShare;
+  private List<ShareNews> listShareNews;
   private Integer shareAmount;
 
-  public ShareResponse(List<Share> listShare, Integer shareAmount) {
-    this.listShare = listShare;
+  public ShareResponse(List<ShareNews> listShareNews, Integer shareAmount) {
+    this.listShareNews = listShareNews;
     this.shareAmount = shareAmount;
   }
 
-  public List<Share> getListShare() {
-    return listShare;
+  public List<ShareNews> getListShareNews() {
+    return listShareNews;
   }
 
-  public void setListShare(List<Share> listShare) {
-    this.listShare = listShare;
+  public void setListShareNews(List<ShareNews> listShareNews) {
+    this.listShareNews = listShareNews;
   }
 
   public Integer getShareAmount() {

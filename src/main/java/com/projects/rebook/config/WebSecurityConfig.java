@@ -1,28 +1,22 @@
 package com.projects.rebook.config;
 
 import com.projects.rebook.Main;
+import com.projects.rebook.auth.CustomAccessDeniedHandler;
+import com.projects.rebook.auth.CustomAuthenticationSuccessHandler;
 import com.projects.rebook.auth.CustomUserDetailsService;
-//import com.projects.rebook.auth.RestAuthenticationEntryPoint;
-//import com.projects.rebook.auth.TokenAuthenticationFilter;
-//import com.projects.rebook.auth.oauth2.CustomOAuth2UserService;
-//import com.projects.rebook.auth.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
-//import com.projects.rebook.auth.oauth2.OAuth2AuthenticationFailureHandler;
-//import com.projects.rebook.auth.oauth2.OAuth2AuthenticationSuccessHandler;
+import com.projects.rebook.auth.CustomWebAuthenticationDetailsSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -34,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
   private CustomUserDetailsService customUserDetailsService;
+
+  @Autowired
+  private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
 
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -59,15 +56,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/login", "/signup", "/confirm-account", "/favicon.ico",
             "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/css/**", "/vendors/**",
             "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
-        .antMatchers("/downloadFile/", "/api/**").hasAnyRole("USER", "ADMIN")
+        .antMatchers("/", "/downloadFile/", "/api/**", "/api/**/**").hasAnyRole("USER", "ADMIN")
         .anyRequest()
-        .authenticated()
-        .and()
+        .authenticated().and()
         .formLogin()
+        .authenticationDetailsSource(authenticationDetailsSource)
         .loginPage("/login")
         .usernameParameter("email")
         .passwordParameter("password")
         .defaultSuccessUrl("/index",true)
+//        .successHandler(customAuthenticationSuccessHandler())
         .failureUrl("/login?error=true")
         .and().logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -75,7 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .invalidateHttpSession(false)
         .deleteCookies("JSESSIONID")
         .and().exceptionHandling()
-        .accessDeniedPage("/access-denied");
+        .accessDeniedPage("/access-denied")
+        .accessDeniedHandler(customAccessDeniedHandler());
 
   }
 
@@ -88,10 +87,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
   CorsConfigurationSource corsConfigurationSource() {
-
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     if (Main.IS_DEV_ENV) {
-
       CorsConfiguration corsConfiguration = new CorsConfiguration();
       corsConfiguration.addAllowedOrigin("http://localhost:3000");
       corsConfiguration.addAllowedHeader("*");
@@ -99,8 +96,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       corsConfiguration.setAllowCredentials(true);
       source.registerCorsConfiguration("/**", corsConfiguration);
     }
-
     return source;
+  }
+
+  @Bean
+  public AuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+    return new CustomAuthenticationSuccessHandler();
+  }
+
+  @Bean
+  public AccessDeniedHandler customAccessDeniedHandler() {
+    return new CustomAccessDeniedHandler();
   }
 
 }

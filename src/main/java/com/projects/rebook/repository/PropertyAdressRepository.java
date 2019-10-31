@@ -2,6 +2,7 @@ package com.projects.rebook.repository;
 
 import com.projects.rebook.model.PropertyAddress;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,4 +26,7 @@ public interface PropertyAdressRepository extends JpaRepository<PropertyAddress,
 
   @Query(value = "select * from property_address?1 order by id desc limit 1", nativeQuery = true)
   PropertyAddress findLastRow(int partition);
+
+  @Query(value = "select * from property_address?1 as t where t.id = ?2", nativeQuery = true)
+  Optional<PropertyAddress> findById(int partition, Long id);
 }

@@ -20,8 +20,8 @@ public class PropertyProject {
     @Column(name = "project_size")
     private String projectSize;
 
-    @OneToMany(mappedBy = "propertyProject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<NewsItem> newsItems;
+//    @OneToMany(mappedBy = "propertyProject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private Set<NewsItem> newsItems;
 
     public Long getId() { return id; }
 
@@ -39,11 +39,11 @@ public class PropertyProject {
 
     public void setProjectSize(String projectSize) { this.projectSize = projectSize; }
 
-    public Set<NewsItem> getNewsItems() {
-        return newsItems;
-    }
-
-    public void setNewsItems(Set<NewsItem> newsItems) {
-        this.newsItems = newsItems;
-    }
+//    public Set<NewsItem> getNewsItems() {
+//        return newsItems;
+//    }
+//
+//    public void setNewsItems(Set<NewsItem> newsItems) {
+//        this.newsItems = newsItems;
+//    }
 }

@@ -6,10 +6,6 @@ import java.io.IOException;
 
 public interface NewsItemService {
 
-    CommonResponse crawlerBatDongSan() throws IOException;
-
-    CommonResponse crawlerDiaOcOnline() throws IOException;
-
     CommonResponse getAllNewsItem() throws IOException;
 
     CommonResponse getAllNewsByUser(Long userID) throws IOException;

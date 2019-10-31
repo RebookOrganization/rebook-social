@@ -52,8 +52,8 @@ public class NewsItemIndex {
     if (newsItemList != null && !newsItemList.isEmpty()) {
       logger.info("NewsItemIndex newsItemMap - {}", NewsItemIndex.newsItemMap);
       NewsItemIndex.newsItemMap.clear();
-      for (int i = 0; i < newsItemList.size(); i++) {
-        NewsItemIndex.newsItemMap.put(newsItemList.get(i).getUrl(), newsItemList.get(i));
+      for (NewsItem item : newsItemList) {
+        NewsItemIndex.newsItemMap.put(item.getUrl(), item);
       }
     }
   }

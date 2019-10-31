@@ -3,7 +3,7 @@ package com.projects.rebook.bean.Response;
 import com.projects.rebook.model.Comment;
 import com.projects.rebook.model.LikeNews;
 import com.projects.rebook.model.NewsImageUrl;
-import com.projects.rebook.model.Share;
+import com.projects.rebook.model.ShareNews;
 import java.util.List;
 import java.util.Set;
 
@@ -32,7 +32,7 @@ public class NewsResponseDTO {
 
   private List<LikeNews> likeNewsList;
   private List<Comment> commentList;
-  private List<Share> shareList;
+  private List<ShareNews> shareNewsList;
 
   private Set<NewsImageUrl> imageUrlList;
 
@@ -172,11 +172,11 @@ public class NewsResponseDTO {
     this.commentList = commentList;
   }
 
-  public List<Share> getShareList() {
-    return shareList;
+  public List<ShareNews> getShareNewsList() {
+    return shareNewsList;
   }
 
-  public void setShareList(List<Share> shareList) {
-    this.shareList = shareList;
+  public void setShareNewsList(List<ShareNews> shareNewsList) {
+    this.shareNewsList = shareNewsList;
   }
 }

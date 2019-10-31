@@ -1,7 +1,7 @@
 package com.projects.rebook.repository;
 
 import com.projects.rebook.model.ContactOwner;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +19,7 @@ public interface ContactOwnerRepository extends JpaRepository<ContactOwner, Long
 
   @Query(value = "select * from contact_owner?1 order by id desc limit 1", nativeQuery = true)
   ContactOwner findLastRow(int partition);
+
+  @Query(value = "select * from contact_owner?1 as t where t.id = ?2", nativeQuery = true)
+  Optional<ContactOwner> findById(int partition, Long id);
 }
