@@ -96,7 +96,7 @@ public class AuthController {
 
     @RequestMapping(value="/signup", method=RequestMethod.POST)
     public String registerUser(Model model, @ModelAttribute("userDto") @Valid UserRegistrationDTO userDto,
-        BindingResult bindingResult) {
+        BindingResult bindingResult, HttpServletRequest request) {
 
         Optional<User> existingUser = userRepository.findByEmail(userDto.getEmail());
         if(existingUser.isPresent()) {
@@ -120,15 +120,15 @@ public class AuthController {
         userRepository.save(user);
 
         EmailVerifyToken confirmationToken = new EmailVerifyToken(user);
-
         emailVerifyRepository.save(confirmationToken);
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setFrom("rebook.thanhle@gmail.com");
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         mailMessage.setText("To confirm your account, please click here : "
-            +"http://localhost:8082/confirm-account?token="+confirmationToken.getVerifyToken());
+            + baseUrl + "/confirm-account?token=" + confirmationToken.getVerifyToken());
 
         emailSenderService.sendEmail(mailMessage);
 
@@ -136,8 +136,6 @@ public class AuthController {
         return "login";
 
     }
-
-
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
     public String confirmUserAccount(Model model, @RequestParam("token")String confirmationToken)

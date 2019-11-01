@@ -9,9 +9,9 @@ import { CookiesProvider } from 'react-cookie';
 ReactDOM.render(
     <CookiesProvider>
       <Router>
-        <Switch>
+        {/*<Switch>*/}
           <Route path="/*" name="App" component={()=><App/>}/>
-        </Switch>
+        {/*</Switch>*/}
       </Router>
     </CookiesProvider>,
     document.getElementById('root')

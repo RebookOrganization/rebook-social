@@ -256,14 +256,14 @@ public class CrawlerServiceImpl implements CrawlerService {
               logger.info("BatDongSan.com.vn Tin tức trùng description - {}", desc);
             }
           }
-
         }
         else {
           logger.info("BatDongSan.com.vn Tin trùng lặp url - {}", url);
         }
+        //cập nhật lại index mới nhất
+        indexNewsItem();
       }
 
-      indexNewsItem();
       mapToIndexNewsItem();
       return new CommonResponse<>(this.returnCode, this.returnMessage, new PageImpl<>(newsItemList));
     } catch (IOException e) {
@@ -292,7 +292,6 @@ public class CrawlerServiceImpl implements CrawlerService {
   public CommonResponse crawlerDiaOcOnline() {
     logger.info("Thread execute crawlerDiaOcOnline - {}", Thread.currentThread().getName());
     List<NewsItem> newsItemList = new ArrayList<>();
-    List<NewsImageUrl> newsImageUrlList = new ArrayList<>();
     double compareTfIdf;
     try {
       Document doc = Jsoup.connect(DIAOCONLINE_DUAN_QUYHOACH).get();
@@ -381,24 +380,25 @@ public class CrawlerServiceImpl implements CrawlerService {
 
             assert newsItem1 != null;
             Element flexslider = document.getElementById("slider");
-            assert flexslider.getElementsByClass("slideLarge") != null;
-            Elements slideLarges = flexslider.getElementsByClass("slideLarge");
-            if (slideLarges != null) {
-              for (Element slideLarge : slideLarges) {
-                NewsImageUrl newsImageUrl = new NewsImageUrl();
-                newsImageUrl.setImageUrl(slideLarge.getElementsByTag("img").attr("src"));
-                newsImageUrl.setNewsItem(newsItem1);
-                imagesRepository.saveByPartition(newsImageUrl.getImageSize(), newsImageUrl.getImageType(),
-                    newsImageUrl.getImageUrl(), newsImageUrl.getPicByte(), newsItem1.getId(), currentPartition);
+            if (flexslider != null) {
+              Elements slideLarges = flexslider.getElementsByClass("slideLarge");
+              if (slideLarges != null) {
+                for (Element slideLarge : slideLarges) {
+                  NewsImageUrl newsImageUrl = new NewsImageUrl();
+                  newsImageUrl.setImageUrl(slideLarge.getElementsByTag("img").attr("src"));
+                  newsImageUrl.setNewsItem(newsItem1);
+                  imagesRepository.saveByPartition(newsImageUrl.getImageSize(), newsImageUrl.getImageType(),
+                      newsImageUrl.getImageUrl(), newsImageUrl.getPicByte(), newsItem1.getId(), currentPartition);
+                }
               }
-            }
-            else {
-              if (flexslider.getElementsByTag("img") != null) {
-                NewsImageUrl newsImageUrl = new NewsImageUrl();
-                newsImageUrl.setImageUrl(flexslider.getElementsByTag("img").attr("src"));
-                newsImageUrl.setNewsItem(newsItem1);
-                imagesRepository.saveByPartition(newsImageUrl.getImageSize(), newsImageUrl.getImageType(),
-                    newsImageUrl.getImageUrl(), newsImageUrl.getPicByte(), newsItem1.getId(), currentPartition);
+              else {
+                if (flexslider.getElementsByTag("img") != null) {
+                  NewsImageUrl newsImageUrl = new NewsImageUrl();
+                  newsImageUrl.setImageUrl(flexslider.getElementsByTag("img").attr("src"));
+                  newsImageUrl.setNewsItem(newsItem1);
+                  imagesRepository.saveByPartition(newsImageUrl.getImageSize(), newsImageUrl.getImageType(),
+                      newsImageUrl.getImageUrl(), newsImageUrl.getPicByte(), newsItem1.getId(), currentPartition);
+                }
               }
             }
           }
@@ -409,10 +409,11 @@ public class CrawlerServiceImpl implements CrawlerService {
         else {
           logger.info("DiaOcOnline.vn Tin trùng lặp url - {}", url);
         }
+        //cập nhật lại index mới nhất
+        indexNewsItem();
       }
 
       mapToIndexNewsItem();
-      indexNewsItem();
       return new CommonResponse<>(this.returnCode, this.returnMessage, new PageImpl<>(newsItemList));
     } catch (Exception ex) {
       ex.printStackTrace();

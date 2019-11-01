@@ -89,13 +89,24 @@
             <button type="submit" style="max-height: 40px;width: 150px" class="btn btn-info px-4">Login</button>
           </div>
           <div class="col-6 text-right">
-            <button type="button" class="btn btn-link px-0">Forgot password?</button>
+            <a type="button" th:href="@{/forgot-password}" class="btn btn-link px-0">Forgot password?</a>
           </div>
         </div>
         </form>
         <span class="signup-link" style="font-size:15px">Register New user?
             <a th:href="@{/signup}" style="font-size:15px"> Sign up now!</a>
         </span>
+      </div>
+      <div class="row justify-content-center" style="margin: 10px 0">
+        <a href="https://play.google.com/store/apps/details?id=com.framgia.viblo.android.prod" target="_blank" rel="noopener"
+           class="d-block" style="margin-right: 8px">
+          <img alt="Get it on Google Play"
+               src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" class="play-store-badge">
+        </a>
+        <a href="https://itunes.apple.com/us/app/viblo/id1365286437" target="_blank" rel="noopener" class="d-block">
+          <img alt="Download on the App Store" src="https://cdn.viblo.asia/_nuxt/img/2928664.svg"
+               class="app-store-badge">
+        </a>
       </div>
     </div>
   </div>
