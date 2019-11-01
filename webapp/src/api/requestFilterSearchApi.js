@@ -1,51 +1,29 @@
-import { API_BASE_URL } from '../constants/constant';
-import {request} from "./APIUtils";
+import {httpGet} from "./index";
 
 const API_LOAD_ENUM = "/api/enumeration";
 
 export function loadEnumProvince() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/province-city",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/province-city");
 }
 
 export function loadEnumDistrict() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/district",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/district");
 }
 
 export function loadEnumRentType() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/rent-type",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/rent-type");
 }
 
 export function loadEnumSaleType() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/sale-type",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/sale-type");
 }
 
 export function loadEnumPrice() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/price-options",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/price-options");
 }
 export function loadEnumArea() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/area-options",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/area-options");
 }
 export function loadEnumDirectHouse() {
-  return request({
-    url: API_BASE_URL + API_LOAD_ENUM + "/direct-house",
-    method: 'GET'
-  })
+  return httpGet(API_LOAD_ENUM + "/direct-house");
 }

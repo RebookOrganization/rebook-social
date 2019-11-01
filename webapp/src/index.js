@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './_index.css';
 import App from './containers/App/App.js';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
     <CookiesProvider>
       <Router>
-        <App/>
+        <Switch>
+          <Route path="/*" name="App" component={()=><App/>}/>
+        </Switch>
       </Router>
     </CookiesProvider>,
     document.getElementById('root')

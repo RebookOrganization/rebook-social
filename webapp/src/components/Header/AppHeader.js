@@ -240,7 +240,7 @@ class AppHeader extends Component {
                    style={{marginLeft:'20px', width:'350px'}}>
                 <input type="text" className="form-control"
                        placeholder="Tìm kiếm"
-                       style={{fontSize:'14px',height:'36px'}}
+                       style={{fontSize:'14px',height:'34px'}}
                        onClick={this.toggleModalSearch}
                        aria-label="Tìm kiếm"
                        aria-describedby="basic-addon2"/>

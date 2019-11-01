@@ -63,7 +63,7 @@ public class NewsItemServiceImpl implements NewsItemService {
       Map<String, NewsItem> newsMap = NewsItemIndex.newsItemMap;
       List<NewsResponseDTO> newsResponseDTOList = new ArrayList<>();
 
-      if (!newsMap.isEmpty()) {
+      if (!newsMap.isEmpty() && newsMap.size() >= 20) {
         for (Map.Entry<String, NewsItem> entry : newsMap.entrySet()) {
           NewsItem newsItem = entry.getValue();
           if (newsItem != null) {
